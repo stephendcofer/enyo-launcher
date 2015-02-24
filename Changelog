@@ -1,0 +1,252 @@
+enyo-doom changelog
+
+1.0 ("Right between their beady little eyes")
+
+Most of the fixes/changes/additions from the aborted 0.11/0.999 release, except for the icons, which was a bad idea.
+
+CHANGED: 
+Requires Qt5 now since Qt4 is essentially dead.
+
+FIXED:
+Tons of little code cleanups and text clarifications.
+
+REMOVED: 
+Memory setting, a reminant from Doomsday 1.8.6.  If your engine/setup needs a memory setting (-mb) add it to the custom commandline options (you probably don't).
+
+0.10 ("Your darkest fears will soon be realized as your soul burns in Hell!")
+
+Basically 0.9beta3, but with one addition:
+
+ADDED:
+
+A menu option that opens the enyo-doom Google Code page.
+
+0.9beta3 ("Took your sweet time, Marine?")
+
+The third in a series of betas, though I am unsure that it will lead to 1.0 at this time.  Maybe to 0.10.
+
+CHANGED:
+The About dialog has been fixed to be a real dialog and not just a cheap dialog box, with the return of the enyo-doom graphic as its header.
+
+Keyboard shortcuts in the Game and Settings tabs have been fixed to be unique and therefore usable.
+
+0.9beta2 ("There's nothing wrong with you that I can't fix... with my hands!")
+
+This is the second in a series of betas leading to 1.0.
+
+ADDED:
+A menu with shortcuts.
+The ability to move the tabs to the top.
+
+CHANGED: 
+About is no longer in a tab (accessible from a menu).  The current About dialog is a placeholder for now, it'll look better in a future beta.
+
+0.9beta1 ("Doesn't suck - SDC")
+
+This is the first in a series of betas leading to 1.0.  Things are subject to change and horrible breakage, so be warned.
+
+CHANGED/FIXED:
+Several UI elements, including tab orientation (better for widescreen), location of game selector and Run button, alignment of the Settings (was "General") tab elements, and explanatory text on the Output text element.
+
+Future considerations for UI improvements: the removal of the About tab and Enyo-Doom graphic to put into its own window when invoked, a menu and toolbar, and/or the ability to change tab positions if you hate them being on the left, among other UI customizations.
+
+0.8r2 ("Ooh, here it comes!  Here comes the night train!")
+
+BUG:
+Problem with the WAD file selector (file filter was incorrect) fixed.
+
+0.8 ("Ooh, here it comes! Here comes the night train!")
+
+After invalidating Bug 7, I am releasing 0.7.9.4 as final.  
+
+No changes.
+
+0.7.9.4 ("The sugar-sweet kiss of heavy ordinance")
+
+Yet another test version.  See below.
+
+ADDED:
+Saves window geometry and position between runs.
+Checks the path of the main game WAD to see if it's valid.
+Confirmation dialog for removal of game types and engines.
+
+CHANGED:
+"Copy current game settings..." is now a standard Yes/No/Cancel dialog rather than a dropdown.
+
+BUG:
+Occasionally, the engine setting will revert to the first engine listed if another is selected.  I cannot reliably reproduce this and have no idea what's causing it.  This is definitely a 0.8 blocker.
+
+0.7.9.3 ("Sweet Christmas!")
+
+Probably the final test version before 0.8 is released.  
+
+ADDED: 
+"Lock this game type to engine".  This allows you to add game types that are dependent on a single engine without having to go change the main engine type.  By default this is set to "(Default)", which means it will use the engine set on the General tab.
+
+FIXED: 
+Window title is now "Enyo Doom" rather than just "Enyo" for consistency's sake.
+
+CHANGED:
+The logo.  I was uncomfortable with using a Doom game sprite in case there was any copyright issues so I removed it.
+The logo now scales horizontally with the window.  It looks kind of ugly if scaled to extremes, but I'm sure you can live with it.
+
+0.7.9.2 ("The capacity for violence")
+
+Yet another version of the major Qt/C++ rewrite of Enyo-Doom.  Should be close to an actual release (0.8).
+
+ADDED:
+Removing game types.
+Adding and removing engines.
+
+ENHANCEMENT:
+Busy cursor when Doom launched for engines/addons that take a moment to load (so you don't think it's locked up or anything).
+
+NOTE: 
+Doomsday support is now officially dropped, though you can re-add it with the engine selector and use custom launch options to add the correct launch options to support it.  Use the latest version of Doomsday's launcher (Snowberry) for it.  I will be adding a "lock game type to engine" option in the next version so you can add Doomsday-specific game types.
+
+0.7.9.1 ("Your fat reward") 
+
+The second version of the major Qt/C++ rewrite of Enyo-Doom.
+
+RE-ADDED:
+
+Adding game types. There will be a way to remove them in a future version.
+
+Custom launch parameters.
+
+FIXED/CHANGED:
+
+A decent compile/install method. I now use CMake to generate the makefile used to build Enyo-Doom. It is recommended that you create a build directory then use cmake .. to create a Makefile. Using make install is now supported and should install in the prefix /usr/local (use cmake .. -DCMAKE_INSTALL_PREFIX=/usr to install in /usr). 
+
+0.7.9.0 ("Bringing forth eternal damnation and suffering.")
+
+This is a MAJOR rewrite using Qt and C++, replacing the old GTK+/C code.  The first release is a test release, so bear with me while I iron out the problems and get everything back up to speed.
+
+UNSUPPORTED:
+Adding game types.  This should be in the next version (as well as the ability to remove existing games from the list).
+Custom launch parameters.  Again, this should be in the next version.
+The custom Doom engine option.  This will probably be in the version after next as the ability to add and remove any number of engines.
+Doomsday/dengine.  Considering permanently dropping it due to the addition of its own launcher in the new version and the changing of its launch options.  My hope is that when the above options are added that it will be possible for users to manually add Doomsday by choosing it and creating custom launch parameters for it if you want.
+A decent compile/install method.  Unless I'm missing something, I can't find a reliable method of allowing qmake to do a standard configure/install Makefile that supports splitting the executable and the support files.  I'm still figuring out how Qt works, though.  For now I'm putting everything in its own directory and calling from a script.  Compile using build.sh and install using install.sh (as root for systemwide install).
+Saving window geometry.  Should return in the next version or so.
+
+CHANGED:
+Per-engine settings for windowed/non-windowed, sound and memory to allocate.  Makes more sense than making these global options.  So if you want to customize these, you'll need to set them for each engine.
+
+0.7.4 ("And then John was a zombie.")
+
+UPDATE: Code changes to GTK interface to allow it to successfully compile using GTK+3.  If you want to compile the GTK3 version, you will need the latest version of GTK3 (devel files as well) and follow the instructions in Makefile (uncommenting the GTK3 definitions and commenting the GTK2 ones).  
+REQUIREMENTS: You now need to have GTK2 2.24 or later to compile this and future versions of enyo-doom due to the new GTK3-compatible code.  If you don't, you'll need to update or continue to use older versions of enyo.
+
+0.7.3 ("Big &#$!*@# Gun")
+
+CLEANUP: Major code cleanup, removing commented and dangling parts of code that aren't used anymore.  Also changed to a more direct widget referral method rather than using the clunky lookup_widget provided by Glade.
+REVERT: Output window no longer hides when "Show engine output when running" is unchecked.  Changed my mind on that one.  
+CHANGE: Selecting Doom Shareware no longer disables the Add button -- a dialog is shown instead if you try to add PWADS, which makes better sense than trying to figure out why it gets disabled.
+
+0.7.2 ("Oremor nhoj em llik tsum uoy emag eht niw ot.")
+
+BUGFIX: Disabled the Run Game button while a game is running to prevent a possible condidion where Enyo is still the active window and a user may be able to run the game again.
+
+0.7.1 ("Paying for what happened to Daisy")
+
+IMPORTANT: This is a testing release.  Don't use it unless you like stuff breaking.
+CHANGE: IWAD selector is now using the GtkFileChooserButton widget to simplify the UI.  Leaving the engine chooser the same for now -- I may change that next testing version.
+CLEANUP: Beginning of some code cleanup in rundoom.c that directly gets saved settings instead of pulling them from the UI, which is a leftover from very early code when I directly wrote settings to the settings file instead of using the intermediate settings array.  Will expand on this next testing version.
+
+0.7 ("Potential pain and gibbitude")
+
+IMPORTANT: This is a testing release.  Don't use it unless you like stuff breaking.
+CHANGE: Binary, share directory, and settings directory now called "enyo-doom".  This was done to avoid potential conflict with any other applications known as "enyo".  The program should automatically migrate ~/.enyo/config to ~/.enyo-doom/config -- the method used may be faulty so make sure ~/.enyo/config has been deleted after you have closed Enyo 0.7 after this migration.  You may want to back up ~/.enyo/config just in case if you don't want to reconfigure everything.
+ENHANCEMENT: Game engine combo now includes "Other Engine".  You can now use any other Doom engine as long as it obeys the same basic commandline parameters as Vanilla Doom.  The "Path to engine binary" will initially be blank when you select this; use Select to select the Doom binary you want to run (e.g. zdoom).
+CLEANUP: Removal of old commented out code, plus embarrasingly even more references to the engine as "doomsday" regardless of what you have selected.
+BUGFIX: Removal of old code referring to the old popup "Running" dialog in error handlers.
+
+0.6.2 ("Smelling like sour lemons")
+
+BUGFIX: Applied patch to fix Issue 5 ("gcc4.6.1 on Ubuntu 11.10 (possibly others) picky about order") that fixes a flood of "undefined reference" in the last step of the build.
+ENHANCEMENT: "Switch to output when running" is now "Show engine output when running", and the new Output tab is now hidden when the option is unchecked.
+
+0.6.1 ("Admitting a grudging respect for Fly Taggart")
+
+BUGFIX: A few minor source changes for better C language compliance.
+CHANGE/ENHANCEMENT/BUGFIX: The separate output window is now gone, replaced by an Output tab in the main interface, and the option to display the output window has now been changed to "Switch to output when running".  This change is not only to simplify the interface, but also to fix a glitch I've seen in some window managers that overlays the main window with an existing open window on the taskbar after the output window closes.
+
+0.6 ("Diseased horrors hot to get their teeth into you")
+
+BUGFIX: Fixed several text references to "gDoomsday" still lingering in error messages and other dialogs.
+CHANGE: New graphic and easier to see icon.
+This is a "stable" release -- no major issues have shown up during testing, but please report any issues.
+
+0.5.2 ("You're supposed to win, aren't you?")
+
+A lot going on for this release.
+ENHANCEMENT: Changed the file dialog choosers to the more modern GTK+ ones over the old style that I've been using since Doomsday.
+BUGFIX: Fixed a small problem with the last directory used where it would sometimes show the parent directory.  A side effect of this is that when you use it the first time in this release, it will not show a directory; however, when you choose a file, it will remember that directory and future ones you choose from now on.
+ENHANCEMENT/BUGFIX: Last directory chosen now includes the add-on chooser as well.
+BUGFIX: Several tooltips still referred to "Doomsday" only when they apply to all engines.
+CHANGE: The save directory chooser for Doomsday has been removed completely; game settings are moved up into the main tab and is now called "Game".  Given that ~/.doomsday is a good choice for saving Doomsday settings and the rest of the engines create their own automatically, I figured it was time to depreciate this setting.  If there is massive public outcry for the return of this setting, I will do so, but it's best that you just let it be set in ~/.doomsday.
+NOTE: This is still considered an experimental release, however, I am becoming more confident of its stability and the next release will likely be 0.6, which I will consider "stable".
+
+0.5.1 ("I Am Death Incarnate!")
+
+BUGFIX: Issue 3 ("call to __builtin__snprintf_chk will always overflow destination buffer" warning) fixed.
+CLEANUP: Beginning of code cleanup and use of #DEFINEs instead of magic numbers through code.
+ENHANCEMENT: Window geometry (not position) saved on exit and restored on next run.
+NOTE: This is still an experimental release.  Please report any bugs and/or use 0.4.  0.6 will be the next stable release.
+
+0.5 ("What the hell is this?")
+
+ENHANCEMENT: Added custom commandline options for engines.  These will be saved and used regardless of engine selection (for now) so you will need to modify or remove them when changing engines if they are engine-specific commands.
+ENHANCEMENT: You can now save a configuration of game engine, PWADs and custom commandline as a custom game type selectable in the drop-down list.  You must use the standard game types as a starting point.  For example, this will let you add "Hell Revealed" as a selectable game type that will automatically keep the Hell Revealed (hr.wad and hrmus.wad) PWADs associated with it, regardless of what you add or remove to Doom II.
+NOTE: This is an experimental release.  If you have issues, please open a bug report and/or use 0.4 until this becomes more stable.
+
+0.4 ("The Unmaker")
+
+ENHANCEMENT: Support for prBoom.
+ENHANCEMENT: Menu shortcut created (under "Games").
+ENHANCEMENT: An icon!
+ENHANCEMENT/BUGFIX: Removal of Heretic and Hexen from the menus when chocolate-doom or prBoom is selected.
+BUGFIX: No longer asks for path to "Doomsday" when selecting engine path (doesn't make sense with chocolate-doom or prBoom).
+
+0.3.3: ("I'm an idiot.")
+
+BUGFIX: Previous fix for Shareware Doom made PWADs nonfunctional using Doomsday.  Man, I'm an idiot.  
+
+0.3.2: ("Still Alive")
+
+BUGFIX: Running Shareware Doom under chocolate-doom failed because of a dangling commandline parameter that should not be there.
+
+0.3.1: ("Scientific Miscalculation")
+
+BUGFIX: Incorrect value in string handling function that caused GCC to spit out warnings and glibc to crash the program in newer versions with "fortify source".
+BUGFIX: Suppressed warning in string handler due to not having a formatting string.
+PACKAGE: Now extracts to its own directory.  Oops.  How did I miss that one?
+
+0.3: ("Scientific Miscalculation")
+
+ENHANCEMENT: New program settings code and configuration file
+(~/.enyo/config).  Probably buggy as hell at the moment.  You WILL have to
+redo your settings as they will not carry over from the old config file.
+KNOWN ISSUE: Spaces in path names don't work, Doom doesn't really like spaces
+anyway being a DOS game originally; however, this will be investigated.
+
+0.2.1: ("USE US")
+
+BUGFIX: Chocolate Doom did not revert to fullscreen when Run In Window
+unchecked.
+BUGFIX: No setting for Chocolate Doom path defaulted to "doomsday" instead of
+"chocolate-doom".
+PACKAGE: Added Changelog and COPYING to share directory on install.
+PACKAGE: Changed file permissions of enyo.png on install to 644
+
+0.2: ("USE US")
+
+ADDED: Preliminary support for Chocolate Doom.
+OTHER: Code base for a new settings file added (not implemented yet).
+Settings file is still ~/.gdoomsday for now.
+
+0.1: INITIAL RELEASE ("Welcome to the Dungeon, Marine")
+
+This release is simply a rename and conversion from the old gDoomsday (http://gdoomsday.sf.net) code base.  Some identification has been changed from gDoomsday to Enyo (but not the banner image yet).  Autoconf/automake has been changed to a simple Makefile.  0.2 will be the beginning of significant code and other changes to Enyo.
+
