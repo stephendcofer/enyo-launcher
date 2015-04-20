@@ -51,7 +51,8 @@ struct game_engines
 {
     QString engine_name;
     QString engine_binary_path;
-    bool in_window;
+    bool in_window; // Depreciated, for backwards compatibility
+    int fullscreen_mode;
     bool no_sound;
     int maxzone;
 };
@@ -161,14 +162,17 @@ void e_mainwindow::load_settings ()
         enyo_engines[0].engine_name = "Chocolate Doom";
         enyo_engines[0].engine_binary_path = "chocolate-doom";
         enyo_engines[0].in_window = false;
+	enyo_engines[0].fullscreen_mode = 0;
         enyo_engines[0].no_sound = false;
         enyo_engines[1].engine_name = "prBoom";
         enyo_engines[1].engine_binary_path = "prboom";
         enyo_engines[1].in_window = false;
+	enyo_engines[1].fullscreen_mode = 0;
         enyo_engines[1].no_sound = false;
         enyo_engines[2].engine_name = "ZDoom";
         enyo_engines[2].engine_binary_path = "zdoom";
         enyo_engines[2].in_window = false;
+	enyo_engines[2].fullscreen_mode = 0;
         enyo_engines[2].no_sound = false;
         engine_pointer = 3;
     }
@@ -180,6 +184,7 @@ void e_mainwindow::load_settings ()
             enyo_engines[engine_pointer].engine_name = enyo_settings.value ("name").toString();
             enyo_engines[engine_pointer].engine_binary_path = enyo_settings.value ("binarypath", "").toString();
             enyo_engines[engine_pointer].in_window = enyo_settings.value ("inwindow", "false").toBool();
+	    enyo_engines[engine_pointer].fullscreen_mode = enyo_settings.value ("fullscreen", (enyo_engines[engine_pointer].in_window)?"1":"2").toInt();
             enyo_engines[engine_pointer].no_sound = enyo_settings.value ("nosound", "false").toBool();
             engine_pointer++;
         }
@@ -216,6 +221,7 @@ void e_mainwindow::save_settings ()
         enyo_settings.setValue("name", enyo_engines[i].engine_name);
         enyo_settings.setValue("binarypath", enyo_engines[i].engine_binary_path);
         enyo_settings.setValue("inwindow", enyo_engines[i].in_window);
+	enyo_settings.setValue("fullscreen", enyo_engines[i].fullscreen_mode);
         enyo_settings.setValue("nosound", enyo_engines[i].no_sound);
     }
     enyo_settings.endArray();
@@ -273,7 +279,8 @@ e_mainwindow::e_mainwindow(QWidget *parent) :
     ui->cb_elock->setCurrentIndex(enyo_games[last_game_selected].engine_id);
 
     ui->line_engine_path->setText (enyo_engines[last_engine_selected].engine_binary_path);
-    ui->cb_in_window->setChecked(enyo_engines[last_engine_selected].in_window);
+//    ui->cb_in_window->setChecked(enyo_engines[last_engine_selected].in_window);
+    ui->cb_windowed->setCurrentIndex (enyo_engines[last_engine_selected].fullscreen_mode);	
     ui->cb_no_sound->setChecked(enyo_engines[last_engine_selected].no_sound);
 
 
@@ -362,7 +369,7 @@ void e_mainwindow::on_pushButton_clicked()
         for (int i=0; i<enyo_games[last_game_selected].game_pwad.count(); i++)
             eng_arguments << enyo_games[last_game_selected].game_pwad.at(i);
     }
-
+/*
     if (enyo_engines[engine_index].in_window)
     {
         eng_arguments << "-window";
@@ -371,7 +378,17 @@ void e_mainwindow::on_pushButton_clicked()
     {
         eng_arguments << "-fullscreen";
     }
-
+*/
+    switch (enyo_engines[engine_index].fullscreen_mode){
+    	case 1:
+		eng_arguments << "-window";
+		break;
+	case 2:
+		eng_arguments << "-fullscreen";
+		break;
+	default: 
+		break;
+    }
     if (enyo_engines[engine_index].no_sound)
     {
         eng_arguments << "-nosound";
@@ -510,7 +527,8 @@ void e_mainwindow::on_cb_engines_currentIndexChanged(int index)
 
     last_engine_selected = index;
     ui->line_engine_path->setText (enyo_engines[last_engine_selected].engine_binary_path);
-    ui->cb_in_window->setChecked(enyo_engines[last_engine_selected].in_window);
+//    ui->cb_in_window->setChecked(enyo_engines[last_engine_selected].in_window);
+   ui->cb_windowed->setCurrentIndex (enyo_engines[last_engine_selected].fullscreen_mode);
     ui->cb_no_sound->setChecked(enyo_engines[last_engine_selected].no_sound);
 
 }
@@ -535,13 +553,20 @@ void e_mainwindow::on_btn_select_engine_path_clicked()
 
     }
 }
-
+/*
 void e_mainwindow::on_cb_in_window_toggled(bool checked)
 {
     if (stop_index_change_fire)
         return;
 
     enyo_engines[last_engine_selected].in_window = checked;
+}
+*/
+void e_mainwindow::on_cb_windowed_currentIndexChanged (int index)
+{
+	if (stop_index_change_fire) return;
+
+	enyo_engines[last_engine_selected].fullscreen_mode = index;
 }
 
 void e_mainwindow::on_cb_no_sound_toggled(bool checked)

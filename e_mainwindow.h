@@ -22,9 +22,9 @@
 #define MAX_GAMES 255
 #define MAX_ENGINES 50
 
-#define ENYO_VERSION "1.0"
-#define ENYO_TAGLINE "Right between their beady little eyes"
-#define ENYO_COPYRIGHT "Copyright (C) 2009-2013 Stephen D. Cofer.  Released under the GPL version 2."
+#define ENYO_VERSION "1.01"
+#define ENYO_TAGLINE "Super Turbo Turkey Puncher 3"
+#define ENYO_COPYRIGHT "Copyright (C) 2009-2015 Stephen D. Cofer.  Released under the GPL version 2."
 #define ENYO_HOMEPAGE "https://github.com/stephendcofer/enyo-doom"
 
 #define DEFAULT_WIDTH 800
@@ -204,7 +204,9 @@ private slots:
 
     void on_btn_select_engine_path_clicked();
 
-    void on_cb_in_window_toggled(bool checked);
+ //   void on_cb_in_window_toggled(bool checked);
+
+    void on_cb_windowed_currentIndexChanged (int index);
 
     void on_cb_no_sound_toggled(bool checked);
 

@@ -1,5 +1,10 @@
 enyo-doom changelog
 
+1.01 ("Super Turbo Turkey Puncher 3")
+
+CHANGED:
+The "Fullscreen" setting is now a combobox that selects between *forcing* fullscreen/windowed mode or letting the engine's setting decide, therefore not forcing fullscreen/windowed for engines that accept the "-fullscreen/-windowed" switches and have their own fullscreen/windowed settings.
+
 1.0 ("Right between their beady little eyes")
 
 Most of the fixes/changes/additions from the aborted 0.11/0.999 release, except for the icons, which was a bad idea.

@@ -16,21 +16,25 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-    <widget class="QMenuBar" name="menuBar">
-    <widget class="QMenu" name="menu_File">
-	<property name="title"><string>&amp;File</string></property>
-	<addaction name="action_Run"/>
-	<addaction name="separator"/>
-	<addaction name="actionE_xit"/>
-    </widget>
-    <widget class="QMenu" name="menu_Help">
-	<property name="title"><string>&amp;Help</string></property>
-	<addaction name="action_About"/>
-	<addaction name="action_Webpage"/>
-    </widget>
-    <addaction name="menu_File"/>
-    <addaction name="menu_Help"/>
-    </widget>	
+     <widget class="QMenuBar" name="menuBar">
+      <widget class="QMenu" name="menu_File">
+       <property name="title">
+        <string>&amp;File</string>
+       </property>
+       <addaction name="action_Run"/>
+       <addaction name="separator"/>
+       <addaction name="actionE_xit"/>
+      </widget>
+      <widget class="QMenu" name="menu_Help">
+       <property name="title">
+        <string>&amp;Help</string>
+       </property>
+       <addaction name="action_About"/>
+       <addaction name="action_Webpage"/>
+      </widget>
+      <addaction name="menu_File"/>
+      <addaction name="menu_Help"/>
+     </widget>
     </item>
     <item row="1" column="0">
      <layout class="QVBoxLayout" name="verticalLayout"/>
@@ -40,55 +44,54 @@
       <property name="currentIndex">
        <number>1</number>
       </property>
-	<property name="TabPosition"><set>QTabWidget::West</set></property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
         <string>Game</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="sizeConstraint">
-       <enum>QLayout::SetDefaultConstraint</enum>
-      </property>
-      <item>
-       <widget class="QComboBox" name="cb_games"/>
-      </item>
-      <item>
-       <widget class="QPushButton" name="btn_add_game">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Add &amp;new...</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="btn_remove_game">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Remo&amp;ve</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-          <item row="1" column="0"> 
-           <widget class="Line" name="line">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <item>
+           <widget class="QComboBox" name="cb_games"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_add_game">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Add &amp;new...</string>
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QPushButton" name="btn_remove_game">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Remo&amp;ve</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <widget class="Line" name="line">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
         <item row="2" column="0">
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
@@ -205,49 +208,51 @@
           </item>
          </layout>
         </item>
-    <item row="4" column="0">
-     <widget class="QPushButton" name="pushButton">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>&amp;Run</string>
-      </property>
-     </widget>
-    </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="tab_2">
-       <attribute name="title">
-        <string>Settings</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_5">
-            <property name="sizeConstraint">
-             <enum>QLayout::SetNoConstraint</enum>
-            </property>
-	    <property name="Alignment"><set>Qt::AlignTop</set></property>
-        <item>
-         <widget class="QLabel" name="label_6">
-         <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <item row="4" column="0">
+         <widget class="QPushButton" name="pushButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
           <property name="text">
-           <string><![CDATA[
-		<b>Engine Settings:</b>
-		]]>
-	</string>
+           <string>&amp;Run</string>
           </property>
          </widget>
         </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <attribute name="title">
+        <string>Settings</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
          <layout class="QGridLayout" name="gridLayout_4">
           <item row="0" column="0">
+           <widget class="QLabel" name="label_6">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>&lt;b&gt;Engine Settings:&lt;/b&gt;		</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout_4">
             <property name="sizeConstraint">
              <enum>QLayout::SetDefaultConstraint</enum>
@@ -303,7 +308,83 @@
             </item>
            </layout>
           </item>
-          <item row="1" column="0">
+          <item row="4" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetDefaultConstraint</enum>
+            </property>
+            <item>
+             <widget class="QLabel" name="label_5">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Fullscreen settings:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="cb_windowed">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <item>
+               <property name="text">
+                <string>Use Engine Default</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Force Windowed</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Force Fullscreen</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="cb_no_sound">
+              <property name="text">
+               <string>Disable Sound</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="6" column="0">
+           <layout class="QHBoxLayout" name="hl_edsettings">
+            <property name="spacing">
+             <number>5</number>
+            </property>
+            <property name="sizeConstraint">
+             <enum>QLayout::SetDefaultConstraint</enum>
+            </property>
+            <item>
+             <widget class="QCheckBox" name="cb_show_output">
+              <property name="text">
+               <string>Enable &amp;Output tab for troubleshooting</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="cb_tabs_top">
+              <property name="text">
+               <string>&amp;Tabs on top</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="3" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout_5">
             <property name="sizeConstraint">
              <enum>QLayout::SetDefaultConstraint</enum>
@@ -333,75 +414,35 @@
             </item>
            </layout>
           </item>
-          <item row="2" column="0">
-           <layout class="QHBoxLayout" name="horizontalLayout_6">
-            <property name="sizeConstraint">
-             <enum>QLayout::SetDefaultConstraint</enum>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_7">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
-            <item>
-             <widget class="QCheckBox" name="cb_in_window">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Run in &amp;window</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="cb_no_sound">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>&amp;No sound</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
+            <property name="text">
+             <string>
+		&lt;b&gt;Enyo-Doom Settings:&lt;/b&gt;
+		</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
         <item>
-         <widget class="QLabel" name="label_7">
+         <widget class="QLabel" name="label_9">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
           <property name="text">
-           <string><![CDATA[
-		<b>Enyo-Doom Settings:</b>
-		]]>
-	  </string>
+           <string/>
           </property>
          </widget>
-        </item>
-        <item>
-          <layout class="QHBoxLayout" name="hl_edsettings">
-            <property name="sizeConstraint">
-             <enum>QLayout::SetDefaultConstraint</enum>
-            </property>
-        <item>
-         <widget class="QCheckBox" name="cb_show_output">
-          <property name="text">
-           <string>Enable &amp;Output tab for troubleshooting</string>
-          </property>
-         </widget>
-        </item>
-	<item>
-	  <widget class="QCheckBox" name="cb_tabs_top">
-		<property name="text"><string>&amp;Tabs on top</string></property>
-	  </widget>
-	</item>
-	</layout>
         </item>
        </layout>
       </widget>
@@ -415,7 +456,9 @@
           <property name="readOnly">
            <bool>true</bool>
           </property>
-	  <property name="PlainText"><string>Engine output will be displayed here when game is ran.</string></property>
+          <property name="PlainText" stdset="0">
+           <string>Engine output will be displayed here when game is ran.</string>
+          </property>
          </widget>
         </item>
        </layout>
@@ -424,21 +467,35 @@
     </item>
    </layout>
   </widget>
-    <action name="action_Run">
-    	<property name="text"><string>&amp;Run</string></property>
-	<property name="shortcut"><string>F2</string></property>
-    </action>
-    <action name="actionE_xit">
-    	<property name="text"><string>E&amp;xit</string></property>
-	<property name="shortcut"><string>Ctrl+Q</string></property>
-    </action>
-    <action name="action_About">
-    	<property name="text"><string>&amp;About...</string></property>
-	<property name="shortcut"><string>F1</string></property>
-    </action>
-    <action name="action_Webpage">
-    	<property name="text"><string>&amp;Webpage</string></property>
-    </action>
+  <action name="action_Run">
+   <property name="text">
+    <string>&amp;Run</string>
+   </property>
+   <property name="shortcut">
+    <string>F2</string>
+   </property>
+  </action>
+  <action name="actionE_xit">
+   <property name="text">
+    <string>E&amp;xit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="action_About">
+   <property name="text">
+    <string>&amp;About...</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </action>
+  <action name="action_Webpage">
+   <property name="text">
+    <string>&amp;Webpage</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
