@@ -4,20 +4,20 @@ PROJECT( enyo-doom )
 
 SET( TARGET enyo-doom )
 SET( ENYO_DOOM_SRCS
-	./e_mainwindow.cpp
-	./main.cpp
+	./src/e_mainwindow.cpp
+	./src/main.cpp
 )
 
 SET( ENYO_DOOM_HDRS
-	./e_mainwindow.h
+	./src/e_mainwindow.h
 )
 
 SET( ENYO_DOOM_UIS
-	./e_mainwindow.ui
+	./src/e_mainwindow.ui
 )
 
 SET( ENYO_DOOM_RCS
-	./enyo-doom.qrc
+	./src/enyo-doom.qrc
 )
 include_directories ( ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${CMAKE_CURRENT_BINARY_DIR} )
 find_package ( Qt5Core REQUIRED )
@@ -33,5 +33,5 @@ target_link_libraries ( enyo-doom ${Qt5Widgets_LIBRARIES} ${Qt5Core_LIBRARIES} )
 
 INSTALL( TARGETS enyo-doom DESTINATION bin )
 INSTALL( FILES ./Changelog ./COPYING DESTINATION share/enyo-doom )
-INSTALL( FILES ./enyo-doom.desktop DESTINATION share/applications )
+INSTALL( FILES ./share/enyo-doom.desktop DESTINATION share/applications )
 INSTALL( FILES ./share/enyo_icon.png DESTINATION share/icons )
