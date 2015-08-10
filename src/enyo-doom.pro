@@ -20,5 +20,5 @@ FORMS    += e_mainwindow.ui
 RESOURCES += \
     enyo-doom.qrc
 
-win32:RC_FILE = winicon.rc
+win32:RC_FILE = ../share/winicon.rc
 

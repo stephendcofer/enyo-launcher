@@ -54,6 +54,19 @@
           <property name="sizeConstraint">
            <enum>QLayout::SetDefaultConstraint</enum>
           </property>
+	  <item>
+	  <widget class="QLabel" name="lb_gamecb">
+             <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Select game:</string>
+              </property>
+             </widget>
+            </item>
           <item>
            <widget class="QComboBox" name="cb_games"/>
           </item>
@@ -66,7 +79,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Add &amp;new...</string>
+             <string>&amp;Add...</string>
             </property>
            </widget>
           </item>
@@ -85,13 +98,6 @@
           </item>
          </layout>
         </item>
-        <item row="1" column="0">
-         <widget class="Line" name="line">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
         <item row="2" column="0">
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
@@ -108,7 +114,7 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Main WAD:</string>
+               <string>Selected game's WAD:</string>
               </property>
              </widget>
             </item>
@@ -127,10 +133,10 @@
           <item>
            <widget class="QLabel" name="label_2">
             <property name="text">
-             <string>Add-ons:</string>
+             <string>Add-ons for selected game:</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignCenter</set>
+             <set>Qt::AlignLeft</set>
             </property>
             <property name="indent">
              <number>0</number>
@@ -266,7 +272,7 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Engines:</string>
+               <string>Select default engine:</string>
               </property>
              </widget>
             </item>
@@ -289,7 +295,7 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>&amp;Add Engine</string>
+               <string>&amp;Add...</string>
               </property>
              </widget>
             </item>
@@ -302,7 +308,7 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>&amp;Remove Engine</string>
+               <string>&amp;Remove</string>
               </property>
              </widget>
             </item>
@@ -398,7 +404,7 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Path to engine:</string>
+               <string>Path to selected engine:</string>
               </property>
              </widget>
             </item>

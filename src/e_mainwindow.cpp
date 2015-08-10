@@ -411,6 +411,8 @@ void e_mainwindow::on_pushButton_clicked()
     {
     	QByteArray result = doom_process->readAll();
         QString cmdline;
+	ui->text_output->appendPlainText ("# Running:");
+	
     	cmdline += doomengine + " ";
     	for (int i=0;i<eng_arguments.count(); i++)
     	{
@@ -418,6 +420,8 @@ void e_mainwindow::on_pushButton_clicked()
 
     	}
     	ui->text_output->appendPlainText(cmdline);
+	ui->text_output->appendPlainText("");
+	ui->text_output->appendPlainText("# Output:");
     	ui->text_output->appendPlainText(result);
     }
 }
