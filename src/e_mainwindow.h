@@ -22,8 +22,8 @@
 #define MAX_GAMES 255
 #define MAX_ENGINES 50
 
-#define ENYO_VERSION "1.01"
-#define ENYO_TAGLINE "Super Turbo Turkey Puncher 3"
+#define ENYO_VERSION "1.02"
+#define ENYO_TAGLINE "Due to the incredible amount of time you wasted punching poor defenseless turkeys, your vacation time has been docked two days."
 #define ENYO_COPYRIGHT "Copyright (C) 2009-2015 Stephen D. Cofer.  Released under the GPL version 2."
 #define ENYO_HOMEPAGE "https://github.com/stephendcofer/enyo-doom"
 

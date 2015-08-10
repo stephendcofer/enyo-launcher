@@ -1,5 +1,12 @@
 enyo-doom changelog
 
+
+1.02 ("Due to the incredible amount of time you wasted punching poor defenseless turkeys, your vacation time has been docked two days.")
+
+CHANGED: 
+The layout of the source has been modified to place all code in its own directory.
+Small changes in text labels to hopefully make things a little clearer.
+
 1.01 ("Super Turbo Turkey Puncher 3")
 
 CHANGED:
