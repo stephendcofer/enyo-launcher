@@ -3,7 +3,7 @@ enyo-doom
 
 Frontend for Doom engines
 
-Enyo-Doom is a GUI launcher for Doom engines. It is a relaunch of the gDoomsday project under a different name with more functionality. The source release is usable in any modern GNU/Linux distribution with Qt, and I have created a port that runs under Windows as well (see below for details). The original release used GTK+, but was rewritten to use Qt for ease of maintenance and cross-platform compatibility.
+Enyo-Doom is a GUI launcher for Doom engines. It is a relaunch of the gDoomsday project under a different name with more functionality. The source release is usable in any modern GNU/Linux distribution with Qt). The original release used GTK+, but was rewritten to use Qt for ease of maintenance and cross-platform compatibility.
 
 Requirements
 
