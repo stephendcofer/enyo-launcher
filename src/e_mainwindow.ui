@@ -1,478 +1,419 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>e_mainwindow</class>
- <widget class="QMainWindow" name="e_mainwindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>816</width>
-    <height>399</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>Enyo-Doom</string>
-  </property>
-  <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QMenuBar" name="menuBar">
-      <widget class="QMenu" name="menu_File">
-       <property name="title">
-        <string>&amp;File</string>
-       </property>
-       <addaction name="action_Run"/>
-       <addaction name="separator"/>
-       <addaction name="actionE_xit"/>
-      </widget>
-      <widget class="QMenu" name="menu_Help">
-       <property name="title">
-        <string>&amp;Help</string>
-       </property>
-       <addaction name="action_About"/>
-       <addaction name="action_Webpage"/>
-      </widget>
-      <addaction name="menu_File"/>
-      <addaction name="menu_Help"/>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout"/>
-    </item>
-    <item row="2" column="0">
-     <widget class="QTabWidget" name="tabWidget">
-      <property name="currentIndex">
-       <number>1</number>
-      </property>
-      <widget class="QWidget" name="tab">
-       <attribute name="title">
-        <string>Game</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <property name="sizeConstraint">
-           <enum>QLayout::SetDefaultConstraint</enum>
-          </property>
-	  <item>
-	  <widget class="QLabel" name="lb_gamecb">
-             <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Select game:</string>
-              </property>
-             </widget>
-            </item>
-          <item>
-           <widget class="QComboBox" name="cb_games"/>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btn_add_game">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>&amp;Add...</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btn_remove_game">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>Remo&amp;ve</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="2" column="0">
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <property name="sizeConstraint">
-             <enum>QLayout::SetDefaultConstraint</enum>
-            </property>
-            <item>
-             <widget class="QLabel" name="label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Selected game's WAD:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="line_main_wad"/>
-            </item>
-            <item>
-             <widget class="QPushButton" name="button_find_wad">
-              <property name="text">
-               <string>&amp;Select...</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_2">
-            <property name="text">
-             <string>Add-ons for selected game:</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeft</set>
-            </property>
-            <property name="indent">
-             <number>0</number>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_3">
-            <item>
-             <widget class="QListWidget" name="list_pwads"/>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_3">
-              <item>
-               <widget class="QPushButton" name="button_pwad_add">
-                <property name="text">
-                 <string>&amp;Add...</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="button_pwad_remove">
-                <property name="text">
-                 <string>R&amp;emove</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="button_pwad_clear">
-                <property name="text">
-                 <string>&amp;Clear</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_7">
-            <item>
-             <widget class="QLabel" name="label_8">
-              <property name="text">
-               <string>Additional commandline options (advanced): </string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="line_advanced_settings"/>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_elock">
-            <property name="sizeConstraint">
-             <enum>QLayout::SetDefaultConstraint</enum>
-            </property>
-            <item>
-             <widget class="QLabel" name="label_elock">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Override default engine: </string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="cb_elock"/>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </item>
-        <item row="4" column="0">
-         <widget class="QPushButton" name="pushButton">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>&amp;Run</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="tab_2">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <attribute name="title">
-        <string>Settings</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_5">
-        <item>
-         <layout class="QGridLayout" name="gridLayout_4">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_6">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>&lt;b&gt;Engine Settings:&lt;/b&gt;		</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <layout class="QHBoxLayout" name="horizontalLayout_4">
-            <property name="sizeConstraint">
-             <enum>QLayout::SetDefaultConstraint</enum>
-            </property>
-            <item>
-             <widget class="QLabel" name="label_3">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Select default engine:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="cb_engines">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="btn_add_engine">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>&amp;Add...</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="btn_remove_engine">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>&amp;Remove</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="4" column="0">
-           <layout class="QHBoxLayout" name="horizontalLayout_6">
-            <property name="sizeConstraint">
-             <enum>QLayout::SetDefaultConstraint</enum>
-            </property>
-            <item>
-             <widget class="QLabel" name="label_5">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Fullscreen settings:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="cb_windowed">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <item>
-               <property name="text">
-                <string>Use Engine Default</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Force Windowed</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Force Fullscreen</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="cb_no_sound">
-              <property name="text">
-               <string>Disable Sound</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="6" column="0">
-           <layout class="QHBoxLayout" name="hl_edsettings">
-            <property name="spacing">
-             <number>5</number>
-            </property>
-            <property name="sizeConstraint">
-             <enum>QLayout::SetDefaultConstraint</enum>
-            </property>
-            <item>
-             <widget class="QCheckBox" name="cb_show_output">
-              <property name="text">
-               <string>Enable &amp;Output tab for troubleshooting</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="cb_tabs_top">
-              <property name="text">
-               <string>&amp;Tabs on top</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="3" column="0">
-           <layout class="QHBoxLayout" name="horizontalLayout_5">
-            <property name="sizeConstraint">
-             <enum>QLayout::SetDefaultConstraint</enum>
-            </property>
-            <item>
-             <widget class="QLabel" name="label_4">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Path to selected engine:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="line_engine_path"/>
-            </item>
-            <item>
-             <widget class="QPushButton" name="btn_select_engine_path">
-              <property name="text">
-               <string>&amp;Select...</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="label_7">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>
-		&lt;b&gt;Enyo-Doom Settings:&lt;/b&gt;
-		</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_9">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="tab_3">
-       <attribute name="title">
-        <string>Output</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="0">
-         <widget class="QPlainTextEdit" name="text_output">
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-          <property name="PlainText" stdset="0">
-           <string>Engine output will be displayed here when game is ran.</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-    </item>
-   </layout>
-  </widget>
+	<class>e_mainwindow</class>
+		<widget class="QMainWindow" name="e_mainwindow">
+			<property name="geometry">
+				<rect>
+					<x>0</x>
+					<y>0</y>
+					<width>816</width>
+					<height>399</height>
+				</rect>
+			</property>
+			<property name="windowTitle">
+				<string>Enyo-Doom</string>
+			</property>
+			<widget class="QWidget" name="centralWidget">
+				<layout class="QGridLayout" name="gridLayout">
+					<item row="0" column="0">
+						<widget class="QMenuBar" name="menuBar">
+							<widget class="QMenu" name="menu_File">
+								<property name="title">
+									<string>&amp;File</string>
+								</property>
+							 	<addaction name="action_Run"/>
+	       							<addaction name="separator"/>
+       								<addaction name="actionE_xit"/>
+	      						</widget>
+			      				<widget class="QMenu" name="menu_Help">
+		       						<property name="title">
+        								<string>&amp;Help</string>
+       								</property>
+       								<addaction name="action_About"/>
+       								<addaction name="action_Webpage"/>
+      							</widget>
+      							<addaction name="menu_File"/>
+      							<addaction name="menu_Help"/>
+     						</widget>
+    					</item>
+					<item row="1" column="0">
+						<widget class="QTabWidget" name="tabWidget">
+							<property name="currentIndex">
+								<number>1</number>
+							</property>
+							<widget class="QWidget" name="tab">
+								<attribute name="title">
+									<string>Game</string>
+								</attribute>
+								<layout class="QGridLayout" name="gridLayout_2">
+        								<item row="0" column="0">
+	  									<widget class="QLabel" name="lb_gamecb">
+             										<property name="sizePolicy">
+               											<sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                											<horstretch>0</horstretch>
+                											<verstretch>0</verstretch>
+               											</sizepolicy>
+              										</property>
+              										<property name="text">
+               											<string>Select game profile:</string>
+              										</property>
+             									</widget>
+            								</item>
+          								<item row="0" column="1">
+           									<widget class="QComboBox" name="cb_games"/>
+          								</item>
+          								<item row="0" column="2">
+           									<widget class="QPushButton" name="btn_add_game">
+            										<property name="sizePolicy">
+             											<sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              												<horstretch>0</horstretch>
+              												<verstretch>0</verstretch>
+             											</sizepolicy>
+            										</property>
+            										<property name="text">
+             											<string>&amp;Add...</string>
+            										</property>
+           									</widget>
+          								</item>
+          								<item row="0" column="3">
+           									<widget class="QPushButton" name="btn_remove_game">
+            										<property name="sizePolicy">
+             											<sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              												<horstretch>0</horstretch>
+              												<verstretch>0</verstretch>
+             											</sizepolicy>
+            										</property>
+            										<property name="text">
+             											<string>Remo&amp;ve</string>
+           	 									</property>
+           									</widget>
+          								</item>
+        								<item row="1" column="0">
+           	 								<widget class="QLabel" name="label">
+              										<property name="sizePolicy">
+               											<sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                											<horstretch>0</horstretch>
+                											<verstretch>0</verstretch>
+               											</sizepolicy>
+              										</property>
+              										<property name="text">
+               											<string>Main data file (WAD):</string>
+              										</property>
+             									</widget>
+            								</item>
+            								<item row="1" column="1" colspan="2">
+             									<widget class="QLineEdit" name="line_main_wad">
+											<property name="toolTip">
+												<string>This is the path to the main data file for the selected game, such as DOOM.WAD for the original Doom game.</string>
+											</property>
+										</widget>
+            								</item>
+            								<item row="1" column="3">
+             									<widget class="QPushButton" name="button_find_wad">
+              										<property name="text">
+               											<string>&amp;Select...</string>
+              										</property>
+             									</widget>
+            								</item>
+          								<item row="2" column="0" colspan="2">
+           									<widget class="QLabel" name="label_2">
+            										<property name="text">
+             											<string>Add-ons for selected game:</string>
+            										</property>
+            										<property name="alignment">
+             											<set>Qt::AlignLeft</set>
+            										</property>
+            										<property name="indent">
+             											<number>0</number>
+            										</property>
+           									</widget>
+          								</item>
+									<item row="3" column="0" colspan="4">
+           									<layout class="QHBoxLayout" name="horizontalLayout_3">
+            										<item>
+             											<widget class="QListWidget" name="list_pwads">
+													<property name="toolTip">
+														<string>Add-ons are extra files that are used to add custom elements to a game.</string>
+													</property>
+												</widget>
+            										</item>
+            										<item>
+             											<layout class="QVBoxLayout" name="verticalLayout_3">
+              												<item>
+               													<widget class="QPushButton" name="button_pwad_add">
+                													<property name="text">
+                 														<string>&amp;Add...</string>
+                													</property>
+               													</widget>
+              												</item>
+              												<item>
+               													<widget class="QPushButton" name="button_pwad_remove">
+                													<property name="text">
+                 														<string>R&amp;emove</string>
+                													</property>
+               													</widget>
+              												</item>
+              												<item>
+               													<widget class="QPushButton" name="button_pwad_clear">
+                													<property name="text">
+                 														<string>&amp;Clear</string>
+                													</property>
+               													</widget>
+              												</item>
+             											</layout>
+            										</item>
+										</layout>
+									</item>
+          								<item row="4" column="0">
+             									<widget class="QLabel" name="label_8">
+              										<property name="text">
+               											<string>Commandline options: </string>
+              										</property>
+             									</widget>
+            								</item>
+            								<item row="4" column="1" colspan="3">
+             									<widget class="QLineEdit" name="line_advanced_settings">
+											<property name="toolTip">
+												<string>Extra commandline options.  Unless you want a feature not supported in Enyo-Doom, you don't need to use this.</string>
+											</property>
+										</widget>
+            								</item>
+         	 							<item row="5" column="0">
+             									<widget class="QLabel" name="label_elock">
+              										<property name="sizePolicy">
+               											<sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                											<horstretch>0</horstretch>
+                											<verstretch>0</verstretch>
+               											</sizepolicy>
+              										</property>
+              										<property name="text">
+               											<string>Override default engine: </string>
+              										</property>
+             									</widget>
+            								</item>
+           	 							<item row="5" column="1" colspan="3">
+             									<widget class="QComboBox" name="cb_elock">
+											<property name="toolTip">
+												<string>Leave as (none) to use the engine you selected in Settings; if you need to use a specific engine for this profile, set it here.</string>
+											</property>
+										</widget>
+            								</item>
+        								<item row="6" column="0">
+         									<widget class="QPushButton" name="pushButton">
+          										<property name="sizePolicy">
+           											<sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            												<horstretch>0</horstretch>
+            												<verstretch>0</verstretch>
+           											</sizepolicy>
+          										</property>
+          										<property name="text">
+           											<string>&amp;Run</string>
+          										</property>
+         									</widget>
+        								</item>
+								</layout>
+							</widget>
+							<widget class="QWidget" name="tab_2">
+       								<property name="sizePolicy">
+        								<sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         									<horstretch>0</horstretch>
+         									<verstretch>0</verstretch>
+        								</sizepolicy>
+       								</property>
+       								<attribute name="title">
+        								<string>Settings</string>
+       								</attribute>
+								<layout class="QVBoxLayout" name="lolol">
+								<item>
+         							<layout class="QGridLayout" name="gridLayout_4">
+									<property name="sizeConstraint">
+										<enum>QLayout::SetDefaultConstraint</enum>
+									</property>
+          								<item row="0" column="0" colspan="3">
+           									<widget class="QLabel" name="label_6">
+            										<property name="sizePolicy">
+             											<sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              												<horstretch>0</horstretch>
+              												<verstretch>0</verstretch>
+             											</sizepolicy>
+            										</property>
+            										<property name="text">
+             											<string>&lt;b&gt;Engine Settings:&lt;/b&gt;		</string>
+            										</property>
+            										<property name="alignment">
+             											<set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            										</property>
+           									</widget>
+          								</item>
+          								<item row="1" column="0">
+             									<widget class="QLabel" name="label_3">
+              										<property name="sizePolicy">
+               											<sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                											<horstretch>0</horstretch>
+													<verstretch>0</verstretch>
+			       									</sizepolicy>
+			      								</property>
+			      								<property name="text">
+			       									<string>Select default engine:</string>
+			      								</property>
+			     							</widget>
+			    						</item>
+			    						<item row="1" column="1">
+			    	 						<widget class="QComboBox" name="cb_engines">
+			      								<property name="sizePolicy">
+		       										<sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+													<horstretch>0</horstretch>
+													<verstretch>0</verstretch>
+		       										</sizepolicy>
+		      									</property>
+		     								</widget>
+            								</item>
+            								<item row="1" column="2">
+             									<widget class="QPushButton" name="btn_add_engine">
+              										<property name="sizePolicy">
+               											<sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                											<horstretch>0</horstretch>
+                											<verstretch>0</verstretch>
+               											</sizepolicy>
+              										</property>
+              										<property name="text">
+               											<string>&amp;Add...</string>
+              										</property>
+             									</widget>
+            								</item>
+            								<item row="1" column="3">
+             									<widget class="QPushButton" name="btn_remove_engine">
+              										<property name="sizePolicy">
+               											<sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                											<horstretch>0</horstretch>
+                											<verstretch>0</verstretch>
+               											</sizepolicy>
+              										</property>
+              										<property name="text">
+               											<string>&amp;Remove</string>
+              										</property>
+             									</widget>
+            								</item>
+          								<item row="2" column="0">
+             									<widget class="QLabel" name="label_4">
+              										<property name="sizePolicy">
+               											<sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                											<horstretch>0</horstretch>
+                											<verstretch>0</verstretch>
+               											</sizepolicy>
+              										</property>
+              										<property name="text">
+               											<string>Path to selected engine:</string>
+              										</property>
+             									</widget>
+            								</item>
+            								<item row="2" column="1" colspan="2">
+             									<widget class="QLineEdit" name="line_engine_path"/>
+            								</item>
+            								<item row="2" column="3">
+             									<widget class="QPushButton" name="btn_select_engine_path">
+              										<property name="text">
+               											<string>&amp;Select...</string>
+              										</property>
+             									</widget>
+            								</item>
+          								<item row="3" column="0">
+            	 								<widget class="QLabel" name="label_5">
+              										<property name="sizePolicy">
+               											<sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                											<horstretch>0</horstretch>
+                											<verstretch>0</verstretch>
+               											</sizepolicy>
+              										</property>
+              										<property name="text">
+               											<string>Fullscreen settings:</string>
+              										</property>
+             									</widget>
+            								</item>
+            								<item row="3" column="1">
+             									<widget class="QComboBox" name="cb_windowed">
+              										<property name="sizePolicy">
+               											<sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                											<horstretch>0</horstretch>
+                											<verstretch>0</verstretch>
+               											</sizepolicy>
+              										</property>
+              										<item>
+               											<property name="text">
+                											<string>Use Engine Default</string>
+               											</property>
+              										</item>
+              										<item>
+               											<property name="text">
+                											<string>Force Windowed</string>
+               											</property>
+              										</item>
+              										<item>
+               											<property name="text">
+                											<string>Force Fullscreen</string>
+               											</property>
+              										</item>
+             									</widget>
+            								</item>
+            								<item row="4" column="0" colspan="2">
+             									<widget class="QCheckBox" name="cb_no_sound">
+              										<property name="text">
+               											<string>Disable Sound</string>
+              										</property>
+             									</widget>
+            								</item>
+          								<item row="5" column="0">
+          									<widget class="QLabel" name="label_7">
+            										<property name="sizePolicy">
+             											<sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              												<horstretch>0</horstretch>
+              												<verstretch>0</verstretch>
+             											</sizepolicy>
+            										</property>
+            										<property name="text">
+             											<string>
+													&lt;b&gt;Enyo-Doom Settings:&lt;/b&gt;
+												</string>
+            										</property>
+           									</widget>
+          								</item>
+          								<item row="6" column="0" colspan="2">
+            	 								<widget class="QCheckBox" name="cb_show_output">
+              										<property name="text">
+               											<string>Enable &amp;Output tab for troubleshooting</string>
+              										</property>
+             									</widget>
+            								</item>
+            								<item row="7" column="0">
+             									<widget class="QCheckBox" name="cb_tabs_top">
+              										<property name="text">
+               											<string>&amp;Tabs on top</string>
+              										</property>
+             									</widget>
+            								</item>
+								</layout></item><item><widget class="QLabel" name="nothing"></widget></item></layout>
+							</widget>
+      							<widget class="QWidget" name="tab_3">
+       								<attribute name="title">
+        								<string>Output</string>
+       								</attribute>
+       								<layout class="QGridLayout" name="gridLayout_3">
+        								<item row="0" column="0">
+         									<widget class="QPlainTextEdit" name="text_output">
+          										<property name="readOnly">
+           											<bool>true</bool>
+          										</property>
+          										<property name="PlainText" stdset="0">
+           											<string>Engine output will be displayed here when game is ran.</string>
+          										</property>
+         									</widget>
+									</item>
+								</layout>
+							</widget>
+						</widget>
+					</item>
+				</layout>
+			</widget>
   <action name="action_Run">
    <property name="text">
     <string>&amp;Run</string>
@@ -507,3 +448,7 @@
  <resources/>
  <connections/>
 </ui>
+
+
+
+
