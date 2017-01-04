@@ -1,5 +1,19 @@
 enyo-doom changelog
 
+1.04 ("Next stop, Hell on Earth!")
+
+FIXED:
+A fix to the change in 1.01 to fullscreen/windowed/engine default combobox was not
+completely implemented correctly, setting the wrong mode especially when
+removing existing game engines, plus code cleanup of legacy stubs/commented
+code regarding the old fullscreen/windowed checkbox as well as the removed
+MAXZONE setting.
+
+Fixed a typo in the Windows implementation (inside #ifdefs so the error didn't
+show up in non-Windows compiles); however, I have no idea if it even
+still compiles correctly or even works since I no longer use Windows at all.  Would
+appreciate testing.
+
 1.03 ("The horrific challenges ahead may be too much for a jellyfish like yourself.")
 
 CHANGED:

@@ -51,10 +51,8 @@ struct game_engines
 {
     QString engine_name;
     QString engine_binary_path;
-    bool in_window; // Depreciated, for backwards compatibility
     int fullscreen_mode;
     bool no_sound;
-    int maxzone;
 };
 
 game_engines enyo_engines [MAX_ENGINES];
@@ -161,17 +159,14 @@ void e_mainwindow::load_settings ()
     {
         enyo_engines[0].engine_name = "Chocolate Doom";
         enyo_engines[0].engine_binary_path = "chocolate-doom";
-        enyo_engines[0].in_window = false;
 	enyo_engines[0].fullscreen_mode = 0;
         enyo_engines[0].no_sound = false;
         enyo_engines[1].engine_name = "prBoom";
         enyo_engines[1].engine_binary_path = "prboom";
-        enyo_engines[1].in_window = false;
 	enyo_engines[1].fullscreen_mode = 0;
         enyo_engines[1].no_sound = false;
         enyo_engines[2].engine_name = "ZDoom";
         enyo_engines[2].engine_binary_path = "zdoom";
-        enyo_engines[2].in_window = false;
 	enyo_engines[2].fullscreen_mode = 0;
         enyo_engines[2].no_sound = false;
         engine_pointer = 3;
@@ -183,8 +178,7 @@ void e_mainwindow::load_settings ()
             enyo_settings.setArrayIndex(j);
             enyo_engines[engine_pointer].engine_name = enyo_settings.value ("name").toString();
             enyo_engines[engine_pointer].engine_binary_path = enyo_settings.value ("binarypath", "").toString();
-            enyo_engines[engine_pointer].in_window = enyo_settings.value ("inwindow", "false").toBool();
-	    enyo_engines[engine_pointer].fullscreen_mode = enyo_settings.value ("fullscreen", (enyo_engines[engine_pointer].in_window)?"1":"2").toInt();
+	    enyo_engines[engine_pointer].fullscreen_mode = enyo_settings.value ("fullscreen", "0").toInt();
             enyo_engines[engine_pointer].no_sound = enyo_settings.value ("nosound", "false").toBool();
             engine_pointer++;
         }
@@ -194,7 +188,7 @@ void e_mainwindow::load_settings ()
     tabs_top = enyo_settings.value ("tabsontop", "false").toBool();
     last_game_selected = enyo_settings.value("lastgame", "0").toInt();
     last_engine_selected = enyo_settings.value("lastengine", "0").toInt();
-    last_path = enyo_settings.value("lastpath", "/").toString();
+    last_path = enyo_settings.value("lastpath", (getenv ("HOME") == NULL)?"/":getenv("HOME")).toString();
     restoreGeometry(enyo_settings.value("geometry").toByteArray());
     restoreState(enyo_settings.value("windowState").toByteArray());
 
@@ -220,7 +214,6 @@ void e_mainwindow::save_settings ()
         enyo_settings.setArrayIndex(i);
         enyo_settings.setValue("name", enyo_engines[i].engine_name);
         enyo_settings.setValue("binarypath", enyo_engines[i].engine_binary_path);
-        enyo_settings.setValue("inwindow", enyo_engines[i].in_window);
 	enyo_settings.setValue("fullscreen", enyo_engines[i].fullscreen_mode);
         enyo_settings.setValue("nosound", enyo_engines[i].no_sound);
     }
@@ -279,7 +272,6 @@ e_mainwindow::e_mainwindow(QWidget *parent) :
     ui->cb_elock->setCurrentIndex(enyo_games[last_game_selected].engine_id);
 
     ui->line_engine_path->setText (enyo_engines[last_engine_selected].engine_binary_path);
-//    ui->cb_in_window->setChecked(enyo_engines[last_engine_selected].in_window);
     ui->cb_windowed->setCurrentIndex (enyo_engines[last_engine_selected].fullscreen_mode);	
     ui->cb_no_sound->setChecked(enyo_engines[last_engine_selected].no_sound);
 
@@ -369,16 +361,6 @@ void e_mainwindow::on_pushButton_clicked()
         for (int i=0; i<enyo_games[last_game_selected].game_pwad.count(); i++)
             eng_arguments << enyo_games[last_game_selected].game_pwad.at(i);
     }
-/*
-    if (enyo_engines[engine_index].in_window)
-    {
-        eng_arguments << "-window";
-    }
-    else
-    {
-        eng_arguments << "-fullscreen";
-    }
-*/
     switch (enyo_engines[engine_index].fullscreen_mode){
     	case 1:
 		eng_arguments << "-window";
@@ -464,7 +446,7 @@ void e_mainwindow::on_button_pwad_add_clicked()
 {
     QFileDialog wad_selector(this);
 #ifdef WIN32
-    char tmp [FILENAME_MAX};
+    char tmp [FILENAME_MAX];
 #endif    
     wad_selector.setFileMode(QFileDialog::ExistingFile);
     wad_selector.setDirectory(last_path);
@@ -531,7 +513,6 @@ void e_mainwindow::on_cb_engines_currentIndexChanged(int index)
 
     last_engine_selected = index;
     ui->line_engine_path->setText (enyo_engines[last_engine_selected].engine_binary_path);
-//    ui->cb_in_window->setChecked(enyo_engines[last_engine_selected].in_window);
    ui->cb_windowed->setCurrentIndex (enyo_engines[last_engine_selected].fullscreen_mode);
     ui->cb_no_sound->setChecked(enyo_engines[last_engine_selected].no_sound);
 
@@ -557,18 +538,11 @@ void e_mainwindow::on_btn_select_engine_path_clicked()
 
     }
 }
-/*
-void e_mainwindow::on_cb_in_window_toggled(bool checked)
-{
-    if (stop_index_change_fire)
-        return;
 
-    enyo_engines[last_engine_selected].in_window = checked;
-}
-*/
 void e_mainwindow::on_cb_windowed_currentIndexChanged (int index)
 {
-	if (stop_index_change_fire) return;
+	if (stop_index_change_fire) 
+		return;
 
 	enyo_engines[last_engine_selected].fullscreen_mode = index;
 }
@@ -731,9 +705,8 @@ void e_mainwindow::on_btn_add_engine_clicked()
 
         enyo_engines[engine_pointer].engine_name = new_engine;
 	enyo_engines[engine_pointer].engine_binary_path = "";
-	enyo_engines[engine_pointer].in_window = false;
+	enyo_engines[engine_pointer].fullscreen_mode = 0;
 	enyo_engines[engine_pointer].no_sound = false;
-	enyo_engines[engine_pointer].maxzone = DEFAULT_MAXZONE;
 
         last_engine_selected = engine_pointer;
         ui->cb_engines->addItem (new_engine);
@@ -768,9 +741,8 @@ void e_mainwindow::on_btn_remove_engine_clicked()
 	{
 		enyo_engines[i].engine_name = enyo_engines[i+1].engine_name;
 		enyo_engines[i].engine_binary_path = enyo_engines[i+1].engine_binary_path;
-		enyo_engines[i].in_window = enyo_engines[i+1].in_window;
+		enyo_engines[i].fullscreen_mode = enyo_engines[i+1].fullscreen_mode;
 		enyo_engines[i].no_sound = enyo_engines[i+1].no_sound;
-		enyo_engines[i].maxzone = enyo_engines[i+1].maxzone;
 	}
 	engine_pointer--;
 
@@ -811,25 +783,8 @@ void e_mainwindow::on_cb_elock_currentIndexChanged(int index)
 
 void e_mainwindow::on_action_About_triggered()
 {
-/*	
-        QMessageBox mb;
-	QString qs_version = "<b>Enyo-Doom version ";
-	qs_version.append (ENYO_VERSION);
-	qs_version.append (" (\"");
-	qs_version.append (ENYO_TAGLINE);
-	qs_version.append ("\")</b>");
-        mb.setText (qs_version);
-	mb.setInformativeText (ENYO_COPYRIGHT);
-	mb.setDetailedText (GPL_TEXT);
-	mb.setIcon (QMessageBox::Information);
-	mb.setStandardButtons (QMessageBox::Ok);
-        mb.exec();*/
-
 	about_window abt ;
 	abt.exec();
-/*	abt.show();
-	abt.raise();
-	abt.activateWindow();*/
 }
 
 void e_mainwindow::on_action_Run_triggered()

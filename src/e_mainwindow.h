@@ -22,9 +22,9 @@
 #define MAX_GAMES 255
 #define MAX_ENGINES 50
 
-#define ENYO_VERSION "1.03"
-#define ENYO_TAGLINE "The horrific challenges ahead may be too much for a jellyfish like yourself."
-#define ENYO_COPYRIGHT "Copyright (C) 2009-2015 Stephen D. Cofer.  Released under the GPL version 2."
+#define ENYO_VERSION "1.04"
+#define ENYO_TAGLINE "Next stop, Hell on Earth!"
+#define ENYO_COPYRIGHT "Copyright (C) 2009-2017 Stephen D. Cofer.  Released under the GPL version 2."
 #define ENYO_HOMEPAGE "https://gitlab.com/sdcofer70/enyo-doom"
 
 #define DEFAULT_WIDTH 800
