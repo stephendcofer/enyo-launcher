@@ -1,5 +1,12 @@
 enyo-doom changelog
 
+1.05 ("You're trying to say you like DOS better than me, right?")
+ADDED:
+Option to automatically exit enyo-doom after running a game.
+
+CHANGED:
+Version number is now displayed in application title.
+
 1.04 ("Next stop, Hell on Earth!")
 
 FIXED:

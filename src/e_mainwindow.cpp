@@ -66,6 +66,7 @@ int last_engine_selected = 0;
 
 bool show_output = true;
 bool tabs_top = false;
+bool exit_after_run = false;
 
 QString last_path;
 
@@ -186,6 +187,7 @@ void e_mainwindow::load_settings ()
     enyo_settings.endArray();
     show_output = enyo_settings.value ("showoutput", "true").toBool();
     tabs_top = enyo_settings.value ("tabsontop", "false").toBool();
+    exit_after_run = enyo_settings.value ("exitafterrun", "false").toBool();
     last_game_selected = enyo_settings.value("lastgame", "0").toInt();
     last_engine_selected = enyo_settings.value("lastengine", "0").toInt();
     last_path = enyo_settings.value("lastpath", (getenv ("HOME") == NULL)?"/":getenv("HOME")).toString();
@@ -220,6 +222,7 @@ void e_mainwindow::save_settings ()
     enyo_settings.endArray();
     enyo_settings.setValue("showoutput", show_output);
     enyo_settings.setValue("tabsontop", tabs_top);
+    enyo_settings.setValue("exitafterrun", exit_after_run);
     enyo_settings.setValue("lastgame", last_game_selected);
     enyo_settings.setValue("lastengine", last_engine_selected);
     enyo_settings.setValue ("lastpath", last_path);
@@ -235,10 +238,14 @@ e_mainwindow::e_mainwindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::e_mainwindow)
 {
+    QString u_title;
     ui->setupUi(this);
 //    ui->lab_banner->setPixmap( QPixmap (":/share/enyo.png"));
 //    ui->lab_banner->setScaledContents(true);
     setWindowIcon(QPixmap(":/share/enyo_icon.png"));
+    u_title = "enyo-doom ";
+    u_title.append (ENYO_VERSION);
+    setWindowTitle(u_title);
 
     this->load_settings();
 
@@ -285,6 +292,7 @@ e_mainwindow::e_mainwindow(QWidget *parent) :
     else
 	ui->tabWidget->setTabPosition (QTabWidget::West);
     ui->tabWidget->setCurrentIndex (0);
+    ui->cb_exit->setChecked(exit_after_run);
     stop_index_change_fire = false;
 
 }
@@ -406,6 +414,14 @@ void e_mainwindow::on_pushButton_clicked()
 	ui->text_output->appendPlainText("# Output:");
     	ui->text_output->appendPlainText(result);
     }
+
+    if (exit_after_run)
+    {
+	    this->save_settings();
+	    delete ui;
+	    exit (0);
+    }
+
 }
 
 void e_mainwindow::closeEvent(QCloseEvent *event)
@@ -802,4 +818,11 @@ void e_mainwindow::on_actionE_xit_triggered()
 void e_mainwindow::on_action_Webpage_triggered()
 {
 	QDesktopServices::openUrl (QUrl(ENYO_HOMEPAGE));
+}
+
+void e_mainwindow::on_cb_exit_toggled(bool checked)
+{
+	if (stop_index_change_fire) return;
+
+	exit_after_run = checked;
 }

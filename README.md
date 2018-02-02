@@ -30,7 +30,7 @@ It is recommended that you create an empty build directory under the source dire
 
 Any errors at this point are likely caused by missing Qt libraries and/or headers.
 
-A note about Qt5/Qt4: enyo-doom now uses Qt5 exclusively since pretty much all distributions now have it as an option.  You will need to have the qt5 development headers installed.  On Ubuntu and possibly other Debian-based distros, you may need to install the package qt5-default from the repositories to select and use the qt5 build environment vs. qt4.  For other distributions, check the documentation regarding building programs using qt5 vs qt4.
+A note about Qt5/Qt4: enyo-doom now uses Qt5 exclusively since nearly all distributions have it as the default Qt version.  You will need to have the qt5 development headers installed.  On Ubuntu and possibly other Debian-based distros, you may need to install the package qt5-default from the repositories to select and use the qt5 build environment vs. qt4.  For other distributions, check the documentation regarding building programs using qt5 vs qt4.
 
 By default, enyo-doom will be installed in /usr/local/bin and its data files in /usr/localshare/enyo-doom. To change this, pass the option -DCMAKE_INSTALL_PREFIX=/usr (or whichever path you prefer) to your cmake command.
 
@@ -55,7 +55,7 @@ You may add new game types using the Add new... button next to the game type dro
 
 Extra patch WADs (pwads) or any other compatible file type (for example, pk3 files for ZDoom and others) that add levels, sounds, music, etc., can be enabled by enyo-doom by using the Add... button beside the Addons box in the Launcher tab and removed by highlighting (clicking) the added file and clicking Remove. To return to having no extra WADs load, click Clear. Each WAD set is specific to the game type you choose. Note that Doom 1's patch WADs will not work with Doom Shareware (doom1.wad).
 
-The "AdditionaL commandline options" input is an advanced option for each game type that allows you to specify custom commandline options to the game. This may use standard Doom options that Enyo does not provide, or engine-specific options. If you do not know what this does, it is best to leave it blank.
+The "Additional commandline options" input is an advanced option for each game type that allows you to specify custom commandline options to the game. This may use standard Doom options that enyo-doom does not provide, or engine-specific options. If you do not know what this does, it is best to leave it blank.
 
 By default, enyo-doom gives you three engines to choose from on the General tab: Chocolate Doom, prBoom, and ZDoom. The executable is the default name for each engine's executable, and is assumed to be in your system's PATH. If the name is different, or is not in a default PATH, you may change it using the Browse button beside the Path to Engine setting. Other engines may be added using the Add engine button, and removed using the Remove Engine button.
 

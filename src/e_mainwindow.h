@@ -22,9 +22,9 @@
 #define MAX_GAMES 255
 #define MAX_ENGINES 50
 
-#define ENYO_VERSION "1.04"
-#define ENYO_TAGLINE "Next stop, Hell on Earth!"
-#define ENYO_COPYRIGHT "Copyright (C) 2009-2017 Stephen D. Cofer.  Released under the GPL version 2."
+#define ENYO_VERSION "1.05"
+#define ENYO_TAGLINE "You're trying to say you like DOS better than me, right?"
+#define ENYO_COPYRIGHT "Copyright (C) 2009-2018 Stephen D. Cofer.  Released under the GPL version 2."
 #define ENYO_HOMEPAGE "https://gitlab.com/sdcofer70/enyo-doom"
 
 #define DEFAULT_WIDTH 800
@@ -237,6 +237,8 @@ private slots:
     void on_actionE_xit_triggered();
 
     void on_action_Webpage_triggered();
+
+    void on_cb_exit_toggled(bool checked);
 
 private:
     Ui::e_mainwindow *ui;

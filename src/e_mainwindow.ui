@@ -390,7 +390,14 @@
                											<string>&amp;Tabs on top</string>
               										</property>
              									</widget>
-            								</item>
+									</item>
+									<item row="8" column="0" colspan="2">
+										<widget class="QCheckBox" name="cb_exit">
+											<property name="text">
+												<string>E&amp;xit enyo-doom after game runs</string>
+											</property>
+										</widget>
+									</item>
 								</layout></item><item><widget class="QLabel" name="nothing"></widget></item></layout>
 							</widget>
       							<widget class="QWidget" name="tab_3">
