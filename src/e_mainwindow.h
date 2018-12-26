@@ -17,20 +17,19 @@
 #define E_MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QStringList>
 
 #define MAX_PWADS 50
 #define MAX_GAMES 255
 #define MAX_ENGINES 50
 
-#define ENYO_VERSION "1.05"
-#define ENYO_TAGLINE "You're trying to say you like DOS better than me, right?"
+#define ENYO_VERSION "1.06"
+#define ENYO_TAGLINE "You are an experiment as well, so who cares?"
 #define ENYO_COPYRIGHT "Copyright (C) 2009-2018 Stephen D. Cofer.  Released under the GPL version 2."
 #define ENYO_HOMEPAGE "https://gitlab.com/sdcofer70/enyo-doom"
 
 #define DEFAULT_WIDTH 800
 #define DEFAULT_HEIGHT 400
-
-#define DEFAULT_MAXZONE 256
 
 #define GPL_TEXT "GNU GENERAL PUBLIC LICENSE\n\
 \n\
@@ -242,6 +241,10 @@ private slots:
 
 private:
     Ui::e_mainwindow *ui;
+
+    QStringList default_games= {"Doom", "Doom II: Hell on Earth", "Final Doom: TNT Evilution", "Final Doom: The Plutonia Experiment"};
+    QStringList engine_names = {"Chocolate Doom", "prBoom", "GZDoom"};
+    QStringList engine_paths = {"chocolate-doom", "prboom", "gzdoom"}; 
 };
 
 #endif // E_MAINWINDOW_H

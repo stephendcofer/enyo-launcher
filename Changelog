@@ -1,5 +1,17 @@
 enyo-doom changelog
 
+1.06 ("You are an experiment as well, so who cares?")
+
+Minor tweaks:
+
+Changed some code to be a bit more organized.
+
+Changed a default engine from ZDoom to GZDoom since ZDoom is now
+"discontinued" according to their web page.  You can still add it if you want
+to use it.  This won't affect already saved engines.
+
+Fixed a few outdated/changed things in README.md.
+
 1.05 ("You're trying to say you like DOS better than me, right?")
 ADDED:
 Option to automatically exit enyo-doom after running a game.

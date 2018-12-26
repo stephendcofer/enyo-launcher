@@ -27,6 +27,9 @@
 #include <QDialog>
 #include <QDesktopServices>
 #include <QUrl>
+#include <QStringList>
+#include <QDir>
+
 #ifndef WIN32
 #include <libgen.h>
 #else
@@ -130,10 +133,11 @@ void e_mainwindow::load_settings ()
 
     if (g_size == 0)
     {
-        enyo_games[0].game_name = "Doom";
+        /*enyo_games[0].game_name = "Doom";
         enyo_games[1].game_name = "Doom II: Hell on Earth";
         enyo_games[2].game_name = "Final Doom: TNT Evilution";
-        enyo_games[3].game_name = "Final Doom: The Plutonia Experiment";
+        enyo_games[3].game_name = "Final Doom: The Plutonia Experiment"; */
+	for (int i=0; i<4; i++) enyo_games[i].game_name = default_games.at(i);
         game_pointer = 4;
     }
     else
@@ -158,7 +162,7 @@ void e_mainwindow::load_settings ()
 
     if (e_size == 0)
     {
-        enyo_engines[0].engine_name = "Chocolate Doom";
+        /*enyo_engines[0].engine_name = "Chocolate Doom";
         enyo_engines[0].engine_binary_path = "chocolate-doom";
 	enyo_engines[0].fullscreen_mode = 0;
         enyo_engines[0].no_sound = false;
@@ -169,7 +173,14 @@ void e_mainwindow::load_settings ()
         enyo_engines[2].engine_name = "ZDoom";
         enyo_engines[2].engine_binary_path = "zdoom";
 	enyo_engines[2].fullscreen_mode = 0;
-        enyo_engines[2].no_sound = false;
+        enyo_engines[2].no_sound = false;*/
+	for (int i=0; i<3; i++)
+	{
+		enyo_engines[i].engine_name = engine_names.at(i);
+		enyo_engines[i].engine_binary_path = engine_paths.at(i);
+		enyo_engines[i].fullscreen_mode = 0;
+		enyo_engines[i].no_sound = false;
+	}
         engine_pointer = 3;
     }
     else
@@ -190,7 +201,7 @@ void e_mainwindow::load_settings ()
     exit_after_run = enyo_settings.value ("exitafterrun", "false").toBool();
     last_game_selected = enyo_settings.value("lastgame", "0").toInt();
     last_engine_selected = enyo_settings.value("lastengine", "0").toInt();
-    last_path = enyo_settings.value("lastpath", (getenv ("HOME") == NULL)?"/":getenv("HOME")).toString();
+    last_path = enyo_settings.value("lastpath", QDir::homePath()).toString();
     restoreGeometry(enyo_settings.value("geometry").toByteArray());
     restoreState(enyo_settings.value("windowState").toByteArray());
 
