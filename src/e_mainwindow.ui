@@ -60,7 +60,7 @@
              									</widget>
             								</item>
           								<item row="0" column="1">
-           									<widget class="QComboBox" name="cb_games"/>
+										<widget class="QComboBox" name="cb_games"/>
           								</item>
           								<item row="0" column="2">
            									<widget class="QPushButton" name="btn_add_game">
@@ -69,10 +69,14 @@
               												<horstretch>0</horstretch>
               												<verstretch>0</verstretch>
              											</sizepolicy>
-            										</property>
-            										<property name="text">
-             											<string>&amp;Add...</string>
-            										</property>
+											</property>
+											<property name="icon">
+												<iconset theme="list-add"/>
+											</property>
+											<property name="toolTip">
+												<string>Add</string>
+											</property>
+
            									</widget>
           								</item>
           								<item row="0" column="3">
@@ -82,12 +86,64 @@
               												<horstretch>0</horstretch>
               												<verstretch>0</verstretch>
              											</sizepolicy>
-            										</property>
-            										<property name="text">
-             											<string>Remo&amp;ve</string>
-           	 									</property>
+											</property>
+											<property name="icon">
+												<iconset theme="list-remove"/>
+											</property>
+											<property name="toolTip">
+												<string>Remove</string>
+											</property>
            									</widget>
-          								</item>
+									</item>
+									<item row="0" column="4">
+										<widget class="QPushButton" name="btn_move_game_up">
+											<property name="sizePolicy">
+												<sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+													<horstretch>0</horstretch>
+													<verstretch>0</verstretch>
+												</sizepolicy>
+											</property>
+											<property name="icon">
+												<iconset theme="go-up"/>
+											</property>
+											<property name="toolTip">
+												<string>Move up in list</string>
+											</property>
+										</widget>
+									</item>
+									<item row="0" column="5">
+										<widget class="QPushButton" name="btn_move_game_down">
+											<property name="sizePolicy">
+												<sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+													<horstretch>0</horstretch>
+													<verstretch>0</verstretch>
+												</sizepolicy>
+											</property>
+											<property name="icon">
+												<iconset theme="go-down"/>
+											</property>
+											<property name="toolTip">
+												<string>Move down in list</string>
+											</property>
+										</widget>
+									</item>
+									<item row="0" column="6">
+										<widget class="QPushButton" name="btn_edit_label">
+											<property name="sizePolicy">
+												<sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+													<horstretch>0</horstretch>
+													<verstretch>0</verstretch>
+												</sizepolicy>
+											</property>
+											<property name="icon">
+												<iconset theme="insert-text"/>
+											</property>
+											<property name="toolTip">
+												<string>Edit name</string>
+											</property>
+										</widget>
+									</item>
+
         								<item row="1" column="0">
            	 								<widget class="QLabel" name="label_wad">
               										<property name="sizePolicy">
@@ -101,21 +157,24 @@
               										</property>
              									</widget>
             								</item>
-            								<item row="1" column="1" colspan="2">
+            								<item row="1" column="1" colspan="5">
              									<widget class="QLineEdit" name="line_main_wad">
 											<property name="toolTip">
 												<string>This is the path to the main data file for the selected game, such as DOOM.WAD for the original Doom game.</string>
 											</property>
 										</widget>
             								</item>
-            								<item row="1" column="3">
-             									<widget class="QPushButton" name="button_find_wad">
-              										<property name="text">
-               											<string>&amp;Select...</string>
-              										</property>
+            								<item row="1" column="6">
+										<widget class="QPushButton" name="button_find_wad">
+											<property name="icon">
+												<iconset theme="document-open"/>
+											</property>
+											<property name="toolTip">
+												<string>Open...</string>
+											</property>
              									</widget>
             								</item>
-          								<item row="2" column="0" colspan="2">
+          								<item row="2" column="0" colspan="6">
            									<widget class="QLabel" name="label_2">
             										<property name="text">
              											<string>Add-ons for selected game:</string>
@@ -128,7 +187,7 @@
             										</property>
            									</widget>
           								</item>
-									<item row="3" column="0" colspan="4">
+									<item row="3" column="0" colspan="7">
            									<layout class="QHBoxLayout" name="horizontalLayout_3">
             										<item>
              											<widget class="QListWidget" name="list_pwads">
@@ -140,26 +199,42 @@
             										<item>
              											<layout class="QVBoxLayout" name="verticalLayout_3">
               												<item>
-               													<widget class="QPushButton" name="button_pwad_add">
-                													<property name="text">
-                 														<string>&amp;Add...</string>
-                													</property>
+														<widget class="QPushButton" name="button_pwad_add">
+															<property name="icon">
+																<iconset theme="list-add"/>
+															</property>
+															<property name="toolTip">
+																<string>Add</string>
+															</property>
                													</widget>
               												</item>
               												<item>
-               													<widget class="QPushButton" name="button_pwad_remove">
-                													<property name="text">
-                 														<string>R&amp;emove</string>
-                													</property>
+														<widget class="QPushButton" name="button_pwad_remove">
+															<property name="icon">
+																<iconset theme="list-remove"/>
+															</property>
+															<property name="toolTip">
+																<string>Remove</string>
+															</property>
                													</widget>
               												</item>
               												<item>
-               													<widget class="QPushButton" name="button_pwad_clear">
-                													<property name="text">
-                 														<string>&amp;Clear</string>
-                													</property>
+														<widget class="QPushButton" name="button_pwad_clear">
+															<property name="icon">
+																<iconset theme="edit-clear"/>
+															</property>
+															<property name="toolTip">
+																<string>Clear</string>
+															</property>
                													</widget>
-              												</item>
+													</item>
+													<item>
+														<spacer name="vSpacer">
+															<property name="orientation">
+																<enum>Qt::Vertical</enum>
+															</property>
+														</spacer>
+													</item>
              											</layout>
             										</item>
 										</layout>
@@ -171,15 +246,15 @@
               										</property>
              									</widget>
             								</item>
-            								<item row="4" column="1" colspan="3">
+            								<item row="4" column="1" colspan="6">
              									<widget class="QLineEdit" name="line_advanced_settings">
 											<property name="toolTip">
 												<string>Extra commandline options.  Unless you want a feature not supported in Enyo-Doom, you don't need to use this.</string>
 											</property>
 										</widget>
-            								</item>
+									</item>
          	 							<item row="5" column="0">
-             									<widget class="QLabel" name="label_elock">
+             									<widget class="QCheckBox" name="check_elock">
               										<property name="sizePolicy">
                											<sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                 											<horstretch>0</horstretch>
@@ -191,10 +266,10 @@
               										</property>
              									</widget>
             								</item>
-           	 							<item row="5" column="1" colspan="3">
+           	 							<item row="5" column="1" colspan="6">
              									<widget class="QComboBox" name="cb_elock">
 											<property name="toolTip">
-												<string>Leave as (none) to use the engine you selected in Settings; if you need to use a specific engine for this profile, set it here.</string>
+												<string>If you need to use a specific engine for this profile, set it here.</string>
 											</property>
 										</widget>
             								</item>
@@ -263,9 +338,12 @@
                 											<verstretch>0</verstretch>
                											</sizepolicy>
               										</property>
-              										<property name="text">
-               											<string>&amp;Add...</string>
-              										</property>
+              										<property name="icon">
+												<iconset theme="list-add"/>
+											</property>
+											<property name="toolTip">
+												<string>Add</string>
+											</property>
              									</widget>
             								</item>
             								<item row="1" column="3">
@@ -276,9 +354,12 @@
                 											<verstretch>0</verstretch>
                											</sizepolicy>
               										</property>
-              										<property name="text">
-               											<string>&amp;Remove</string>
-              										</property>
+              										<property name="icon">
+												<iconset theme="list-remove"/>
+											</property>
+											<property name="toolTip">
+												<string>Remove</string>
+											</property>
              									</widget>
             								</item>
           								<item row="2" column="0">
@@ -299,9 +380,12 @@
             								</item>
             								<item row="2" column="3">
              									<widget class="QPushButton" name="btn_select_engine_path">
-              										<property name="text">
-               											<string>&amp;Select...</string>
-              										</property>
+              										<property name="icon">
+												<iconset theme="document-open"/>
+											</property>
+											<property name="toolTip">
+												<string>Open...</string>
+											</property>
              									</widget>
             								</item>
           								<item row="3" column="0">

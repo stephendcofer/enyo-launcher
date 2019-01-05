@@ -133,10 +133,6 @@ void e_mainwindow::load_settings ()
 
     if (g_size == 0)
     {
-        /*enyo_games[0].game_name = "Doom";
-        enyo_games[1].game_name = "Doom II: Hell on Earth";
-        enyo_games[2].game_name = "Final Doom: TNT Evilution";
-        enyo_games[3].game_name = "Final Doom: The Plutonia Experiment"; */
 	for (int i=0; i<4; i++) enyo_games[i].game_name = default_games.at(i);
         game_pointer = 4;
     }
@@ -162,18 +158,6 @@ void e_mainwindow::load_settings ()
 
     if (e_size == 0)
     {
-        /*enyo_engines[0].engine_name = "Chocolate Doom";
-        enyo_engines[0].engine_binary_path = "chocolate-doom";
-	enyo_engines[0].fullscreen_mode = 0;
-        enyo_engines[0].no_sound = false;
-        enyo_engines[1].engine_name = "prBoom";
-        enyo_engines[1].engine_binary_path = "prboom";
-	enyo_engines[1].fullscreen_mode = 0;
-        enyo_engines[1].no_sound = false;
-        enyo_engines[2].engine_name = "ZDoom";
-        enyo_engines[2].engine_binary_path = "zdoom";
-	enyo_engines[2].fullscreen_mode = 0;
-        enyo_engines[2].no_sound = false;*/
 	for (int i=0; i<3; i++)
 	{
 		enyo_engines[i].engine_name = engine_names.at(i);
@@ -276,7 +260,7 @@ e_mainwindow::e_mainwindow(QWidget *parent) :
     }
     ui->line_advanced_settings->setText (enyo_games[last_game_selected].game_advanced_settings);
 
-    ui->cb_elock->addItem ("(none)", Qt::DisplayRole);
+    //ui->cb_elock->addItem ("(none)", Qt::DisplayRole);
     for (int i=0; i<engine_pointer; i++)
     {
         ui->cb_engines->addItem(enyo_engines[i].engine_name, Qt::DisplayRole);
@@ -287,7 +271,16 @@ e_mainwindow::e_mainwindow(QWidget *parent) :
     ui->cb_engines->setCurrentIndex(last_engine_selected);
 
     ui->cb_elock->update();
-    ui->cb_elock->setCurrentIndex(enyo_games[last_game_selected].engine_id);
+    ui->check_elock->setChecked (enyo_games[last_game_selected].engine_id != 0);
+    if (enyo_games[last_game_selected].engine_id == 0)
+    {
+	    ui->cb_elock->setEnabled(false);
+    }
+    else
+    {
+	    ui->cb_elock->setEnabled(true);	
+	    ui->cb_elock->setCurrentIndex(enyo_games[last_game_selected].engine_id - 1);
+    }	   
 
     ui->line_engine_path->setText (enyo_engines[last_engine_selected].engine_binary_path);
     ui->cb_windowed->setCurrentIndex (enyo_engines[last_engine_selected].fullscreen_mode);	
@@ -304,6 +297,9 @@ e_mainwindow::e_mainwindow(QWidget *parent) :
 	ui->tabWidget->setTabPosition (QTabWidget::West);
     ui->tabWidget->setCurrentIndex (0);
     ui->cb_exit->setChecked(exit_after_run);
+
+    move_enabler();
+
     stop_index_change_fire = false;
 
 }
@@ -313,6 +309,11 @@ e_mainwindow::~e_mainwindow()
     this->save_settings();
     delete ui;
 }
+void e_mainwindow::move_enabler()
+{
+    ui->btn_move_game_up->setEnabled ((last_game_selected > 0) && (game_pointer > 1));
+    ui->btn_move_game_down->setEnabled ((last_game_selected != (game_pointer - 1)) && (game_pointer > 1));
+}
 
 // CALLBACKS
 
@@ -320,6 +321,8 @@ void e_mainwindow::on_cb_games_currentIndexChanged(int index)
 {
     if (stop_index_change_fire)
         return;
+    
+    stop_index_change_fire = true;
     last_game_selected = index;
     ui->line_main_wad->setText (enyo_games[last_game_selected].game_wad);
     ui->list_pwads->clear();
@@ -328,8 +331,13 @@ void e_mainwindow::on_cb_games_currentIndexChanged(int index)
         ui->list_pwads->addItem(enyo_games[last_game_selected].game_pwad.at(i));
     }
     ui->line_advanced_settings->setText (enyo_games[last_game_selected].game_advanced_settings);
-    stop_index_change_fire = true;
-    ui->cb_elock->setCurrentIndex(enyo_games[last_game_selected].engine_id);
+    ui->check_elock->setChecked(enyo_games[last_game_selected].engine_id != 0);
+    ui->cb_elock->setEnabled(enyo_games[last_game_selected].engine_id != 0);
+    if (enyo_games[last_game_selected].engine_id > 0)
+    {
+    	ui->cb_elock->setCurrentIndex(enyo_games[last_game_selected].engine_id - 1);
+    }
+    move_enabler();
     stop_index_change_fire = false;
 }
 
@@ -652,6 +660,7 @@ void e_mainwindow::on_btn_add_game_clicked()
         ui->cb_games->setCurrentIndex(last_game_selected);
 
         game_pointer++;
+	move_enabler();
     }
 }
 
@@ -695,6 +704,7 @@ void e_mainwindow::on_btn_remove_game_clicked()
 	stop_index_change_fire = false;
 	ui->cb_games->setCurrentIndex (last_game_selected);
 	on_cb_games_currentIndexChanged (last_game_selected);
+	move_enabler();
 
 }
 
@@ -804,8 +814,7 @@ void e_mainwindow::on_cb_elock_currentIndexChanged(int index)
 {
     if (stop_index_change_fire)
         return;
-
-    enyo_games[last_game_selected].engine_id = index;
+    enyo_games[last_game_selected].engine_id = index+1;
 }
 
 void e_mainwindow::on_action_About_triggered()
@@ -836,4 +845,84 @@ void e_mainwindow::on_cb_exit_toggled(bool checked)
 	if (stop_index_change_fire) return;
 
 	exit_after_run = checked;
+}
+
+void e_mainwindow::on_btn_move_game_up_clicked()
+{
+	game_settings tmp;
+	QString txttmp;
+
+	tmp = enyo_games[last_game_selected];
+	txttmp = ui->cb_games->itemText(last_game_selected);
+
+	enyo_games[last_game_selected] = enyo_games[last_game_selected - 1];
+	enyo_games[last_game_selected - 1] = tmp;
+
+	ui->cb_games->setItemText(last_game_selected, ui->cb_games->itemText(last_game_selected - 1));
+	ui->cb_games->setItemText(last_game_selected - 1, txttmp);
+
+	last_game_selected--;
+	ui->cb_games->update();
+	ui->cb_games->setCurrentIndex (last_game_selected);
+	on_cb_games_currentIndexChanged (last_game_selected);
+	move_enabler();
+}
+
+void e_mainwindow::on_btn_move_game_down_clicked()
+{
+	game_settings tmp;
+	QString txttmp;
+
+	tmp = enyo_games[last_game_selected];
+	txttmp = ui->cb_games->itemText(last_game_selected);
+
+	enyo_games[last_game_selected] = enyo_games[last_game_selected + 1];
+	enyo_games[last_game_selected + 1] = tmp;
+
+	ui->cb_games->setItemText(last_game_selected, ui->cb_games->itemText(last_game_selected + 1));
+	ui->cb_games->setItemText(last_game_selected + 1, txttmp);
+
+	last_game_selected++;
+	ui->cb_games->update();
+	ui->cb_games->setCurrentIndex (last_game_selected);
+	on_cb_games_currentIndexChanged (last_game_selected);
+	move_enabler();
+}
+
+void e_mainwindow::on_check_elock_toggled (bool checked)
+{
+	if (stop_index_change_fire) return;
+	ui->cb_elock->setEnabled (checked);
+	if (checked)
+	{
+	    ui->cb_elock->setCurrentIndex(0);
+	    enyo_games[last_game_selected].engine_id = 1;
+	}
+	else
+	{
+		ui->cb_elock->setCurrentIndex(0);
+		enyo_games[last_game_selected].engine_id = 0;
+	}
+	ui->cb_elock->update();
+		
+
+}
+
+void e_mainwindow::on_btn_edit_label_clicked()
+{
+	QString game_change;
+	QString current_name;
+	bool dialog_ok;
+
+	current_name = ui->cb_games->itemText (last_game_selected);
+	
+	game_change = QInputDialog::getText (this, "Enyo-Doom", "New game name:", QLineEdit::Normal, current_name, &dialog_ok);
+
+	if (dialog_ok && !game_change.isEmpty() && !(game_change == current_name))
+	{
+		ui->cb_games->setItemText (last_game_selected, game_change);
+		enyo_games[last_game_selected].game_name = game_change;
+		ui->cb_games->update();
+		ui->cb_games->setCurrentIndex (last_game_selected);
+	}
 }

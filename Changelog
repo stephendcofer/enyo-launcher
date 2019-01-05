@@ -1,5 +1,29 @@
 enyo-doom changelog
 
+1.06.9 ("Your assignment is clear: MERCILESS EXTERMINATION.")
+
+EXPERIMENTAL RELEASE.  BEWARE OF CHAOS AND DESTRUCTION.  PLEASE REPORT IF ANY
+OF THE FOLLOWING FEATURES DO NOT WORK OR HAVE UNINTENDED SIDE EFFECTS.
+
+ADDED:
+
+Ability to move game profiles up and down the list as well as rename them, per
+request issue #1 (https://gitlab.com/sdcofer70/enyo-doom/issues/1).  I didn't
+feel this was as much of an issue for the engine list, but I may implement it
+for that as well in the future.
+
+CHANGED:
+
+To remove clutter and have space for the new game profile options, buttons now
+use standard icon resources instead of being text.  This may be a problem for 
+other systems like Windows, but it is the most efficient solution.  I may re-evaluate 
+this decision and provide my own iconset in the future, but for now, this should
+just work on GNU/Linux systems, which is my primary target system for
+enyo-doom.
+
+Overriding the default engine now uses a checkbox to enable, rather than
+selecting a "none" option.
+
 1.06 ("You are an experiment as well, so who cares?")
 
 Minor tweaks:

@@ -23,9 +23,9 @@
 #define MAX_GAMES 255
 #define MAX_ENGINES 50
 
-#define ENYO_VERSION "1.06"
-#define ENYO_TAGLINE "You are an experiment as well, so who cares?"
-#define ENYO_COPYRIGHT "Copyright (C) 2009-2018 Stephen D. Cofer.  Released under the GPL version 2."
+#define ENYO_VERSION "1.06.9"
+#define ENYO_TAGLINE "Your assignment is clear: MERCILESS EXTERMINATION."
+#define ENYO_COPYRIGHT "Copyright (C) 2009-2019 Stephen D. Cofer.  Released under the GPL version 2."
 #define ENYO_HOMEPAGE "https://gitlab.com/sdcofer70/enyo-doom"
 
 #define DEFAULT_WIDTH 800
@@ -225,10 +225,6 @@ private slots:
 
     void on_cb_tabs_top_toggled (bool checked);
 
-    void save_settings();
-
-    void load_settings();
-
     void on_action_About_triggered();
 
     void on_action_Run_triggered();
@@ -239,8 +235,22 @@ private slots:
 
     void on_cb_exit_toggled(bool checked);
 
+    void on_btn_move_game_up_clicked();
+
+    void on_btn_move_game_down_clicked();
+
+    void on_check_elock_toggled(bool checked);
+
+    void on_btn_edit_label_clicked();
+
 private:
     Ui::e_mainwindow *ui;
+
+    void save_settings();
+
+    void load_settings();
+
+    void move_enabler();
 
     QStringList default_games= {"Doom", "Doom II: Hell on Earth", "Final Doom: TNT Evilution", "Final Doom: The Plutonia Experiment"};
     QStringList engine_names = {"Chocolate Doom", "prBoom", "GZDoom"};
