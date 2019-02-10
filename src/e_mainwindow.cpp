@@ -29,6 +29,8 @@
 #include <QUrl>
 #include <QStringList>
 #include <QDir>
+#include <QListWidget>
+#include <QListWidgetItem>
 
 #ifndef WIN32
 #include <libgen.h>
@@ -248,7 +250,7 @@ e_mainwindow::e_mainwindow(QWidget *parent) :
 
     for (int i=0; i<game_pointer;i++)
     {
-        ui->cb_games->addItem(enyo_games[i].game_name, Qt::DisplayRole);
+        ui->cb_games->addItem("[" + QString::number(i+1) + "] " + enyo_games[i].game_name, Qt::DisplayRole);
     }
     ui->cb_games->update();
 
@@ -258,6 +260,11 @@ e_mainwindow::e_mainwindow(QWidget *parent) :
     {
         ui->list_pwads->addItem(enyo_games[last_game_selected].game_pwad.at(i));
     }
+
+    // on load, no pwad list item is selected so disable buttons onload
+    ui->button_pwad_up->setEnabled (false);
+    ui->button_pwad_down->setEnabled (false);
+
     ui->line_advanced_settings->setText (enyo_games[last_game_selected].game_advanced_settings);
 
     //ui->cb_elock->addItem ("(none)", Qt::DisplayRole);
@@ -501,6 +508,10 @@ void e_mainwindow::on_button_pwad_add_clicked()
 	last_path = tmp;
 #endif
     }
+    ui->list_pwads->setCurrentRow (ui->list_pwads->count() - 1);
+    ui->button_pwad_up->setEnabled (ui->list_pwads->count() == 1?false:true);
+    ui->button_pwad_down->setEnabled (false);
+
 }
 
 void e_mainwindow::on_button_pwad_remove_clicked()
@@ -522,6 +533,9 @@ void e_mainwindow::on_button_pwad_remove_clicked()
 
     enyo_games[last_game_selected].game_pwad = temp_list;
 
+    ui->button_pwad_up->setEnabled (false);
+    ui->button_pwad_down->setEnabled (false);
+
 
 }
 
@@ -539,6 +553,48 @@ void e_mainwindow::on_button_pwad_clear_clicked()
 
     enyo_games[last_game_selected].game_pwad.clear();
     ui->list_pwads->clear();
+    ui->button_pwad_up->setEnabled (false);
+    ui->button_pwad_down->setEnabled (false);
+}
+
+void e_mainwindow::on_button_pwad_up_clicked()
+{
+	QString tmp;
+	int cur_sel = ui->list_pwads->currentRow();
+	tmp = enyo_games[last_game_selected].game_pwad.at(cur_sel);
+	enyo_games[last_game_selected].game_pwad[cur_sel] = enyo_games[last_game_selected].game_pwad.at(cur_sel - 1);
+	enyo_games[last_game_selected].game_pwad[cur_sel - 1]= tmp;
+
+	ui->list_pwads->clear();
+	for (int i=0; i<enyo_games[last_game_selected].game_pwad.count();i++)
+		ui->list_pwads->addItem(enyo_games[last_game_selected].game_pwad.at(i));
+
+	ui->list_pwads->setCurrentRow (cur_sel - 1);
+
+	ui->button_pwad_up->setEnabled ((cur_sel - 1) > 0 ? true:false);
+	ui->button_pwad_down->setEnabled (true);
+
+	return;
+}
+
+void e_mainwindow::on_button_pwad_down_clicked()
+{
+	QString tmp;
+	int cur_sel = ui->list_pwads->currentRow();
+	tmp = enyo_games[last_game_selected].game_pwad.at(cur_sel);
+	enyo_games[last_game_selected].game_pwad[cur_sel] = enyo_games[last_game_selected].game_pwad.at(cur_sel + 1);
+	enyo_games[last_game_selected].game_pwad[cur_sel + 1] = tmp;
+
+	ui->list_pwads->clear();
+	for (int i=0; i<enyo_games[last_game_selected].game_pwad.count();i++)
+		ui->list_pwads->addItem(enyo_games[last_game_selected].game_pwad.at(i));
+
+	ui->list_pwads->setCurrentRow (cur_sel + 1);
+
+	ui->button_pwad_up->setEnabled (true);
+	ui->button_pwad_down->setEnabled ((cur_sel + 1) < ui->list_pwads->count() - 1 ? true:false);
+
+	return;
 }
 
 void e_mainwindow::on_cb_engines_currentIndexChanged(int index)
@@ -853,12 +909,14 @@ void e_mainwindow::on_btn_move_game_up_clicked()
 	QString txttmp;
 
 	tmp = enyo_games[last_game_selected];
-	txttmp = ui->cb_games->itemText(last_game_selected);
+//	txttmp = ui->cb_games->itemText(last_game_selected);
 
 	enyo_games[last_game_selected] = enyo_games[last_game_selected - 1];
 	enyo_games[last_game_selected - 1] = tmp;
-
-	ui->cb_games->setItemText(last_game_selected, ui->cb_games->itemText(last_game_selected - 1));
+	
+	txttmp = "[" + QString::number(last_game_selected + 1) + "] " + enyo_games[last_game_selected].game_name;
+	ui->cb_games->setItemText(last_game_selected, txttmp);
+	txttmp = "[" + QString::number(last_game_selected) + "] " + enyo_games[last_game_selected - 1].game_name;
 	ui->cb_games->setItemText(last_game_selected - 1, txttmp);
 
 	last_game_selected--;
@@ -879,7 +937,9 @@ void e_mainwindow::on_btn_move_game_down_clicked()
 	enyo_games[last_game_selected] = enyo_games[last_game_selected + 1];
 	enyo_games[last_game_selected + 1] = tmp;
 
-	ui->cb_games->setItemText(last_game_selected, ui->cb_games->itemText(last_game_selected + 1));
+	txttmp = "[" + QString::number(last_game_selected + 1) + "] " + enyo_games[last_game_selected].game_name;
+	ui->cb_games->setItemText(last_game_selected, txttmp);
+	txttmp = "[" + QString::number(last_game_selected + 2) + "] " + enyo_games[last_game_selected + 1].game_name;
 	ui->cb_games->setItemText(last_game_selected + 1, txttmp);
 
 	last_game_selected++;
@@ -926,3 +986,21 @@ void e_mainwindow::on_btn_edit_label_clicked()
 		ui->cb_games->setCurrentIndex (last_game_selected);
 	}
 }
+
+void e_mainwindow::on_list_pwads_itemChanged (QListWidgetItem *item)
+{
+	int cur_sel = ui->list_pwads->currentRow();
+
+	ui->button_pwad_up->setEnabled (cur_sel > 0 ? true:false);
+	ui->button_pwad_down->setEnabled (cur_sel < (ui->list_pwads->count() - 1) ? true:false);
+}
+
+void e_mainwindow::on_list_pwads_itemClicked (QListWidgetItem *item)
+{
+	int cur_sel = ui->list_pwads->currentRow();
+
+	ui->button_pwad_up->setEnabled (cur_sel > 0 ? true:false);
+	ui->button_pwad_down->setEnabled (cur_sel < (ui->list_pwads->count() - 1) ? true:false);
+
+}
+

@@ -18,13 +18,14 @@
 
 #include <QMainWindow>
 #include <QStringList>
+#include <QListWidgetItem>
 
 #define MAX_PWADS 50
 #define MAX_GAMES 255
 #define MAX_ENGINES 50
 
-#define ENYO_VERSION "1.06.9"
-#define ENYO_TAGLINE "Your assignment is clear: MERCILESS EXTERMINATION."
+#define ENYO_VERSION "1.06.99"
+#define ENYO_TAGLINE "You wonder who the inmates of this corner of Hell will be."
 #define ENYO_COPYRIGHT "Copyright (C) 2009-2019 Stephen D. Cofer.  Released under the GPL version 2."
 #define ENYO_HOMEPAGE "https://gitlab.com/sdcofer70/enyo-doom"
 
@@ -191,11 +192,19 @@ private slots:
 
     void on_button_find_wad_clicked();
 
+    void on_list_pwads_itemChanged (QListWidgetItem *item);
+
+    void on_list_pwads_itemClicked (QListWidgetItem *item);
+
     void on_button_pwad_add_clicked();
 
     void on_button_pwad_remove_clicked();
 
     void on_button_pwad_clear_clicked();
+
+    void on_button_pwad_up_clicked();
+    
+    void on_button_pwad_down_clicked();
 
     void on_cb_engines_currentIndexChanged(int index);
 

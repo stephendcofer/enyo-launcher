@@ -1,5 +1,22 @@
 enyo-doom changelog
 
+1.06.99 ("You wonder who the inmates of this corner of Hell will be.")
+
+EXPERIMENTAL RELEASE NUMBER TWO.  YOU HAVE BEEN TWICE WARNED.  ABANDON ALL
+HOPE ALL YE WHO ENTER HERE.  PREPARE FOR MELTING COMPUTERS, SICK PETS, AND
+DYING PLANTS.  PLEASE REPORT ALL BUGS AND OTHER WEIRDNESS.  
+
+ADDED:
+
+Ability to move the order of PWADS around for the few cases that need strict
+a certain PWAD order to run.
+
+Numbers beside the game profile names to make reordering them using the up and
+down buttons clearer.  This does make it look odd and I prefer without
+numbers, but I do think it's much clearer when reordering, and better than
+changing the profile to a list rather than a dropdown -- the list looked very
+ugly to me when testing it.
+
 1.06.9 ("Your assignment is clear: MERCILESS EXTERMINATION.")
 
 EXPERIMENTAL RELEASE.  BEWARE OF CHAOS AND DESTRUCTION.  PLEASE REPORT IF ANY
