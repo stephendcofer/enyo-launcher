@@ -24,8 +24,8 @@
 #define MAX_GAMES 255
 #define MAX_ENGINES 50
 
-#define ENYO_VERSION "1.06.99"
-#define ENYO_TAGLINE "You wonder who the inmates of this corner of Hell will be."
+#define ENYO_VERSION "1.1.0"
+#define ENYO_TAGLINE "Don't leave yet - there's a demon around that corner!"
 #define ENYO_COPYRIGHT "Copyright (C) 2009-2019 Stephen D. Cofer.  Released under the GPL version 2."
 #define ENYO_HOMEPAGE "https://gitlab.com/sdcofer70/enyo-doom"
 

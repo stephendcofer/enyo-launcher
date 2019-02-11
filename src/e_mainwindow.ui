@@ -48,14 +48,14 @@
 								<layout class="QGridLayout" name="gridLayout_2">
         								<item row="0" column="0">
 	  									<widget class="QLabel" name="lb_gamecb">
-             										<property name="sizePolicy">
+											<!--	<property name="sizePolicy">
                											<sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 											<horstretch>0</horstretch>
                 											<verstretch>0</verstretch>
                											</sizepolicy>
-              										</property>
+											</property>-->
               										<property name="text">
-               											<string>Select game profile:</string>
+               											<string>Game profile:</string>
               										</property>
              									</widget>
             								</item>
@@ -146,14 +146,14 @@
 
         								<item row="1" column="0">
            	 								<widget class="QLabel" name="label_wad">
-              										<property name="sizePolicy">
-               											<sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+											<!--	<property name="sizePolicy">
+               											<sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 											<horstretch>0</horstretch>
                 											<verstretch>0</verstretch>
                											</sizepolicy>
-              										</property>
+											</property>-->
               										<property name="text">
-               											<string>Main data file (WAD):</string>
+               											<string>Game data file:</string>
               										</property>
              									</widget>
             								</item>
@@ -177,7 +177,7 @@
           								<item row="2" column="0" colspan="6">
            									<widget class="QLabel" name="label_2">
             										<property name="text">
-             											<string>Add-ons for selected game:</string>
+             											<string>Add-ons for selected profile:</string>
             										</property>
             										<property name="alignment">
              											<set>Qt::AlignLeft</set>
@@ -282,7 +282,7 @@
                											</sizepolicy>
               										</property>
               										<property name="text">
-               											<string>Override default engine: </string>
+               											<string>Override engine: </string>
               										</property>
              									</widget>
             								</item>
@@ -336,7 +336,7 @@
 			       									</sizepolicy>
 			      								</property>
 			      								<property name="text">
-			       									<string>Select default engine:</string>
+			       									<string>Default engine:</string>
 			      								</property>
 			     							</widget>
 			    						</item>
@@ -391,12 +391,16 @@
                											</sizepolicy>
               										</property>
               										<property name="text">
-               											<string>Path to selected engine:</string>
+               											<string>Engine executable:</string>
               										</property>
              									</widget>
             								</item>
             								<item row="2" column="1" colspan="2">
-             									<widget class="QLineEdit" name="line_engine_path"/>
+										<widget class="QLineEdit" name="line_engine_path">
+											<property name="toolTip">
+												<string>The executable file for the selected engine.  If it is in your system PATH, you can specify just its executable name here.</string>
+											</property>
+										</widget>
             								</item>
             								<item row="2" column="3">
              									<widget class="QPushButton" name="btn_select_engine_path">
@@ -417,7 +421,7 @@
                											</sizepolicy>
               										</property>
               										<property name="text">
-               											<string>Fullscreen settings:</string>
+               											<string>Fullscreen:</string>
               										</property>
              									</widget>
             								</item>
@@ -443,17 +447,23 @@
                											<property name="text">
                 											<string>Force Fullscreen</string>
                											</property>
-              										</item>
+											</item>
+											<property name="toolTip">
+												<string>Overrides default fullscreen settings for engine or uses its default.</string>
+											</property>
              									</widget>
             								</item>
             								<item row="4" column="0" colspan="2">
              									<widget class="QCheckBox" name="cb_no_sound">
               										<property name="text">
-               											<string>Disable Sound</string>
-              										</property>
+               											<string>Disable engine sound</string>
+											</property>
+											<property name="toolTip">
+												<string>Disables sound for engine for troubleshooting or other purposes.  Some engines may not support this option.</string>
+											</property>
              									</widget>
             								</item>
-          								<item row="5" column="0">
+          								<item row="5" column="0" colspan="2">
           									<widget class="QLabel" name="label_7">
             										<property name="sizePolicy">
              											<sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -471,11 +481,14 @@
           								<item row="6" column="0" colspan="2">
             	 								<widget class="QCheckBox" name="cb_show_output">
               										<property name="text">
-               											<string>Enable &amp;Output tab for troubleshooting</string>
-              										</property>
+               											<string>Enable &amp;Output tab</string>
+											</property>
+											<property name="toolTip">
+												<string>Add an additional tab that shows the output of an engine after running a profile.</string>
+											</property>
              									</widget>
             								</item>
-            								<item row="7" column="0">
+            								<item row="7" column="0" colspan="2">
              									<widget class="QCheckBox" name="cb_tabs_top">
               										<property name="text">
                											<string>&amp;Tabs on top</string>

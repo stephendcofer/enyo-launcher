@@ -305,6 +305,8 @@ e_mainwindow::e_mainwindow(QWidget *parent) :
     ui->tabWidget->setCurrentIndex (0);
     ui->cb_exit->setChecked(exit_after_run);
 
+    ui->text_output->setPlainText("Engine output will be shown here after running.");
+
     move_enabler();
 
     stop_index_change_fire = false;
