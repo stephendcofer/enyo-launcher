@@ -1,5 +1,20 @@
 enyo-doom changelog
 
+1.1.1 ("The horrors of Hell")
+
+FIX:
+
+Several organization and rename profile options not updating or working
+correctly with the numbers in front of the profile.  
+
+Adding an "any file" option for the WAD locator for a few edge cases where
+other file extensions like pk3 are accepted as main WAD files.
+
+enyo-doom for Microsoft Windows is untested and not supported, but a change makes the default
+directory for searching for an engine binary for Windows C:\ rather than the
+invalid for Windows path /usr (valid in GNU/Linux and similar) in case someone
+wants to try building for Windows.
+
 1.1.0 ("Don't leave yet - there's a demon around that corner!")
 
 Stable (I hope!) release.

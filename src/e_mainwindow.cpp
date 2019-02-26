@@ -461,11 +461,14 @@ void e_mainwindow::closeEvent(QCloseEvent *event)
 void e_mainwindow::on_button_find_wad_clicked()
 {
     QFileDialog wad_selector(this);
+    QStringList filters;
     #ifdef WIN32
     	char tmp[FILENAME_MAX];
     #endif
+   filters << "WAD file (*.wad)"
+	   << "Any file (*)";
     wad_selector.setFileMode(QFileDialog::ExistingFile);
-    wad_selector.setNameFilter("WAD file (*.wad)");
+    wad_selector.setNameFilters(filters);
     wad_selector.setDirectory(last_path);
 
     QStringList wad_filename;
@@ -620,7 +623,7 @@ void e_mainwindow::on_btn_select_engine_path_clicked()
 {
     QFileDialog wad_selector(this);
     wad_selector.setFileMode(QFileDialog::ExistingFile);
-    wad_selector.setDirectory("/usr");
+    wad_selector.setDirectory(DEFAULT_ENGINEDIR);
 
     QStringList wad_filename;
     if (wad_selector.exec())
@@ -681,6 +684,7 @@ void e_mainwindow::on_btn_add_game_clicked()
     }
     bool dialog_ok;
     QString new_game;
+    QString list_new_game;
 
     new_game = QInputDialog::getText (this, "Enyo-Doom", "New game name:", QLineEdit::Normal, "", &dialog_ok);
 
@@ -714,7 +718,8 @@ void e_mainwindow::on_btn_add_game_clicked()
             enyo_games[game_pointer].game_wad = enyo_games[last_game_selected].game_wad;
         }
         last_game_selected = game_pointer;
-        ui->cb_games->addItem (new_game);
+	list_new_game = "["+QString::number(last_game_selected+1)+"] " + new_game;
+        ui->cb_games->addItem (list_new_game);
         ui->cb_games->setCurrentIndex(last_game_selected);
 
         game_pointer++;
@@ -754,7 +759,9 @@ void e_mainwindow::on_btn_remove_game_clicked()
 	ui->cb_games->clear();
 	for (int i=0; i<game_pointer;i++)
 	{
-		ui->cb_games->addItem(enyo_games[i].game_name, Qt::DisplayRole);
+		QString list_new_game;
+		list_new_game = "[" + QString::number(i+1) + "] " + enyo_games[i].game_name;
+		ui->cb_games->addItem(list_new_game, Qt::DisplayRole);
 	}
 	ui->cb_games->update();
 	
@@ -976,13 +983,16 @@ void e_mainwindow::on_btn_edit_label_clicked()
 	QString current_name;
 	bool dialog_ok;
 
-	current_name = ui->cb_games->itemText (last_game_selected);
+	//current_name = ui->cb_games->itemText (last_game_selected);
+	current_name = enyo_games[last_game_selected].game_name;
 	
 	game_change = QInputDialog::getText (this, "Enyo-Doom", "New game name:", QLineEdit::Normal, current_name, &dialog_ok);
 
 	if (dialog_ok && !game_change.isEmpty() && !(game_change == current_name))
 	{
-		ui->cb_games->setItemText (last_game_selected, game_change);
+		QString list_game_change;
+		list_game_change ="[" + QString::number(last_game_selected+1) + "] " + game_change;
+		ui->cb_games->setItemText (last_game_selected, list_game_change);
 		enyo_games[last_game_selected].game_name = game_change;
 		ui->cb_games->update();
 		ui->cb_games->setCurrentIndex (last_game_selected);

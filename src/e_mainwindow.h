@@ -24,13 +24,19 @@
 #define MAX_GAMES 255
 #define MAX_ENGINES 50
 
-#define ENYO_VERSION "1.1.0"
-#define ENYO_TAGLINE "Don't leave yet - there's a demon around that corner!"
+#define ENYO_VERSION "1.1.1"
+#define ENYO_TAGLINE "The horrors of Hell"
 #define ENYO_COPYRIGHT "Copyright (C) 2009-2019 Stephen D. Cofer.  Released under the GPL version 2."
 #define ENYO_HOMEPAGE "https://gitlab.com/sdcofer70/enyo-doom"
 
 #define DEFAULT_WIDTH 800
 #define DEFAULT_HEIGHT 400
+
+#ifndef WIN32
+	#define DEFAULT_ENGINEDIR "/usr/"
+#else
+	#define DEFAULT_ENGINEDIR "C:\\"
+#endif
 
 #define GPL_TEXT "GNU GENERAL PUBLIC LICENSE\n\
 \n\
