@@ -3,6 +3,8 @@ enyo-doom
 
 Frontend for Doom engines
 
+![](https://i.imgur.com/2Y6Gaef.png)
+
 Enyo-Doom is a GUI launcher for Doom engines. It is a relaunch of the gDoomsday project under a different name with more functionality. The source release is usable in any modern GNU/Linux distribution with Qt). The original release used GTK+, but was rewritten to use Qt for ease of maintenance and cross-platform compatibility.
 
 **Requirements**
@@ -37,7 +39,7 @@ When the build is finished, type make install as root to install enyo-doom. If y
 
 **Configuration and Running Games**
 
-You will need to point enyo-doom to a game WAD (the data file that contain Doom level, sound, graphic, music, etc data). Change the dropdown under the logo to the type of Doom WAD you have and use Select beside the Main WAD entry to locate the proper WAD for that game type. The default game types and the WAD files they use are:
+You will need to point enyo-doom to a game WAD (the data file that contain Doom level, sound, graphic, music, etc data). Change the dropdown under the logo to the type of Doom WAD you have and use the "select file" icon after the "Game Data file" entry to locate the proper WAD for that game type. The default game types and the WAD files they use are:
 
 Doom: doom.wad (or doom1.wad for the Shareware version) 
 
@@ -48,17 +50,17 @@ TNT Evilution: tnt.wad
 The Plutonia Experiment: plutonia.wad 
 
 
-You may add new game types using the Add... button next to the game type drop-down menu. It will ask you the name of your new game type and if you want to copy the existing game settings to your new game type, which is useful if you want to create a game type from an existing game and addons (see below). If your game engine supports Heretic and/or Hexen or other Doom game derivatives, you may add them in this way. Removing an unused or unwanted engine can be done with the Remove button which will ask for confirmation.
+You may add new game profiles using the "add" icon next to the game type drop-down menu. It will ask you the name of your new game profile (which can be anything you want) and if you want to copy the current game profile to the new one, which is useful if you want to create a game profile from an existing one and addons (see below). If your game engine supports Heretic and/or Hexen or other Doom game derivatives, you may add them in this way. Removing an unused or unwanted game can be done with the "remove" icon which will ask for confirmation.  You can move a game profile up and down with the "move up/down" icons, and rename it with the "text" icon.
 
-Extra patch WADs (pwads) or any other compatible file type (for example, pk3 files for ZDoom and others) that add levels, sounds, music, etc., can be enabled by enyo-doom by using the Add... button beside the Add-ons box in the Launcher tab and removed by highlighting (clicking) the added file and clicking Remove. To return to having no extra WADs load, click Clear. Each WAD set is specific to the game type you choose. Note that Doom 1's patch WADs will not work with Doom Shareware (doom1.wad).
+Extra patch WADs (pwads) or any other compatible file type (for example, pk3 files for ZDoom and others) that add levels, sounds, music, etc., can be enabled by enyo-doom by using the "add" icons beside the Add-ons box in the Launcher tab and removed by highlighting (clicking) the added file and clicking the "remove" icon. To return to having no extra WADs load, click the "clear" icon. In some cases, the order the PWADs are given to the engine is important for their correct functionality; you can move them up and down the list with the "move up/down" icons.  Each WAD set is specific to the game type you choose. Note that Doom 1's patch WADs will not work with Doom Shareware (doom1.wad).
 
 The "Commandline options" input is an advanced option for each game type that allows you to specify custom commandline options to the game. This may use standard Doom options that enyo-doom does not provide, or engine-specific options. If you do not know what this does, it is best to leave it blank.
 
-By default, enyo-doom gives you three engines to choose from on the General tab: Chocolate Doom, prBoom, and GZDoom. The executable is the default name for each engine's executable, and is assumed to be in your system's PATH. If the name is different, or is not in a default PATH, you may change it using the Browse button beside the Path to Engine setting. Other engines may be added using the Add... button, and removed using the Remove button.
+By default, enyo-doom gives you three engines to choose from on the General tab: Chocolate Doom, prBoom, and GZDoom. The executable is the default name for each engine's executable, and is assumed to be in your system's PATH. If the name is different, or is not in a default PATH, you may change it using the "file select" icon  beside the "Engine Executable" setting. Other engines may be added using the "add" icon, and removed using the "remove" icon.
 
-Each engine has an option to disable sound completely (for system compatibility purposes) and an option for fullscreen settings (Use Engine Default, Forced Windowed, and Force Fullscreen).  Some engines may ignore these settings.
+Each engine has an option to disable sound completely (for system compatibility purposes) and an option for fullscreen settings (Use Engine Default, Forced Windowed, and Force Fullscreen).  Some engines may ignore these settings.  NOTE: since there are several engines that ignore these settings, and most engines have the ability to configure them separately, these options may be removed in a future version of enyo-doom.  Please view the Issue on this Gitlab repository and comment if this may be a problem for you.
 
-If you have a game type that requires the use of only one engine, the "Override default engine" option at the bottom of the Game tab allows you to use only the engine you select to run that game type. Selecting "(None)" (the default option) will use the engine type selected in the General tab.
+If you have a game type that requires the use of only one engine, the "Override default engine" option at the bottom of the Game tab allows you to use only the engine you select to run that game type. If the option is unchecked, the currently selected game in the Settings tab will be used.
 
 To run a Doom engine game, select which configured game you want in the Select game profile drop-down, then click the Run button. If you have any problems running, make sure the output window is enabled (under Global Options) and view the output of the engine; it may provide a clue about what is not configured correctly. For Chocolate Doom, it is recommended that you run the chocolate-setup before you use enyo-doom to run it, since the majority of that engine's configuration is done there. To eliminate the information screen that pops up after you exit Chocolate Doom, untick Show ENDOOM screen in Display Configuration in chocolate-setup. In some engines there is no way to disable this option, and a jumble of control characters and text will show up at the end of the output. You can just safely ignore this.  
 
