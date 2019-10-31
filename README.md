@@ -7,6 +7,8 @@ Frontend for Doom engines
 
 Enyo-Doom is a GUI launcher for Doom engines. It is a relaunch of the gDoomsday project under a different name with more functionality. The source release is usable in any modern GNU/Linux distribution with Qt). The original release used GTK+, but was rewritten to use Qt for ease of maintenance and cross-platform compatibility.
 
+[Development on this project has ended; please read this for details.](https://gitlab.com/sdcofer70/enyo-doom/-/wiki_pages/History-and-future)
+
 **Requirements**
 
 A working Doom engine that supports Vanilla Doom commandline options, such as Chocolate Doom or zdoom. Even though it is possible to use it with custom commandline options, DEngine/Doomsday is not directly supported by this new release since it does not use standard launch parameters.  Since it now integrates its launcher with the engine, a separate launcher is no longer necessary.
