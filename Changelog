@@ -1,5 +1,37 @@
 enyo-doom changelog
 
+1.2 ("God rested on the seventh day. But imagine how much further along we
+would be if he hadn't?")
+
+I have decided to do one final release of enyo-doom before finally putting it
+to rest.  
+
+FIX:
+
+The button to edit the game name was missing an icon on most systems.  This
+should hopefully fix that issue.  It did have an icon during 1.1.1's
+development and testing on different systems, so I have no idea what changed.
+Hopefully this one will work.
+
+CHANGED:
+
+I have removed the fullscreen and sound options for game engines, given that
+all game engines now include their own configurations for these things and
+will correctly fall back to functioning settings if not.  If you still need
+settings to override the default, you can them in advanced commandline
+settings.
+
+TWEAKS:
+
+The code has been significantly cleaned up, organized, properly indented and
+spaced, and so on, with only a few commented stubs of recent changes left
+over.  It was way too much of a mess to leave it like that.
+
+This should be the final version.  Thanks for your interest and support.  I'll
+still use this myself to launch Doom in GNU because the same issue that made
+me start this project exists: there's nothing better besides manually
+launching from commandline, and I am lazy.
+
 1.1.1 ("The horrors of Hell")
 
 FIX:

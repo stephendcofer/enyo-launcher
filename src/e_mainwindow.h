@@ -23,21 +23,17 @@
 #define MAX_PWADS 50
 #define MAX_GAMES 255
 #define MAX_ENGINES 50
-
-#define ENYO_VERSION "1.1.1"
-#define ENYO_TAGLINE "The horrors of Hell"
+#define ENYO_VERSION "1.2"
+#define ENYO_TAGLINE "God rested on the seventh day. But imagine how much further along we would be if he hadn't?"
 #define ENYO_COPYRIGHT "Copyright (C) 2009-2019 Stephen D. Cofer.  Released under the GPL version 2."
 #define ENYO_HOMEPAGE "https://gitlab.com/sdcofer70/enyo-doom"
-
 #define DEFAULT_WIDTH 800
 #define DEFAULT_HEIGHT 400
-
 #ifndef WIN32
 	#define DEFAULT_ENGINEDIR "/usr/"
 #else
 	#define DEFAULT_ENGINEDIR "C:\\"
 #endif
-
 #define GPL_TEXT "GNU GENERAL PUBLIC LICENSE\n\
 \n\
 Version 2, June 1991\n\
@@ -172,8 +168,6 @@ Ty Coon, President of Vice\n\
 \n\
 This General Public License does not permit incorporating your program into proprietary programs. If your program is a subroutine library, you may consider it more useful to permit linking proprietary applications with the library. If this is what you want to do, use the GNU Lesser General Public License instead of this License. \n"
 
-
-
 namespace Ui {
 class e_mainwindow;
 }
@@ -191,82 +185,45 @@ protected:
     
 private slots:
     void on_cb_games_currentIndexChanged(int index);
-
     void on_line_main_wad_editingFinished();
-
     void on_pushButton_clicked();
-
     void on_button_find_wad_clicked();
-
     void on_list_pwads_itemChanged (QListWidgetItem *item);
-
     void on_list_pwads_itemClicked (QListWidgetItem *item);
-
     void on_button_pwad_add_clicked();
-
     void on_button_pwad_remove_clicked();
-
     void on_button_pwad_clear_clicked();
-
     void on_button_pwad_up_clicked();
-    
     void on_button_pwad_down_clicked();
-
     void on_cb_engines_currentIndexChanged(int index);
-
     void on_line_engine_path_editingFinished();
-
     void on_btn_select_engine_path_clicked();
-
  //   void on_cb_in_window_toggled(bool checked);
-
-    void on_cb_windowed_currentIndexChanged (int index);
-
-    void on_cb_no_sound_toggled(bool checked);
-
+ //   void on_cb_windowed_currentIndexChanged (int index);
+ //   void on_cb_no_sound_toggled(bool checked);
     void on_cb_show_output_toggled(bool checked);
-
     void on_btn_add_game_clicked();
-
     void on_line_advanced_settings_editingFinished();
-
     void on_btn_remove_game_clicked();
-
     void on_btn_add_engine_clicked();
-
     void on_btn_remove_engine_clicked();
-
     void on_cb_elock_currentIndexChanged(int index);
-
     void on_cb_tabs_top_toggled (bool checked);
-
     void on_action_About_triggered();
-
     void on_action_Run_triggered();
-   
     void on_actionE_xit_triggered();
-
     void on_action_Webpage_triggered();
-
     void on_cb_exit_toggled(bool checked);
-
     void on_btn_move_game_up_clicked();
-
     void on_btn_move_game_down_clicked();
-
     void on_check_elock_toggled(bool checked);
-
     void on_btn_edit_label_clicked();
 
 private:
     Ui::e_mainwindow *ui;
-
     void save_settings();
-
     void load_settings();
-
     void move_enabler();
-
     QStringList default_games= {"Doom", "Doom II: Hell on Earth", "Final Doom: TNT Evilution", "Final Doom: The Plutonia Experiment"};
     QStringList engine_names = {"Chocolate Doom", "prBoom", "GZDoom"};
     QStringList engine_paths = {"chocolate-doom", "prboom", "gzdoom"}; 

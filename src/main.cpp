@@ -21,6 +21,5 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     e_mainwindow w;
     w.show();
-    
     return a.exec();
 }
