@@ -1,5 +1,34 @@
 enyo-doom changelog
 
+2.0.0 ("Humans... is there anything more pathetic? A parasite on creation. The
+plague of the universe.")
+
+Okay, fine.  I'm a horrible liar and I will never stop updating this program.
+(Just kidding.  This should be the final update.)
+
+CHANGED:
+
+enyo-doom is now licensed under the GPL version 3.  I had some concerns about
+some of the things v3 protects so now it's been relicensed.  Deal with it.
+This is reason 1 this version is now 2.0.0.
+
+I did NOT like the numbers in the game list, so now it's an option selectable
+in Settings.  The enabled numbers also were changed to look a bit more appealing to my eyes.
+
+Huge code cleanup to fix some of the stupid hacks I used for some UI
+manipulation rather than using what is supposed to be used.  
+
+FIX:
+
+AGAIN an attempt at fixing the "game name edit" button to actually show a
+standard icon.  Seems like every time I "fix" it, it doesn't stay fixed and the icon
+disappears.  Maybe this will finally fix it?
+
+Not sure what to label this, but I noticed that the 1.0x versions of enyo-doom
+should have been 1.0.x instead.  Oops.  That probably caused some versioning
+issues.  Um... sorry.  This is reason 2 that this version is 2.0.0 to correct
+this.
+
 1.2 ("God rested on the seventh day. But imagine how much further along we
 would be if he hadn't?")
 

@@ -1,18 +1,20 @@
 /*
+ *  enyo-doom - a launcher for Doom games 
+ *  Copyright 2005-2020 Stephen D. Cofer
+ *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
+ *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.
  *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Library General Public License for more details.
+ *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
- */
+ *  along with this program; if not, see <https://www.gnu.org/licenses/>
+*/
 #include "e_mainwindow.h"
 #include "ui_e_mainwindow.h"
 #include <QFile>
@@ -37,7 +39,6 @@
 #else
 #include <stdlib.h>
 #endif
-
 
 // GLOBAL VALUES (globals are bad?  pfft!)
 
@@ -72,10 +73,10 @@ int last_engine_selected = 0;
 bool show_output = true;
 bool tabs_top = false;
 bool exit_after_run = false;
+bool show_game_numbers = true;
 
 QString last_path;
 
-bool stop_index_change_fire = true; // this is done to keep the combobox change from firing until we initialize them
 
 // About window
 class about_window : public QDialog
@@ -90,7 +91,6 @@ class about_window : public QDialog
 		
 about_window::about_window(QWidget *parent)
 {
-	//setModal(true);
 	setFocusPolicy(Qt::StrongFocus);
 	setFocus();
 
@@ -176,6 +176,7 @@ void e_mainwindow::load_settings ()
     show_output = enyo_settings.value ("showoutput", "true").toBool();
     tabs_top = enyo_settings.value ("tabsontop", "false").toBool();
     exit_after_run = enyo_settings.value ("exitafterrun", "false").toBool();
+    show_game_numbers = enyo_settings.value ("gamenumbers", "true").toBool();
     last_game_selected = enyo_settings.value("lastgame", "0").toInt();
     last_engine_selected = enyo_settings.value("lastengine", "0").toInt();
     last_path = enyo_settings.value("lastpath", QDir::homePath()).toString();
@@ -211,6 +212,7 @@ void e_mainwindow::save_settings ()
     enyo_settings.setValue("showoutput", show_output);
     enyo_settings.setValue("tabsontop", tabs_top);
     enyo_settings.setValue("exitafterrun", exit_after_run);
+    enyo_settings.setValue("gamenumbers", show_game_numbers);
     enyo_settings.setValue("lastgame", last_game_selected);
     enyo_settings.setValue("lastengine", last_engine_selected);
     enyo_settings.setValue ("lastpath", last_path);
@@ -230,12 +232,6 @@ e_mainwindow::e_mainwindow(QWidget *parent) :
     u_title.append (ENYO_VERSION);
     setWindowTitle(u_title);
     this->load_settings();
-    for (int i=0; i<game_pointer;i++)
-    {
-        ui->cb_games->addItem("[" + QString::number(i+1) + "] " + enyo_games[i].game_name, Qt::DisplayRole);
-    }
-    ui->cb_games->update();
-    ui->cb_games->setCurrentIndex (last_game_selected);
     ui->line_main_wad->setText (enyo_games[last_game_selected].game_wad);
     for (int i=0; i<enyo_games[last_game_selected].game_pwad.count(); i++)
     {
@@ -245,14 +241,12 @@ e_mainwindow::e_mainwindow(QWidget *parent) :
     ui->button_pwad_up->setEnabled (false);
     ui->button_pwad_down->setEnabled (false);
     ui->line_advanced_settings->setText (enyo_games[last_game_selected].game_advanced_settings);
-    //ui->cb_elock->addItem ("(none)", Qt::DisplayRole);
     for (int i=0; i<engine_pointer; i++)
     {
         ui->cb_engines->addItem(enyo_engines[i].engine_name, Qt::DisplayRole);
         ui->cb_elock->addItem(enyo_engines[i].engine_name, Qt::DisplayRole);
     }
     ui->cb_engines->update();
-    ui->cb_engines->setCurrentIndex(last_engine_selected);
     ui->cb_elock->update();
     ui->check_elock->setChecked (enyo_games[last_game_selected].engine_id != 0);
     if (enyo_games[last_game_selected].engine_id == 0)
@@ -264,10 +258,9 @@ e_mainwindow::e_mainwindow(QWidget *parent) :
 	    ui->cb_elock->setEnabled(true);	
 	    ui->cb_elock->setCurrentIndex(enyo_games[last_game_selected].engine_id - 1);
     }	   
-
+    repopulate_game_list();
+    ui->cb_engines->setCurrentIndex(last_engine_selected);
     ui->line_engine_path->setText (enyo_engines[last_engine_selected].engine_binary_path);
- //   ui->cb_windowed->setCurrentIndex (enyo_engines[last_engine_selected].fullscreen_mode);
-    //ui->cb_no_sound->setChecked(enyo_engines[last_engine_selected].no_sound);
     ui->cb_show_output->setChecked(show_output);	
     if (!show_output)
     {
@@ -284,9 +277,9 @@ e_mainwindow::e_mainwindow(QWidget *parent) :
     }
     ui->tabWidget->setCurrentIndex (0);
     ui->cb_exit->setChecked(exit_after_run);
+    ui->cb_show_numbers->setChecked(show_game_numbers);
     ui->text_output->setPlainText("Engine output will be shown here after running.");
     move_enabler();
-    stop_index_change_fire = false;
 }
 
 e_mainwindow::~e_mainwindow()
@@ -302,27 +295,23 @@ void e_mainwindow::move_enabler()
 
 // CALLBACKS
 
-void e_mainwindow::on_cb_games_currentIndexChanged(int index)
+void e_mainwindow::on_cb_games_activated(int index)
 {
-    if (stop_index_change_fire)
-        return;
-    stop_index_change_fire = true;
     last_game_selected = index;
     ui->line_main_wad->setText (enyo_games[last_game_selected].game_wad);
     ui->list_pwads->clear();
     for (int i=0; i<enyo_games[last_game_selected].game_pwad.count(); i++)
     {
-        ui->list_pwads->addItem(enyo_games[last_game_selected].game_pwad.at(i));
+	ui->list_pwads->addItem(enyo_games[last_game_selected].game_pwad.at(i));
     }
     ui->line_advanced_settings->setText (enyo_games[last_game_selected].game_advanced_settings);
     ui->check_elock->setChecked(enyo_games[last_game_selected].engine_id != 0);
     ui->cb_elock->setEnabled(enyo_games[last_game_selected].engine_id != 0);
     if (enyo_games[last_game_selected].engine_id > 0)
     {
-    	ui->cb_elock->setCurrentIndex(enyo_games[last_game_selected].engine_id - 1);
+	ui->cb_elock->setCurrentIndex(enyo_games[last_game_selected].engine_id - 1);
     }
     move_enabler();
-    stop_index_change_fire = false;
 }
 
 void e_mainwindow::on_line_main_wad_editingFinished()
@@ -369,20 +358,6 @@ void e_mainwindow::on_pushButton_clicked()
             eng_arguments << enyo_games[last_game_selected].game_pwad.at(i);
         }
     }
- /*   switch (enyo_engines[engine_index].fullscreen_mode){
-    	case 1:
-		eng_arguments << "-window";
-		break;
-	case 2:
-		eng_arguments << "-fullscreen";
-		break;
-	default: 
-		break;
-    }
-    if (enyo_engines[engine_index].no_sound)
-    {
-        eng_arguments << "-nosound";
-    }*/
     if (!enyo_games[last_game_selected].game_advanced_settings.isEmpty())
     {
         QStringList advanced_settings;
@@ -553,14 +528,10 @@ void e_mainwindow::on_button_pwad_down_clicked()
 	return;
 }
 
-void e_mainwindow::on_cb_engines_currentIndexChanged(int index)
+void e_mainwindow::on_cb_engines_activated(int index)
 {
-    if (stop_index_change_fire)
-        return;
     last_engine_selected = index;
     ui->line_engine_path->setText (enyo_engines[last_engine_selected].engine_binary_path);
- //  ui->cb_windowed->setCurrentIndex (enyo_engines[last_engine_selected].fullscreen_mode);
- //  ui->cb_no_sound->setChecked(enyo_engines[last_engine_selected].no_sound);
 }
 
 void e_mainwindow::on_line_engine_path_editingFinished()
@@ -582,53 +553,36 @@ void e_mainwindow::on_btn_select_engine_path_clicked()
     }
 }
 
-/*void e_mainwindow::on_cb_windowed_currentIndexChanged (int index)
-{
-	if (stop_index_change_fire) 
-		return;
-
-	enyo_engines[last_engine_selected].fullscreen_mode = index;
-}
-
-void e_mainwindow::on_cb_no_sound_toggled(bool checked)
-{
-    if (stop_index_change_fire)
-        return;
-    enyo_engines[last_engine_selected].no_sound = checked;
-}*/
-
 void e_mainwindow::on_cb_show_output_toggled(bool checked)
 {
-    if (stop_index_change_fire)
-    {
-        return;
-    }
-    show_output = checked;
-    if (show_output)
-    {
-    	ui->tabWidget->insertTab (2, ui->tab_3, "Output");
-    }
-    else
-    {
-        ui->tabWidget->removeTab (2);
-    }
+    	show_output = checked;
+    	if (show_output)
+    	{
+    		ui->tabWidget->insertTab (2, ui->tab_3, "Output");
+    	}
+    	else
+    	{
+        	ui->tabWidget->removeTab (2);
+    	}
 }
 
-void e_mainwindow::on_cb_tabs_top_toggled(bool checked)
+void e_mainwindow::on_cb_tabs_top_stateChanged(int state)
 {
-    if (stop_index_change_fire)
-    {
-        return;
-    }
-	tabs_top = checked;
-	if (checked) 
-    {
+	tabs_top = (state == Qt::Checked);
+	if (tabs_top) 
+    	{
 		ui->tabWidget->setTabPosition (QTabWidget::North);
-    }
+    	}
 	else
-    {
-        ui->tabWidget->setTabPosition (QTabWidget::West);
-    }
+    	{
+        	ui->tabWidget->setTabPosition (QTabWidget::West);
+    	}
+}
+
+void e_mainwindow::on_cb_show_numbers_clicked (bool checked)
+{
+	show_game_numbers = checked;
+	repopulate_game_list();
 }
 
 void e_mainwindow::on_btn_add_game_clicked()
@@ -674,10 +628,8 @@ void e_mainwindow::on_btn_add_game_clicked()
             enyo_games[game_pointer].game_wad = enyo_games[last_game_selected].game_wad;
         }
         last_game_selected = game_pointer;
-        list_new_game = "["+QString::number(last_game_selected+1)+"] " + new_game;
-        ui->cb_games->addItem (list_new_game);
-        ui->cb_games->setCurrentIndex(last_game_selected);
         game_pointer++;
+	repopulate_game_list();
         move_enabler();
     }
 }
@@ -709,21 +661,35 @@ void e_mainwindow::on_btn_remove_game_clicked()
 		enyo_games[i].game_name = enyo_games[i+1].game_name;
 	}
 	game_pointer--;
-	stop_index_change_fire = true;
-	ui->cb_games->clear();
-	for (int i=0; i<game_pointer;i++)
-	{
-		QString list_new_game;
-		list_new_game = "[" + QString::number(i+1) + "] " + enyo_games[i].game_name;
-		ui->cb_games->addItem(list_new_game, Qt::DisplayRole);
-	}
-	ui->cb_games->update();
 	last_game_selected = 0;
-	stop_index_change_fire = false;
+	repopulate_game_list();
 	ui->cb_games->setCurrentIndex (last_game_selected);
-	on_cb_games_currentIndexChanged (last_game_selected);
+	on_cb_games_activated (last_game_selected);
 	move_enabler();
 }
+
+void e_mainwindow::repopulate_game_list()
+{
+	ui->cb_games->clear();
+	for (int i=0; i < game_pointer; i++)
+	{
+		QString list_new_game;
+		if (show_game_numbers)
+		{
+			list_new_game = QString::number (i+1) + ": ";
+		}
+		else
+		{
+			list_new_game = "";
+		}
+		list_new_game += enyo_games[i].game_name;
+		ui->cb_games->addItem (list_new_game, Qt::DisplayRole);
+	}
+	ui->cb_games->update();
+	ui->cb_games->setCurrentIndex (last_game_selected);
+	on_cb_games_activated (last_game_selected);
+}
+
 
 void e_mainwindow::on_line_advanced_settings_editingFinished()
 {
@@ -792,7 +758,6 @@ void e_mainwindow::on_btn_remove_engine_clicked()
 		enyo_engines[i].no_sound = enyo_engines[i+1].no_sound;
 	}
 	engine_pointer--;
-	stop_index_change_fire = true;
 	ui->cb_engines->clear();
 	for (int i=0; i<engine_pointer;i++)
 	{
@@ -811,18 +776,13 @@ void e_mainwindow::on_btn_remove_engine_clicked()
     }
     ui->cb_elock->setCurrentIndex(enyo_games[last_game_selected].engine_id);
 	last_engine_selected = 0;
-	stop_index_change_fire = false;
 	ui->cb_engines->setCurrentIndex (last_engine_selected);
-	on_cb_engines_currentIndexChanged (last_engine_selected);
+	on_cb_engines_activated (last_engine_selected);
 }
 
-void e_mainwindow::on_cb_elock_currentIndexChanged(int index)
+void e_mainwindow::on_cb_elock_activated(int index)
 {
-    if (stop_index_change_fire)
-    {
-        return;
-    }
-    enyo_games[last_game_selected].engine_id = index+1;
+    	enyo_games[last_game_selected].engine_id = index+1;
 }
 
 void e_mainwindow::on_action_About_triggered()
@@ -850,10 +810,6 @@ void e_mainwindow::on_action_Webpage_triggered()
 
 void e_mainwindow::on_cb_exit_toggled(bool checked)
 {
-    if (stop_index_change_fire)
-    {
-        return;
-    }
 	exit_after_run = checked;
 }
 
@@ -863,15 +819,8 @@ void e_mainwindow::on_btn_move_game_up_clicked()
 	QString txttmp;
 	tmp = enyo_games[last_game_selected];
 	enyo_games[last_game_selected] = enyo_games[last_game_selected - 1];
-	enyo_games[last_game_selected - 1] = tmp;
-	txttmp = "[" + QString::number(last_game_selected + 1) + "] " + enyo_games[last_game_selected].game_name;
-	ui->cb_games->setItemText(last_game_selected, txttmp);
-	txttmp = "[" + QString::number(last_game_selected) + "] " + enyo_games[last_game_selected - 1].game_name;
-	ui->cb_games->setItemText(last_game_selected - 1, txttmp);
-	last_game_selected--;
-	ui->cb_games->update();
-	ui->cb_games->setCurrentIndex (last_game_selected);
-	on_cb_games_currentIndexChanged (last_game_selected);
+	enyo_games[--last_game_selected] = tmp;
+	repopulate_game_list();
 	move_enabler();
 }
 
@@ -882,24 +831,13 @@ void e_mainwindow::on_btn_move_game_down_clicked()
 	tmp = enyo_games[last_game_selected];
 	txttmp = ui->cb_games->itemText(last_game_selected);
 	enyo_games[last_game_selected] = enyo_games[last_game_selected + 1];
-	enyo_games[last_game_selected + 1] = tmp;
-	txttmp = "[" + QString::number(last_game_selected + 1) + "] " + enyo_games[last_game_selected].game_name;
-	ui->cb_games->setItemText(last_game_selected, txttmp);
-	txttmp = "[" + QString::number(last_game_selected + 2) + "] " + enyo_games[last_game_selected + 1].game_name;
-	ui->cb_games->setItemText(last_game_selected + 1, txttmp);
-	last_game_selected++;
-	ui->cb_games->update();
-	ui->cb_games->setCurrentIndex (last_game_selected);
-	on_cb_games_currentIndexChanged (last_game_selected);
+	enyo_games[++last_game_selected] = tmp;
+	repopulate_game_list();
 	move_enabler();
 }
 
-void e_mainwindow::on_check_elock_toggled (bool checked)
+void e_mainwindow::on_check_elock_clicked (bool checked)
 {
-    if (stop_index_change_fire)
-    {
-        return;
-    }
 	ui->cb_elock->setEnabled (checked);
 	if (checked)
 	{
@@ -923,12 +861,8 @@ void e_mainwindow::on_btn_edit_label_clicked()
 	game_change = QInputDialog::getText (this, "Enyo-Doom", "New game name:", QLineEdit::Normal, current_name, &dialog_ok);
 	if (dialog_ok && !game_change.isEmpty() && !(game_change == current_name))
 	{
-		QString list_game_change;
-		list_game_change ="[" + QString::number(last_game_selected+1) + "] " + game_change;
-		ui->cb_games->setItemText (last_game_selected, list_game_change);
 		enyo_games[last_game_selected].game_name = game_change;
-		ui->cb_games->update();
-		ui->cb_games->setCurrentIndex (last_game_selected);
+		repopulate_game_list();
 	}
 }
 

@@ -19,7 +19,7 @@ A recent version of Qt5 installed, including development packages (package endin
 
 Download the latest version using git -- instructions are shown on github.  I will not make binary releases of the GNU/Linux version -- ask your distribution's package maintainers if you want a package made for your distribution.
 
-Use any enyo-doom package at your own risk. I cannot claim any responsibility for any damage to your computer, your health, your pets, your plants, the environment, or to the fabric of reality. Enyo-Doom is released under the GPL version 2, which means you can do what you wish with it as long as you keep the source free. For the legally-binding description, please take a look at the GPL itself to see what you can and can't do.
+Use any enyo-doom package at your own risk. I cannot claim any responsibility for any damage to your computer, your health, your pets, your plants, the environment, or to the fabric of reality. Enyo-Doom is released under the GPL version 3, which means you can do what you wish with it as long as you keep the source free. For the legally-binding description, please take a look at the GPL itself to see what you can and can't do.
 
 **Compiling and installing**
 
