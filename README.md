@@ -60,7 +60,7 @@ The "Commandline options" input is an advanced option for each game type that al
 
 By default, enyo-doom gives you three engines to choose from on the General tab: Chocolate Doom, prBoom, and GZDoom. The executable is the default name for each engine's executable, and is assumed to be in your system's PATH. If the name is different, or is not in a default PATH, you may change it using the "file select" icon  beside the "Engine Executable" setting. Other engines may be added using the "add" icon, and removed using the "remove" icon.
 
-Each engine has an option to disable sound completely (for system compatibility purposes) and an option for fullscreen settings (Use Engine Default, Forced Windowed, and Force Fullscreen).  Some engines may ignore these settings.  NOTE: since there are several engines that ignore these settings, and most engines have the ability to configure them separately, these options may be removed in a future version of enyo-doom.  Please view the Issue on this Gitlab repository and comment if this may be a problem for you.
+Note that since modern engines manage fullscreen and sound settings on their own gracefully now, enyo-doom no longer has options to set these per-engine since these options didn't always work and were useless more often than not.  Please check the documentation for the Doom engine you are using to enable/disable fullscreen or sound.
 
 If you have a game type that requires the use of only one engine, the "Override default engine" option at the bottom of the Game tab allows you to use only the engine you select to run that game type. If the option is unchecked, the currently selected game in the Settings tab will be used.
 
