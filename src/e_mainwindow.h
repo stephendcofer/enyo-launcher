@@ -25,8 +25,8 @@
 #define MAX_PWADS 50
 #define MAX_GAMES 255
 #define MAX_ENGINES 50
-#define ENYO_VERSION "2.0.0"
-#define ENYO_TAGLINE "Humans... is there anything more pathetic? A parasite on creation. The plague of the universe."
+#define ENYO_VERSION "2.0.1"
+#define ENYO_TAGLINE "Hell is a deep, dark, foul-smelling prison of the damned."
 #define ENYO_COPYRIGHT "Copyright (C) 2009-2020 Stephen D. Cofer.  Released under the GPL version 3."
 #define ENYO_HOMEPAGE "https://gitlab.com/sdcofer70/enyo-doom"
 #define DEFAULT_WIDTH 800
@@ -57,7 +57,7 @@ protected:
 private slots:
     void on_cb_games_activated(int index);
     void on_line_main_wad_editingFinished();
-    void on_pushButton_clicked();
+    void on_run_engine_clicked();
     void on_button_find_wad_clicked();
     void on_list_pwads_itemChanged (QListWidgetItem *item);
     void on_list_pwads_itemClicked (QListWidgetItem *item);

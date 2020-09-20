@@ -1,5 +1,18 @@
 enyo-doom changelog
 
+2.0.1 ("Hell is a deep, dark, foul-smelling prison of the damned.")
+
+I'm a huge liar.
+
+FIX:
+
+Executables that have multiple parts, such as engines run from flatpak, are
+now runnable if you put the full flatpak name in the engine path.
+
+Game detects if you did not have an executable/path.
+
+Internal name for the Run button is no longer generic.
+
 2.0.0 ("Humans... is there anything more pathetic? A parasite on creation. The
 plague of the universe.")
 

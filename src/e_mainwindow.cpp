@@ -39,7 +39,6 @@
 #else
 #include <stdlib.h>
 #endif
-
 // GLOBAL VALUES (globals are bad?  pfft!)
 
 struct game_settings
@@ -319,7 +318,7 @@ void e_mainwindow::on_line_main_wad_editingFinished()
     enyo_games[last_game_selected].game_wad = ui->line_main_wad->text();
 }
 
-void e_mainwindow::on_pushButton_clicked()
+void e_mainwindow::on_run_engine_clicked()
 {
     int engine_index;
     if (enyo_games[last_game_selected].game_wad.isEmpty())
@@ -346,9 +345,35 @@ void e_mainwindow::on_pushButton_clicked()
     {
         engine_index = enyo_games[last_game_selected].engine_id - 1;
     }
-    QString doomengine = enyo_engines[engine_index].engine_binary_path; ;
+    QString doomengine;
+    QString full_doomengine = enyo_engines[engine_index].engine_binary_path; 
+    if (full_doomengine.isEmpty())
+    {
+	    QMessageBox mb;
+	    mb.setText ("The engine executable has not been set.");
+	    mb.exec();
+	    return;
+    }
     QStringList eng_arguments;
+    QStringList engine_parts;
     QProcess *doom_process = new QProcess (this);
+
+    // For executables with multiple parts, such as flatpak executable calls
+    
+    engine_parts = full_doomengine.split(" ", Qt::SkipEmptyParts);
+    if (engine_parts.size()>0)
+    {
+	doomengine = engine_parts.at(0).toLocal8Bit().constData();
+	for (int e_it = 1; e_it < engine_parts.size(); e_it++)
+	{
+		eng_arguments << engine_parts.at(e_it).toLocal8Bit().constData();
+	}
+    }
+    else
+    {
+	    doomengine = full_doomengine;
+    }
+
     eng_arguments << "-iwad" << enyo_games[last_game_selected].game_wad;
     if (enyo_games[last_game_selected].game_pwad.length() > 0)
     {
@@ -793,7 +818,7 @@ void e_mainwindow::on_action_About_triggered()
 
 void e_mainwindow::on_action_Run_triggered()
 {
-	on_pushButton_clicked();
+	on_run_engine_clicked();
 }
 
 void e_mainwindow::on_actionE_xit_triggered()
