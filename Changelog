@@ -7,7 +7,13 @@ I'm a huge liar.
 FIX:
 
 Executables that have multiple parts, such as engines run from flatpak, are
-now runnable if you put the full flatpak name in the engine path.
+now runnable if you put the full flatpak runnable name in the engine path,
+such as:
+
+flatpak run org.zdoom.GZDoom
+
+Before, it would not parse it correctly since it expected a single command as
+the full executable.
 
 Game detects if you did not have an executable/path.
 
