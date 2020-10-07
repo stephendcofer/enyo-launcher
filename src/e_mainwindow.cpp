@@ -360,7 +360,7 @@ void e_mainwindow::on_run_engine_clicked()
 
     // For executables with multiple parts, such as flatpak executable calls
     
-    engine_parts = full_doomengine.split(" ", Qt::SkipEmptyParts);
+    engine_parts = full_doomengine.split(" ");
     if (engine_parts.size()>0)
     {
 	doomengine = engine_parts.at(0).toLocal8Bit().constData();

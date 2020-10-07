@@ -2,6 +2,16 @@
 <qresource>
     <file>../share/enyo_icon.png</file>
     <file>../share/enyo.png</file>
+
+</qresource>
+<qresource prefix="/icon">
+    <file alias="add">../share/icon-add.png</file>
+    <file alias="clear">../share/icon-clear.png</file>
+    <file alias="down">../share/icon-down.png</file>
+    <file alias="edit">../share/icon-edit.png</file>
+    <file alias="open">../share/icon-open.png</file>
+    <file alias="remove">../share/icon-remove.png</file>
+    <file alias="up">../share/icon-up.png</file>
 </qresource>
 </RCC>
 

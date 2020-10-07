@@ -25,8 +25,8 @@
 #define MAX_PWADS 50
 #define MAX_GAMES 255
 #define MAX_ENGINES 50
-#define ENYO_VERSION "2.0.1"
-#define ENYO_TAGLINE "Hell is a deep, dark, foul-smelling prison of the damned."
+#define ENYO_VERSION "2.0.2"
+#define ENYO_TAGLINE "THE END"
 #define ENYO_COPYRIGHT "Copyright (C) 2009-2020 Stephen D. Cofer.  Released under the GPL version 3."
 #define ENYO_HOMEPAGE "https://gitlab.com/sdcofer70/enyo-doom"
 #define DEFAULT_WIDTH 800

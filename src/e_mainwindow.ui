@@ -67,9 +67,10 @@
           <property name="toolTip">
            <string>Add</string>
           </property>
-          <property name="icon">
-           <iconset theme="list-add">
-            <normaloff>.</normaloff>.</iconset>
+	  <property name="icon">
+		  <iconset resource="enyo-doom.qrc">
+			  <normaloff>:icon/add</normaloff>:/icon/add
+		  </iconset>
           </property>
          </widget>
         </item>
@@ -84,9 +85,10 @@
           <property name="toolTip">
            <string>Remove</string>
           </property>
-          <property name="icon">
-           <iconset theme="list-remove">
-            <normaloff>.</normaloff>.</iconset>
+	  <property name="icon">
+		  <iconset resource="enyo-doom.qrc">
+			  <normaloff>:/icon/remove</normaloff>:/icon/remove
+		  </iconset>
           </property>
          </widget>
         </item>
@@ -101,9 +103,10 @@
           <property name="toolTip">
            <string>Move up in list</string>
           </property>
-          <property name="icon">
-           <iconset theme="go-up">
-            <normaloff>.</normaloff>.</iconset>
+	  <property name="icon">
+		<iconset resource="enyo-doom.qrc">
+			<normaloff>:/icon/up</normaloff>:/icon/up
+		</iconset>
           </property>
          </widget>
         </item>
@@ -118,9 +121,10 @@
           <property name="toolTip">
            <string>Move down in list</string>
           </property>
-          <property name="icon">
-           <iconset theme="go-down">
-            <normaloff>.</normaloff>.</iconset>
+	  <property name="icon">
+		  <iconset resource="enyo-doom.qrc">
+			  <normaloff>:/icon/down</normaloff>:/icon/down
+		  </iconset>
           </property>
          </widget>
         </item>
@@ -136,9 +140,9 @@
            <string>Edit game name</string>
           </property>
           <property name="icon">
-		  <iconset theme="insert-text">
-			  <normaloff>.</normaloff>
-		  .</iconset>
+		  <iconset resource="enyo-doom.qrc">
+			  <normaloff>:/icon/edit</normaloff>:/icon/edit
+		  </iconset>
           </property>
          </widget>
         </item>
@@ -162,8 +166,9 @@
            <string>Open...</string>
           </property>
           <property name="icon">
-           <iconset theme="document-open">
-            <normaloff>.</normaloff>.</iconset>
+		  <iconset resource="enyo-doom.qrc">
+			<normaloff>:/icon/open</normaloff>:/icon/open
+		</iconset>
           </property>
          </widget>
         </item>
@@ -197,8 +202,9 @@
                <string>Add</string>
               </property>
               <property name="icon">
-               <iconset theme="list-add">
-                <normaloff>.</normaloff>.</iconset>
+               <iconset resource="enyo-doom.qrc">
+               	     <normaloff>:/icon/add</normaloff>:/icons/add
+	       </iconset>
               </property>
              </widget>
             </item>
@@ -208,8 +214,9 @@
                <string>Remove</string>
               </property>
               <property name="icon">
-               <iconset theme="list-remove">
-                <normaloff>.</normaloff>.</iconset>
+               <iconset resource="enyo-doom.qrc">
+	       		<normaloff>:/icon/remove</normaloff>:/icons/remove
+	       </iconset>
               </property>
              </widget>
             </item>
@@ -219,8 +226,9 @@
                <string>Clear</string>
               </property>
               <property name="icon">
-               <iconset theme="edit-clear">
-                <normaloff>.</normaloff>.</iconset>
+               <iconset resource="enyo-doom.qrc">
+		       <normaloff>:/icon/clear</normaloff>:/icons/clear
+	       </iconset>
               </property>
              </widget>
             </item>
@@ -230,8 +238,9 @@
                <string>Move up</string>
               </property>
               <property name="icon">
-               <iconset theme="go-up">
-                <normaloff>.</normaloff>.</iconset>
+               <iconset resource="enyo-doom.qrc">
+		       <normaloff>:/icon/up</normaloff>:/icons/up
+	       </iconset>
               </property>
              </widget>
             </item>
@@ -241,8 +250,9 @@
                <string>Move down</string>
               </property>
               <property name="icon">
-               <iconset theme="go-down">
-                <normaloff>.</normaloff>.</iconset>
+               <iconset resource="enyo-doom.qrc">
+		       <normaloff>:/icon/down</normaloff>:/icons/down
+	       </iconset>
               </property>
              </widget>
             </item>
@@ -372,8 +382,9 @@
              <string>Add</string>
             </property>
             <property name="icon">
-             <iconset theme="list-add">
-              <normaloff>.</normaloff>.</iconset>
+		    <iconset resource="enyo-doom.qrc">
+			    <normaloff>:/icon/add</normaloff>:/icon/add
+		    </iconset>
             </property>
            </widget>
           </item>
@@ -396,8 +407,9 @@
              <string>Open...</string>
             </property>
             <property name="icon">
-             <iconset theme="document-open">
-              <normaloff>.</normaloff>.</iconset>
+             <iconset resource="enyo-doom.qrc">
+		     <normaloff>:/icon/open</normaloff>:/icon/open
+	     </iconset>
             </property>
            </widget>
           </item>
@@ -413,8 +425,9 @@
              <string>Remove</string>
             </property>
             <property name="icon">
-             <iconset theme="list-remove">
-              <normaloff>.</normaloff>.</iconset>
+             <iconset resource="enyo-doom.qrc">
+		     <normaloff>:/icon/remove</normaloff>:/icon/remove
+	     </iconset>
             </property>
            </widget>
           </item>
