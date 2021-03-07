@@ -56,8 +56,6 @@ struct game_engines
 {
     QString engine_name;
     QString engine_binary_path;
-    int fullscreen_mode;
-    bool no_sound;
 };
 
 game_engines enyo_engines [MAX_ENGINES];
@@ -102,7 +100,7 @@ about_window::about_window(QWidget *parent)
 	ab_text = new QPlainTextEdit;
 	ab_text->clear();
 	ab_text->setReadOnly (true);
-	QString about_text = "Enyo-Doom version ";
+	QString about_text = "Enyo Launcher for Doom (enyo-doom)\nVersion ";
 	about_text.append(ENYO_VERSION);
 	about_text.append (" (\"");
 	about_text.append(ENYO_TAGLINE);
@@ -154,8 +152,6 @@ void e_mainwindow::load_settings ()
         {
             enyo_engines[i].engine_name = engine_names.at(i);
             enyo_engines[i].engine_binary_path = engine_paths.at(i);
-            enyo_engines[i].fullscreen_mode = 0;
-            enyo_engines[i].no_sound = false;
         }
         engine_pointer = 3;
     }
@@ -166,8 +162,6 @@ void e_mainwindow::load_settings ()
             enyo_settings.setArrayIndex(j);
             enyo_engines[engine_pointer].engine_name = enyo_settings.value ("name").toString();
             enyo_engines[engine_pointer].engine_binary_path = enyo_settings.value ("binarypath", "").toString();
-            enyo_engines[engine_pointer].fullscreen_mode = enyo_settings.value ("fullscreen", "0").toInt();
-            enyo_engines[engine_pointer].no_sound = enyo_settings.value ("nosound", "false").toBool();
             engine_pointer++;
         }
     }
@@ -204,8 +198,6 @@ void e_mainwindow::save_settings ()
         enyo_settings.setArrayIndex(i);
         enyo_settings.setValue("name", enyo_engines[i].engine_name);
         enyo_settings.setValue("binarypath", enyo_engines[i].engine_binary_path);
-        enyo_settings.setValue("fullscreen", enyo_engines[i].fullscreen_mode);
-        enyo_settings.setValue("nosound", enyo_engines[i].no_sound);
     }
     enyo_settings.endArray();
     enyo_settings.setValue("showoutput", show_output);
@@ -227,7 +219,7 @@ e_mainwindow::e_mainwindow(QWidget *parent) :
     QString u_title;
     ui->setupUi(this);
     setWindowIcon(QPixmap(":/share/enyo_icon.png"));
-    u_title = "enyo-doom ";
+    u_title = "Enyo Launcher for Doom ";
     u_title.append (ENYO_VERSION);
     setWindowTitle(u_title);
     this->load_settings();
@@ -622,7 +614,7 @@ void e_mainwindow::on_btn_add_game_clicked()
     bool dialog_ok;
     QString new_game;
     QString list_new_game;
-    new_game = QInputDialog::getText (this, "Enyo-Doom", "New game name:", QLineEdit::Normal, "", &dialog_ok);
+    new_game = QInputDialog::getText (this, "Enyo Launcher", "New game name:", QLineEdit::Normal, "", &dialog_ok);
     if (dialog_ok && !new_game.isEmpty())
     {
         for (int i=0; i<game_pointer; i++)
@@ -732,7 +724,7 @@ void e_mainwindow::on_btn_add_engine_clicked()
     }
     bool dialog_ok;
     QString new_engine;
-    new_engine = QInputDialog::getText (this, "Enyo-Doom", "New engine name:", QLineEdit::Normal, "", &dialog_ok);
+    new_engine = QInputDialog::getText (this, "Enyo Launcher", "New engine name:", QLineEdit::Normal, "", &dialog_ok);
     if (dialog_ok && !new_engine.isEmpty())
     {
         for (int i=0; i<engine_pointer; i++)
@@ -747,8 +739,6 @@ void e_mainwindow::on_btn_add_engine_clicked()
         }
         enyo_engines[engine_pointer].engine_name = new_engine;
         enyo_engines[engine_pointer].engine_binary_path = "";
-        enyo_engines[engine_pointer].fullscreen_mode = 0;
-        enyo_engines[engine_pointer].no_sound = false;
         last_engine_selected = engine_pointer;
         ui->cb_engines->addItem (new_engine);
         ui->cb_elock->addItem(new_engine);
@@ -779,8 +769,6 @@ void e_mainwindow::on_btn_remove_engine_clicked()
 	{
 		enyo_engines[i].engine_name = enyo_engines[i+1].engine_name;
 		enyo_engines[i].engine_binary_path = enyo_engines[i+1].engine_binary_path;
-		enyo_engines[i].fullscreen_mode = enyo_engines[i+1].fullscreen_mode;
-		enyo_engines[i].no_sound = enyo_engines[i+1].no_sound;
 	}
 	engine_pointer--;
 	ui->cb_engines->clear();
@@ -883,7 +871,7 @@ void e_mainwindow::on_btn_edit_label_clicked()
 	QString current_name;
 	bool dialog_ok;
 	current_name = enyo_games[last_game_selected].game_name;
-	game_change = QInputDialog::getText (this, "Enyo-Doom", "New game name:", QLineEdit::Normal, current_name, &dialog_ok);
+	game_change = QInputDialog::getText (this, "Enyo Launcher", "New game name:", QLineEdit::Normal, current_name, &dialog_ok);
 	if (dialog_ok && !game_change.isEmpty() && !(game_change == current_name))
 	{
 		enyo_games[last_game_selected].game_name = game_change;

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Enyo-Doom</string>
+   <string>Enyo Launcher</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -283,7 +283,7 @@
         <item row="4" column="1" colspan="6">
          <widget class="QLineEdit" name="line_advanced_settings">
           <property name="toolTip">
-           <string>Extra commandline options.  Unless you want a feature not supported in Enyo-Doom, you don't need to use this.</string>
+           <string>Extra commandline options.  Unless you want a feature not supported in Enyo Launcher, you don't need to use this.</string>
           </property>
          </widget>
         </item>
@@ -358,7 +358,7 @@
             </property>
             <property name="text">
              <string>
-													&lt;b&gt;Enyo-Doom Settings:&lt;/b&gt;
+													&lt;b&gt;Enyo Launcher Settings:&lt;/b&gt;
 												</string>
             </property>
            </widget>
@@ -453,7 +453,7 @@
              <string>Add an additional tab that shows the output of an engine after running a profile.</string>
             </property>
             <property name="text">
-             <string>Enable &amp;Output tab</string>
+             <string>Enable &amp;output tab</string>
             </property>
            </widget>
           </item>
@@ -474,7 +474,7 @@
           <item row="7" column="0" colspan="2">
            <widget class="QCheckBox" name="cb_exit">
             <property name="text">
-             <string>E&amp;xit enyo-doom after game runs</string>
+             <string>E&amp;xit Enyo Launcher after game runs</string>
             </property>
            </widget>
           </item>

@@ -1,13 +1,13 @@
-enyo-doom
+Enyo Launcher (enyo-doom)
 =========
 
 Frontend for Doom engines
 
 ![](https://i.imgur.com/2Y6Gaef.png)
 
-Enyo-Doom is a GUI launcher for Doom engines. It is a relaunch of the gDoomsday project under a different name with more functionality. The source release is usable in any modern GNU/Linux distribution with Qt). The original release used GTK+, but was rewritten to use Qt for ease of maintenance and cross-platform compatibility.
+Enyo Launcher is a GUI launcher for Doom engines. It is a relaunch of the gDoomsday project under a different name with more functionality. The source release is usable in any modern GNU/Linux distribution with Qt). The original release used GTK+, but was rewritten to use Qt for ease of maintenance and cross-platform compatibility.
 
-[Development on this project has ended; please read this for details.](https://gitlab.com/sdcofer70/enyo-doom/-/wikis/History-and-future)
+Major development on this project has ended; I will still update and support any bugs, as well as small changes whenever I feel they are necessary.  I have provided details on the history and my decision to end major development of Enyo Launcher [here](https://gitlab.com/sdcofer70/enyo-doom/-/wikis/History-and-future).
 
 **Requirements**
 
@@ -17,13 +17,13 @@ A recent version of Qt5 installed, including development packages (package endin
 
 **Download**
 
-Download the latest version using git -- instructions are shown on github.  I will not make binary releases of the GNU/Linux version -- ask your distribution's package maintainers if you want a package made for your distribution.
+Download the latest version using git -- instructions are shown on github.  
 
-Use any enyo-doom package at your own risk. I cannot claim any responsibility for any damage to your computer, your health, your pets, your plants, the environment, or to the fabric of reality. Enyo-Doom is released under the GPL version 3, which means you can do what you wish with it as long as you keep the source free. For the legally-binding description, please take a look at the GPL itself to see what you can and can't do.
+Use this program at your own risk. I cannot claim any responsibility for any damage to your computer, your health, your pets, your plants, the environment, or to the fabric of reality. Enyo Launcher (enyo-doom) is released under the GPL version 3, which means you can do what you wish with it as long as you keep the source free. For the legally-binding description, please take a look at the GPL itself to see what you can and can't do.
 
 **Compiling and installing**
 
-It is recommended that you create an empty build directory under the source directory to compile enyo-doom. You then call cmake from this directory, like this (from the enyo-doom source directory):
+It is recommended that you create an empty build directory under the source directory to compile Enyo Launcher. You then call cmake from this directory, like this (from the enyo-doom source directory):
 
      mkdir build
      cd build
@@ -31,17 +31,17 @@ It is recommended that you create an empty build directory under the source dire
 
 Any errors at this point are likely caused by missing Qt libraries and/or headers.
 
-A note about Qt5/Qt4: enyo-doom now uses Qt5 exclusively since nearly all distributions have it as the default Qt version.  You will need to have the qt5 development headers installed.  On Ubuntu and possibly other Debian-based distros, you may need to install the package qt5-default from the repositories to select and use the qt5 build environment vs. qt4.  For other distributions, check the documentation regarding building programs using qt5 vs qt4.
+You will need to have the qt5 development headers installed.  On Ubuntu and possibly other Debian-based distros, you may need to install the package qt5-default from the repositories to select and use the qt5 build environment.  Enyo Launcher no longer supports Qt version 4.
 
-By default, enyo-doom will be installed in /usr/local/bin and its data files in /usr/localshare/enyo-doom. To change this, pass the option -DCMAKE_INSTALL_PREFIX=/usr (or whichever path you prefer) to your cmake command.
+By default, Enyo Launcher will be installed in /usr/local/bin and its data files in /usr/local/share/enyo-doom. To change this, pass the option -DCMAKE_INSTALL_PREFIX=/usr (or whichever path you prefer) to your cmake command.
 
-Then simply type make to begin compiling enyo-doom.
+Then simply type make to begin compiling Enyo Launcher.
 
-When the build is finished, type make install as root to install enyo-doom. If you are using Ubuntu or a derivative, you will need to use sudo make install; most other systems you will need to do something like su -c 'make install'. The install should create a shortcut in the default menu structure for most desktops under Games; you can manually create a shortcut or run it from the commandline using the command enyo-doom.
+When the build is finished, type make install as root to install. If you are using Ubuntu or a derivative, you will need to use sudo make install; most other systems you will need to do something like su -c 'make install'. The install should create a shortcut in the default menu structure for most desktops under Games; you can manually create a shortcut or run it from the commandline using the "enyo-doom" command.
 
 **Configuration and Running Games**
 
-You will need to point enyo-doom to a game WAD (the data file that contain Doom level, sound, graphic, music, etc data). Change the dropdown under the logo to the type of Doom WAD you have and use the "select file" icon after the "Game Data file" entry to locate the proper WAD for that game type. The default game types and the WAD files they use are:
+You will need to point Enyo Launcher to a game WAD (the data file that contain Doom level, sound, graphic, music, etc data). Change the dropdown under the logo to the type of Doom WAD you have and use the "select file" icon after the "Game Data file" entry to locate the proper WAD for that game type. The default game types and the WAD files they use are:
 
 Doom: doom.wad (or doom1.wad for the Shareware version) 
 
@@ -52,19 +52,19 @@ TNT Evilution: tnt.wad
 The Plutonia Experiment: plutonia.wad 
 
 
-You may add new game profiles using the "add" icon next to the game type drop-down menu. It will ask you the name of your new game profile (which can be anything you want) and if you want to copy the current game profile to the new one, which is useful if you want to create a game profile from an existing one and addons (see below). If your game engine supports Heretic and/or Hexen or other Doom game derivatives, you may add them in this way. Removing an unused or unwanted game can be done with the "remove" icon which will ask for confirmation.  You can move a game profile up and down with the "move up/down" icons, and rename it with the "text" icon.
+You may add new game profiles using the "add" icon next to the game type drop-down menu. It will ask you the name of your new game profile (which can be anything you want) and if you want to copy the current game profile to the new one, which is useful if you want to create a game profile from an existing one and addons (see below). If your game engine supports Heretic and/or Hexen or other Doom game derivatives, you may add them in this way. Removing an unused or unwanted game can be done with the "remove" icon which will ask for confirmation.  You can use the icons to the right to move the game up and down the list and rename the currently selected game.
 
-Extra patch WADs (pwads) or any other compatible file type (for example, pk3 files for ZDoom and others) that add levels, sounds, music, etc., can be enabled by enyo-doom by using the "add" icons beside the Add-ons box in the Launcher tab and removed by highlighting (clicking) the added file and clicking the "remove" icon. To return to having no extra WADs load, click the "clear" icon. In some cases, the order the PWADs are given to the engine is important for their correct functionality; you can move them up and down the list with the "move up/down" icons.  Each WAD set is specific to the game type you choose. Note that Doom 1's patch WADs will not work with Doom Shareware (doom1.wad).
+Extra patch WADs (pwads) or any other compatible file type (for example, pk3 files for ZDoom and others) that add levels, sounds, music, etc., can be enabled by Enyo Launcher by using the "add" icons beside the Add-ons box in the Launcher tab and removed by highlighting (clicking) the added file and clicking the "remove" icon. To return to having no extra WADs load, click the "clear" icon. In some cases, the order the PWADs are given to the engine is important for their correct functionality; you can move them up and down the list with the "move up/down" icons.  Each WAD set is specific to the game type you choose. Note that Doom 1's patch WADs will not work with Doom Shareware (doom1.wad).
 
-The "Commandline options" input is an advanced option for each game type that allows you to specify custom commandline options to the game. This may use standard Doom options that enyo-doom does not provide, or engine-specific options. If you do not know what this does, it is best to leave it blank.
+The "Commandline options" input is an advanced option for each game type that allows you to specify custom commandline options to the game. This may use standard Doom options that Enyo Launcher does not provide, or engine-specific options. If you do not know what this does, it is best to leave it blank.
 
-By default, enyo-doom gives you three engines to choose from on the General tab: Chocolate Doom, prBoom, and GZDoom. The executable is the default name for each engine's executable, and is assumed to be in your system's PATH. If the name is different, or is not in a default PATH, you may change it using the "file select" icon  beside the "Engine Executable" setting. Other engines may be added using the "add" icon, and removed using the "remove" icon.
+By default, Enyo Launcher is configured with three engines to choose from on the General tab: Chocolate Doom, prBoom, and GZDoom. The executable is the default name for each engine's executable, and is assumed to be in your system's PATH. If the name is different, or is not in a default PATH, you may change it using the "file select" icon  beside the "Engine Executable" setting. Other engines may be added using the "add" icon, and removed using the "remove" icon.
 
-Note that since modern engines manage fullscreen and sound settings on their own gracefully now, enyo-doom no longer has options to set these per-engine since these options didn't always work and were useless more often than not.  Please check the documentation for the Doom engine you are using to enable/disable fullscreen or sound.
+Note that since modern engines manage fullscreen and sound settings on their own gracefully now, Enyo Launcher no longer has options to set these per-engine since these options didn't always work and were useless more often than not.  Please check the documentation for the Doom engine you are using to enable/disable fullscreen or sound.
 
 If you have a game type that requires the use of only one engine, the "Override default engine" option at the bottom of the Game tab allows you to use only the engine you select to run that game type. If the option is unchecked, the currently selected game in the Settings tab will be used.
 
-To run a Doom engine game, select which configured game you want in the Select game profile drop-down, then click the Run button. If you have any problems running, make sure the output window is enabled (under Global Options) and view the output of the engine; it may provide a clue about what is not configured correctly. For Chocolate Doom, it is recommended that you run the chocolate-setup before you use enyo-doom to run it, since the majority of that engine's configuration is done there. To eliminate the information screen that pops up after you exit Chocolate Doom, untick Show ENDOOM screen in Display Configuration in chocolate-setup. In some engines there is no way to disable this option, and a jumble of control characters and text will show up at the end of the output. You can just safely ignore this.  
+To run a Doom engine game, select which configured game you want in the Select game profile drop-down, then click the Run button. If you have any problems running, make sure the output window is enabled (under Global Options) and view the output of the engine; it may provide a clue about what is not configured correctly. For Chocolate Doom, it is recommended that you run the chocolate-setup before you use Enyo Launcher to run it, since the majority of that engine's configuration is done there. To eliminate the information screen that pops up after you exit Chocolate Doom, untick Show ENDOOM screen in Display Configuration in chocolate-setup. In some engines there is no way to disable this option, and a jumble of control characters and text will show up at the end of the output. You can just safely ignore this.  
 
 **Enyo?**
 

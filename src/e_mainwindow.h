@@ -22,13 +22,13 @@
 #include <QStringList>
 #include <QListWidgetItem>
 
-#define MAX_PWADS 50
-#define MAX_GAMES 255
-#define MAX_ENGINES 50
-#define ENYO_VERSION "2.0.2"
-#define ENYO_TAGLINE "THE END"
-#define ENYO_COPYRIGHT "Copyright (C) 2009-2020 Stephen D. Cofer.  Released under the GPL version 3."
-#define ENYO_HOMEPAGE "https://gitlab.com/sdcofer70/enyo-doom"
+#define MAX_PWADS 4096
+#define MAX_GAMES 4096
+#define MAX_ENGINES 100
+#define ENYO_VERSION "2.0.3"
+#define ENYO_TAGLINE "NIGHTMARE!"
+#define ENYO_COPYRIGHT "Copyright (C) 2009-2021 Stephen D. Cofer.  Released under the GPL version 3."
+#define ENYO_HOMEPAGE "https://github.com/stephendcofer/enyo-doom"
 #define DEFAULT_WIDTH 800
 #define DEFAULT_HEIGHT 400
 #ifndef WIN32
@@ -69,9 +69,6 @@ private slots:
     void on_cb_engines_activated(int index);
     void on_line_engine_path_editingFinished();
     void on_btn_select_engine_path_clicked();
- //   void on_cb_in_window_toggled(bool checked);
- //   void on_cb_windowed_currentIndexChanged (int index);
- //   void on_cb_no_sound_toggled(bool checked);
     void on_cb_show_output_toggled(bool checked);
     void on_btn_add_game_clicked();
     void on_line_advanced_settings_editingFinished();
