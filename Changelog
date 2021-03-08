@@ -1,4 +1,19 @@
-enyo-doom changelog
+Enyo Launcher Changelog
+
+2.0.4 ("The Stagnant Demesne")
+
+I have changed all other identifiers to the new name "Enyo Launcher".  The new binary name will be "enyo-launcher"; it may be necessary to uninstall completely the previous enyo-doom version to clear out all remnants of it.
+
+Enyo Launcher should migrate enyo-doom settings to the new configuration file; if it does not, I apologize and you will either need to find and manually copy enyo-doom.conf to enyo-launcher.conf in its new directory or simply reconfigure everything.
+
+2.0.3 ("NIGHTMARE!")
+
+An incidental release that simply cleans up unused code and old features left behind in the current client.
+
+Also, I have changed the primary name of "enyo-doom" to "Enyo Launcher". Its binary and this repository will still be "enyo-doom" but I prefer to call the actual program "Enyo Launcher".
+
+There is zero reason to update to this latest version if you don't care about any of this (and you shouldn't) -- nothing in this release fixes any bugs or adds or removes any features compared to the last version. Just think of it as a vanity release.
+
 
 2.0.2 ("THE END")
 

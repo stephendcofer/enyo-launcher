@@ -6,7 +6,7 @@
 
 QT       += core gui widgets
 
-TARGET = enyo-doom
+TARGET = enyo-launcher
 TEMPLATE = app
 
 
@@ -18,7 +18,7 @@ HEADERS  += e_mainwindow.h
 FORMS    += e_mainwindow.ui
 
 RESOURCES += \
-    enyo-doom.qrc
+    enyo-launcher.qrc
 
 win32:RC_FILE = ../share/winicon.rc
 

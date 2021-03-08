@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Name=Enyo Launcher
 Comment=A front-end for Doom engines
-Exec=enyo-doom
+Exec=enyo-launcher
 Terminal=false
 Type=Application
 Categories=Application;Game;

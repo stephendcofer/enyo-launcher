@@ -1,6 +1,6 @@
 /*
- *  enyo-doom - a launcher for Doom games 
- *  Copyright 2005-2020 Stephen D. Cofer
+ *  Enyo Launcher - a launcher for Doom games 
+ *  Copyright 2005-2021 Stephen D. Cofer
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

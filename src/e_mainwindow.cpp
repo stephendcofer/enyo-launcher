@@ -1,6 +1,6 @@
 /*
- *  enyo-doom - a launcher for Doom games 
- *  Copyright 2005-2020 Stephen D. Cofer
+ *  Enyo Launcher - a launcher for Doom games 
+ *  Copyright 2005-2021 Stephen D. Cofer
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -123,12 +123,72 @@ about_window::about_window(QWidget *parent)
 
 void e_mainwindow::load_settings ()
 {
-    QSettings enyo_settings (QSettings::NativeFormat, QSettings::UserScope, "enyo-doom", "enyo-doom");
+    QSettings enyo_settings (QSettings::NativeFormat, QSettings::UserScope, "enyo-launcher", "enyo-launcher");
+    if (enyo_settings.allKeys().size() == 0)
+    {
+        load_legacy_settings();
+        return;
+    }
     int g_size = enyo_settings.beginReadArray("Games");
-
     if (g_size == 0)
     {
-	for (int i=0; i<4; i++) enyo_games[i].game_name = default_games.at(i);
+	    for (int i=0; i<4; i++) enyo_games[i].game_name = default_games.at(i);
+        game_pointer = 4;
+    }
+    else
+    {
+        for (int j=0; j<g_size; j++)
+        {
+            enyo_settings.setArrayIndex(j);
+            enyo_games[game_pointer].game_name = enyo_settings.value ("name").toString();
+            enyo_games[game_pointer].game_wad = enyo_settings.value ("iwad", "").toString();
+            enyo_games[game_pointer].game_pwad = enyo_settings.value ("pwads", "").toStringList();
+            enyo_games[game_pointer].engine_id = enyo_settings.value ("engine", 0).toInt();
+            enyo_games[game_pointer].game_advanced_settings = enyo_settings.value ("advanced", "").toString();
+            game_pointer++;
+        }
+    }
+    enyo_settings.endArray();
+    int e_size = enyo_settings.beginReadArray ("Engines");
+    if (e_size == 0)
+    {
+    for (int i=0; i<3; i++)
+        {
+            enyo_engines[i].engine_name = engine_names.at(i);
+            enyo_engines[i].engine_binary_path = engine_paths.at(i);
+        }
+        engine_pointer = 3;
+    }
+    else
+    {
+        for (int j=0; j< e_size ; j++)
+        {
+            enyo_settings.setArrayIndex(j);
+            enyo_engines[engine_pointer].engine_name = enyo_settings.value ("name").toString();
+            enyo_engines[engine_pointer].engine_binary_path = enyo_settings.value ("binarypath", "").toString();
+            engine_pointer++;
+        }
+    }
+    enyo_settings.endArray();
+    show_output = enyo_settings.value ("showoutput", "true").toBool();
+    tabs_top = enyo_settings.value ("tabsontop", "false").toBool();
+    exit_after_run = enyo_settings.value ("exitafterrun", "false").toBool();
+    show_game_numbers = enyo_settings.value ("gamenumbers", "true").toBool();
+    last_game_selected = enyo_settings.value("lastgame", "0").toInt();
+    last_engine_selected = enyo_settings.value("lastengine", "0").toInt();
+    last_path = enyo_settings.value("lastpath", QDir::homePath()).toString();
+    restoreGeometry(enyo_settings.value("geometry").toByteArray());
+    restoreState(enyo_settings.value("windowState").toByteArray());
+
+}
+void e_mainwindow::load_legacy_settings ()
+{
+    QSettings enyo_settings (QSettings::NativeFormat, QSettings::UserScope, "enyo-doom", "enyo-doom");
+
+    int g_size = enyo_settings.beginReadArray("Games");
+    if (g_size == 0)
+    {
+	    for (int i=0; i<4; i++) enyo_games[i].game_name = default_games.at(i);
         game_pointer = 4;
     }
     else
@@ -178,9 +238,10 @@ void e_mainwindow::load_settings ()
 
 }
 
+
 void e_mainwindow::save_settings ()
 {
-    QSettings enyo_settings (QSettings::NativeFormat, QSettings::UserScope, "enyo-doom", "enyo-doom");
+    QSettings enyo_settings (QSettings::NativeFormat, QSettings::UserScope, "enyo-launcher", "enyo-launcher");
     enyo_settings.beginWriteArray ("Games");
     for (int i=0; i<game_pointer; i++)
     {

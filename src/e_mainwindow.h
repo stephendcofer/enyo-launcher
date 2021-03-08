@@ -1,6 +1,6 @@
 /*
- *  enyo-doom - a launcher for Doom games 
- *  Copyright 2005-2020 Stephen D. Cofer
+ *  Enyo Launcher - a launcher for Doom games 
+ *  Copyright 2005-2021 Stephen D. Cofer
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -25,8 +25,8 @@
 #define MAX_PWADS 4096
 #define MAX_GAMES 4096
 #define MAX_ENGINES 100
-#define ENYO_VERSION "2.0.3"
-#define ENYO_TAGLINE "NIGHTMARE!"
+#define ENYO_VERSION "2.0.4"
+#define ENYO_TAGLINE "The Stagnant Demesne"
 #define ENYO_COPYRIGHT "Copyright (C) 2009-2021 Stephen D. Cofer.  Released under the GPL version 3."
 #define ENYO_HOMEPAGE "https://github.com/stephendcofer/enyo-doom"
 #define DEFAULT_WIDTH 800
@@ -93,6 +93,7 @@ private:
     Ui::e_mainwindow *ui;
     void save_settings();
     void load_settings();
+    void load_legacy_settings();
     void move_enabler();
     QStringList default_games= {"Doom", "Doom II: Hell on Earth", "Final Doom: TNT Evilution", "Final Doom: The Plutonia Experiment"};
     QStringList engine_names = {"Chocolate Doom", "prBoom", "GZDoom"};

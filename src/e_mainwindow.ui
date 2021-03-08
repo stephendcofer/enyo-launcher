@@ -68,7 +68,7 @@
            <string>Add</string>
           </property>
 	  <property name="icon">
-		  <iconset resource="enyo-doom.qrc">
+		  <iconset resource="enyo-launcher.qrc">
 			  <normaloff>:icon/add</normaloff>:/icon/add
 		  </iconset>
           </property>
@@ -86,7 +86,7 @@
            <string>Remove</string>
           </property>
 	  <property name="icon">
-		  <iconset resource="enyo-doom.qrc">
+		  <iconset resource="enyo-launcher.qrc">
 			  <normaloff>:/icon/remove</normaloff>:/icon/remove
 		  </iconset>
           </property>
@@ -104,7 +104,7 @@
            <string>Move up in list</string>
           </property>
 	  <property name="icon">
-		<iconset resource="enyo-doom.qrc">
+		<iconset resource="enyo-launcher.qrc">
 			<normaloff>:/icon/up</normaloff>:/icon/up
 		</iconset>
           </property>
@@ -122,7 +122,7 @@
            <string>Move down in list</string>
           </property>
 	  <property name="icon">
-		  <iconset resource="enyo-doom.qrc">
+		  <iconset resource="enyo-launcher.qrc">
 			  <normaloff>:/icon/down</normaloff>:/icon/down
 		  </iconset>
           </property>
@@ -140,7 +140,7 @@
            <string>Edit game name</string>
           </property>
           <property name="icon">
-		  <iconset resource="enyo-doom.qrc">
+		  <iconset resource="enyo-launcher.qrc">
 			  <normaloff>:/icon/edit</normaloff>:/icon/edit
 		  </iconset>
           </property>
@@ -166,7 +166,7 @@
            <string>Open...</string>
           </property>
           <property name="icon">
-		  <iconset resource="enyo-doom.qrc">
+		  <iconset resource="enyo-launcher.qrc">
 			<normaloff>:/icon/open</normaloff>:/icon/open
 		</iconset>
           </property>
@@ -202,7 +202,7 @@
                <string>Add</string>
               </property>
               <property name="icon">
-               <iconset resource="enyo-doom.qrc">
+               <iconset resource="enyo-launcher.qrc">
                	     <normaloff>:/icon/add</normaloff>:/icons/add
 	       </iconset>
               </property>
@@ -214,7 +214,7 @@
                <string>Remove</string>
               </property>
               <property name="icon">
-               <iconset resource="enyo-doom.qrc">
+               <iconset resource="enyo-launcher.qrc">
 	       		<normaloff>:/icon/remove</normaloff>:/icons/remove
 	       </iconset>
               </property>
@@ -226,7 +226,7 @@
                <string>Clear</string>
               </property>
               <property name="icon">
-               <iconset resource="enyo-doom.qrc">
+               <iconset resource="enyo-launcher.qrc">
 		       <normaloff>:/icon/clear</normaloff>:/icons/clear
 	       </iconset>
               </property>
@@ -238,7 +238,7 @@
                <string>Move up</string>
               </property>
               <property name="icon">
-               <iconset resource="enyo-doom.qrc">
+               <iconset resource="enyo-launcher.qrc">
 		       <normaloff>:/icon/up</normaloff>:/icons/up
 	       </iconset>
               </property>
@@ -250,7 +250,7 @@
                <string>Move down</string>
               </property>
               <property name="icon">
-               <iconset resource="enyo-doom.qrc">
+               <iconset resource="enyo-launcher.qrc">
 		       <normaloff>:/icon/down</normaloff>:/icons/down
 	       </iconset>
               </property>
@@ -382,7 +382,7 @@
              <string>Add</string>
             </property>
             <property name="icon">
-		    <iconset resource="enyo-doom.qrc">
+		    <iconset resource="enyo-launcher.qrc">
 			    <normaloff>:/icon/add</normaloff>:/icon/add
 		    </iconset>
             </property>
@@ -407,7 +407,7 @@
              <string>Open...</string>
             </property>
             <property name="icon">
-             <iconset resource="enyo-doom.qrc">
+             <iconset resource="enyo-launcher.qrc">
 		     <normaloff>:/icon/open</normaloff>:/icon/open
 	     </iconset>
             </property>
@@ -425,7 +425,7 @@
              <string>Remove</string>
             </property>
             <property name="icon">
-             <iconset resource="enyo-doom.qrc">
+             <iconset resource="enyo-launcher.qrc">
 		     <normaloff>:/icon/remove</normaloff>:/icon/remove
 	     </iconset>
             </property>
