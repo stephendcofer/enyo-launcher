@@ -15,6 +15,15 @@ Also, I have changed the primary name of "enyo-doom" to "Enyo Launcher". Its bin
 There is zero reason to update to this latest version if you don't care about any of this (and you shouldn't) -- nothing in this release fixes any bugs or adds or removes any features compared to the last version. Just think of it as a vanity release.
 
 
+Enyo Launcher (enyo-doom) 2.0.3: "NIGHTMARE!"
+
+An incidental release that simply cleans up unused code and old features left behind in the current client.
+
+Also, I have changed the primary name of "enyo-doom" to "Enyo Launcher". Its binary and this repository will still be "enyo-doom" but I prefer to call the actual program "Enyo Launcher".
+
+There is zero reason to update to this latest version if you don't care about any of this (and you shouldn't) -- nothing in this release fixes any bugs or adds or removes any features compared to the last version. Just think of it as a vanity release.
+
+
 2.0.2 ("THE END")
 
 The end.  
@@ -30,7 +39,7 @@ yourself for who you are no matter how hideous because disguising yourself
 behind beauty is nothing but a dark pit of failure and too much work down the
 road.  You're beautiful just the way you are.
 
-Also, what I get for trusting the Qt documentation.  "Sure, use this in your
+Also, what I get for trusting the Qt documentation.  "Sure, use this in your 
 code, it'll work!  We're not going to strongly imply we JUST NOW added this
 option in Qt so that any distro that isn't bleeding edge will fail to compile
 your application.  Trust Qt!  We are awesome!"  I'm never going to write a GUI
