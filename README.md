@@ -31,13 +31,13 @@ It is recommended that you create an empty build directory under the source dire
 
 Any errors at this point are likely caused by missing Qt libraries and/or headers.
 
-You will need to have the qt5 development headers installed.  On Ubuntu and possibly other Debian-based distros, you may need to install the package qt5-default from the repositories to select and use the qt5 build environment.  Enyo Launcher no longer supports Qt version 4.
+You will need to have the qt5 development headers installed.  On Ubuntu and possibly other Debian-based distros, you may need to install either the package qt5-default (for older versions of Ubuntu) or qtbase5-dev (from newer versions) from the repositories to select and use the qt5 build environment.  Enyo Launcher no longer supports Qt version 4.
 
 By default, Enyo Launcher will be installed in /usr/local/bin and its data files in /usr/local/share/enyo-doom. To change this, pass the option -DCMAKE_INSTALL_PREFIX=/usr (or whichever path you prefer) to your cmake command.
 
 Then simply type make to begin compiling Enyo Launcher.
 
-When the build is finished, type make install as root to install. If you are using Ubuntu or a derivative, you will need to use sudo make install; most other systems you will need to do something like su -c 'make install'. The install should create a shortcut in the default menu structure for most desktops under Games; you can manually create a shortcut or run it from the commandline using the "enyo-doom" command.
+When the build is finished, type make install as root to install. If you are using Ubuntu or a derivative, you will need to use sudo make install; most other systems you will need to do something like su -c 'make install'. The install should create a shortcut in the default menu structure for most desktops under Games; you can manually create a shortcut or run it from the commandline using the "enyo-doom" command.  It is possible to install under your home directory for your user only without access to root; use a path after -DCMAKE_INSTALL_PREFIX= that is in your home directory.  (Installing under ~/.local will usually add enyo-launcher in its menu/launcher, depending on your desktop and configuration, and some distros will add ~/.local/bin to your commandline PATH if it exists on login.)
 
 **Configuration and Running Games**
 
