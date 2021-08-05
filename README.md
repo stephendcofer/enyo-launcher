@@ -1,7 +1,7 @@
 Enyo Launcher (enyo-doom)
 =========
 
-Frontend for Doom engines
+Frontend for Doom engines.  Due to Microsoft being evil, I've gone back to Gitlab.  All future versions will be available [here](https://gitlab.com/sdcofer70/enyo-launcher).
 
 ![](https://spiralcow.wdfiles.com/local--files/start/enyolauncher.png)
 
