@@ -1,5 +1,39 @@
 Enyo Launcher Changelog
 
+2.0.6 ("Slowly and painfully you get up and return to the fray.")
+
+Non-essential upgrade with nothing really fixed because this program is sheer
+and utter perfection that no one will ever have to fix ever because there are
+no bugs and no problems in this perfect bit of code.
+
+Cough.  Yeah, right.
+
+So basically, don't even bother updating.  Because nothing has really changed
+except for some text here and there.  The title bar's "Enyo Launcher for Doom
+[version number]" bugged the HELL out of me because it implied that it was a
+launcher for a specific version of Doom, not that the version was Enyo
+Launcher's.  So that got fixed.  A few other texts here and there were changed
+a bit/clarified, mostly in tooltips.
+
+So yeah, don't even bother upgrading unless that title text bugs you to death
+like it did me.  It's not even worth it.  Dude that updates Arch's AUR (THANK
+YOU BY THE WAY, YOU ARE MY HERO), don't bother with this.  This is an update
+for me and me alone.
+
+And the others who are bugged to death by that title text.  Yeah.
+
+2.0.5 ("A true hero in the face of something so evil")
+
+Microsoft is pure evil and this update marks the triumphant return to Gitlab.
+
+But a couple things needed to be fixed:
+
+FIX: When adding a new engine,fixed the path to the previously selected engine
+remained until the new engine was re-selected.  It now correctly shows an
+empty path.
+
+FIX: Update cmake minimum version; previous minimum version was depreciated.
+
 2.0.4 ("The Stagnant Demesne")
 
 I have changed all other identifiers to the new name "Enyo Launcher".  The new binary name will be "enyo-launcher"; it may be necessary to uninstall completely the previous enyo-doom version to clear out all remnants of it.

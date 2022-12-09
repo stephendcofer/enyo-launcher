@@ -25,10 +25,10 @@
 #define MAX_PWADS 4096
 #define MAX_GAMES 4096
 #define MAX_ENGINES 100
-#define ENYO_VERSION "2.0.4"
-#define ENYO_TAGLINE "The Stagnant Demesne"
-#define ENYO_COPYRIGHT "Copyright (C) 2009-2021 Stephen D. Cofer.  Released under the GPL version 3."
-#define ENYO_HOMEPAGE "https://github.com/stephendcofer/enyo-doom"
+#define ENYO_VERSION "2.0.6"
+#define ENYO_TAGLINE "Slowly and painfully you get up and return to the fray."
+#define ENYO_COPYRIGHT "Copyright (C) 2009-2022 Stephen D. Cofer.  Released under the GPL version 3."
+#define ENYO_HOMEPAGE "https://gitlab.com/sdcofer70/enyo-launcher"
 #define DEFAULT_WIDTH 800
 #define DEFAULT_HEIGHT 400
 #ifndef WIN32

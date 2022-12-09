@@ -1,13 +1,13 @@
 Enyo Launcher (enyo-doom)
 =========
 
-Frontend for Doom engines.  Due to Microsoft being evil, I've gone back to Gitlab.  All future versions will be available [here](https://gitlab.com/sdcofer70/enyo-launcher).
+Frontend for Doom engines
 
 ![](https://spiralcow.wdfiles.com/local--files/start/enyolauncher.png)
 
 Enyo Launcher is a GUI launcher for Doom engines. It is a relaunch of the gDoomsday project under a different name with more functionality. The source release is usable in any modern GNU/Linux distribution with Qt). The original release used GTK+, but was rewritten to use Qt for ease of maintenance and cross-platform compatibility.
 
-Major development on this project has ended; I will still update and support any bugs, as well as small changes whenever I feel they are necessary.  I have provided details on the history and my decision to end major development of Enyo Launcher [here](https://github.com/stephendcofer/enyo-doom/wiki/Enyo-Launcher:-History-and-Future).
+Major development on this project has ended; I will still update and support any bugs, as well as small changes whenever I feel they are necessary.  I have provided details on the history and my decision to end major development of Enyo Launcher [here](https://gitlab.com/sdcofer70/enyo-launcher/-/wikis/Enyo-Launcher:-History-and-Future).
 
 **Requirements**
 
@@ -17,7 +17,7 @@ A recent version of Qt5 installed, including development packages (package endin
 
 **Download**
 
-Download the latest version using git -- instructions are shown on github.  
+Download the latest version using git -- instructions are shown on gitlab.  
 
 Use this program at your own risk. I cannot claim any responsibility for any damage to your computer, your health, your pets, your plants, the environment, or to the fabric of reality. Enyo Launcher (enyo-doom) is released under the GPL version 3, which means you can do what you wish with it as long as you keep the source free. For the legally-binding description, please take a look at the GPL itself to see what you can and can't do.
 

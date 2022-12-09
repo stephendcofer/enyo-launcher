@@ -100,7 +100,7 @@ about_window::about_window(QWidget *parent)
 	ab_text = new QPlainTextEdit;
 	ab_text->clear();
 	ab_text->setReadOnly (true);
-	QString about_text = "Enyo Launcher for Doom (enyo-doom)\nVersion ";
+	QString about_text = "Enyo Launcher\nVersion ";
 	about_text.append(ENYO_VERSION);
 	about_text.append (" (\"");
 	about_text.append(ENYO_TAGLINE);
@@ -112,7 +112,7 @@ about_window::about_window(QWidget *parent)
 	ab_text->moveCursor(QTextCursor::Start);
 	about_vlayout->addWidget (ab_text);
 	setLayout (about_vlayout);
-	setWindowTitle ("About...");
+	setWindowTitle ("About Enyo Launcher");
 	setFixedSize (640, 480);
 	setParent (parent);
 }
@@ -280,7 +280,7 @@ e_mainwindow::e_mainwindow(QWidget *parent) :
     QString u_title;
     ui->setupUi(this);
     setWindowIcon(QPixmap(":/share/enyo_icon.png"));
-    u_title = "Enyo Launcher for Doom ";
+    u_title = "Enyo Launcher ";
     u_title.append (ENYO_VERSION);
     setWindowTitle(u_title);
     this->load_settings();
@@ -804,6 +804,7 @@ void e_mainwindow::on_btn_add_engine_clicked()
         ui->cb_engines->addItem (new_engine);
         ui->cb_elock->addItem(new_engine);
         ui->cb_engines->setCurrentIndex(last_engine_selected);
+	ui->line_engine_path->setText(enyo_engines[engine_pointer].engine_binary_path);
         engine_pointer++;
     }
 }

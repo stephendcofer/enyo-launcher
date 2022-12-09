@@ -65,7 +65,7 @@
            </sizepolicy>
           </property>
           <property name="toolTip">
-           <string>Add</string>
+           <string>Add profile</string>
           </property>
 	  <property name="icon">
 		  <iconset resource="enyo-launcher.qrc">
@@ -83,7 +83,7 @@
            </sizepolicy>
           </property>
           <property name="toolTip">
-           <string>Remove</string>
+           <string>Remove selected profile</string>
           </property>
 	  <property name="icon">
 		  <iconset resource="enyo-launcher.qrc">
@@ -137,7 +137,7 @@
            </sizepolicy>
           </property>
           <property name="toolTip">
-           <string>Edit game name</string>
+           <string>Edit selected profile name</string>
           </property>
           <property name="icon">
 		  <iconset resource="enyo-launcher.qrc">
@@ -190,7 +190,7 @@
           <item>
            <widget class="QListWidget" name="list_pwads">
             <property name="toolTip">
-             <string>Add-ons are extra files that are used to add custom elements to a game.</string>
+             <string>Add-ons are extra files that are used to add custom elements to a game.  Some add-ons may need to be loaded before others; use the arrow icons to move them up or down -- add-ons higher on the list will be loaded first.</string>
             </property>
            </widget>
           </item>
@@ -199,7 +199,7 @@
             <item>
              <widget class="QPushButton" name="button_pwad_add">
               <property name="toolTip">
-               <string>Add</string>
+               <string>Add add-on</string>
               </property>
               <property name="icon">
                <iconset resource="enyo-launcher.qrc">
@@ -211,7 +211,7 @@
             <item>
              <widget class="QPushButton" name="button_pwad_remove">
               <property name="toolTip">
-               <string>Remove</string>
+               <string>Remove selected add-on</string>
               </property>
               <property name="icon">
                <iconset resource="enyo-launcher.qrc">
@@ -223,7 +223,7 @@
             <item>
              <widget class="QPushButton" name="button_pwad_clear">
               <property name="toolTip">
-               <string>Clear</string>
+               <string>Clear all add-ons</string>
               </property>
               <property name="icon">
                <iconset resource="enyo-launcher.qrc">
@@ -235,7 +235,7 @@
             <item>
              <widget class="QPushButton" name="button_pwad_up">
               <property name="toolTip">
-               <string>Move up</string>
+               <string>Move add-on up one place in the list</string>
               </property>
               <property name="icon">
                <iconset resource="enyo-launcher.qrc">
@@ -247,7 +247,7 @@
             <item>
              <widget class="QPushButton" name="button_pwad_down">
               <property name="toolTip">
-               <string>Move down</string>
+               <string>Move add-on down one place in the list</string>
               </property>
               <property name="icon">
                <iconset resource="enyo-launcher.qrc">
@@ -379,7 +379,7 @@
              </sizepolicy>
             </property>
             <property name="toolTip">
-             <string>Add</string>
+             <string>Add engine</string>
             </property>
             <property name="icon">
 		    <iconset resource="enyo-launcher.qrc">
@@ -422,7 +422,7 @@
              </sizepolicy>
             </property>
             <property name="toolTip">
-             <string>Remove</string>
+             <string>Remove selected engine</string>
             </property>
             <property name="icon">
              <iconset resource="enyo-launcher.qrc">
@@ -458,7 +458,10 @@
            </widget>
           </item>
           <item row="5" column="0" colspan="2">
-           <widget class="QCheckBox" name="cb_tabs_top">
+		  <widget class="QCheckBox" name="cb_tabs_top">
+			  <property name="toolTip">
+				  <string>Enable to place Enyo Launcher's main tabs above the settings horizontally.  Disable to place them vertically along the left side.</string>
+			  </property>
             <property name="text">
              <string>&amp;Tabs on top</string>
             </property>
@@ -466,13 +469,19 @@
 	   </item>
 	  <item row="6" column="0" colspan="2">
 		  <widget class="QCheckBox" name="cb_show_numbers">
+			  <property name="toolTip">
+				  <string>Uncheck to disable the ordered numbers in the game profile list.</string>
+			  </property>
 			  <property name="text">
-				  <string>Display &amp;numbers in the game list for ordering</string>
+				  <string>Use ordered &amp;numbers in the game profile list</string>
 			  </property>
 		  </widget>
 	  </item>
           <item row="7" column="0" colspan="2">
-           <widget class="QCheckBox" name="cb_exit">
+		  <widget class="QCheckBox" name="cb_exit">
+			  <property name="toolTip">
+				  <string>If enabled, Enyo Launcher will automatically exit after running a game.</string>
+			  </property>
             <property name="text">
              <string>E&amp;xit Enyo Launcher after game runs</string>
             </property>
