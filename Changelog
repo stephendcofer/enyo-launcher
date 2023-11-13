@@ -1,5 +1,10 @@
 Enyo Launcher Changelog
 
+2.0.7 ("Lock and load.  Rip and tear.")
+
+Qt6 is now REQUIRED.  I consider Qt5 old and busted.  If you have a distro that does not support Qt6, well, sorry.  Most should, including Ubuntu (I don't use Ubuntu any more,
+but I'm going to guess its required install for Qt6 source compilations is qt6-default -- if that's not correct, go ask Ubuntu).
+
 2.0.6 ("Slowly and painfully you get up and return to the fray.")
 
 Non-essential upgrade with nothing really fixed because this program is sheer

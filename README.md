@@ -3,8 +3,6 @@ Enyo Launcher (enyo-doom)
 
 Frontend for Doom engines
 
-![](https://spiralcow.wdfiles.com/local--files/start/enyolauncher.png)
-
 Enyo Launcher is a GUI launcher for Doom engines. It is a relaunch of the gDoomsday project under a different name with more functionality. The source release is usable in any modern GNU/Linux distribution with Qt). The original release used GTK+, but was rewritten to use Qt for ease of maintenance and cross-platform compatibility.
 
 Major development on this project has ended; I will still update and support any bugs, as well as small changes whenever I feel they are necessary.  I have provided details on the history and my decision to end major development of Enyo Launcher [here](https://gitlab.com/sdcofer70/enyo-launcher/-/wikis/Enyo-Launcher:-History-and-Future).
@@ -13,7 +11,7 @@ Major development on this project has ended; I will still update and support any
 
 A working Doom engine that supports Vanilla Doom commandline options, such as Chocolate Doom or zdoom. Even though it is possible to use it with custom commandline options, DEngine/Doomsday is not directly supported by this new release since it does not use standard launch parameters.  Since it now integrates its launcher with the engine, a separate launcher is no longer necessary.
 
-A recent version of Qt5 installed, including development packages (package ending in -dev or -devel in most distro repositories), GCC (g++), GNU make, and cmake to compile from source. 
+A recent version of Qt6 installed, including development packages (package ending in -dev or -devel in most distro repositories), GCC (g++), GNU make, and cmake to compile from source. 
 
 **Download**
 
@@ -31,7 +29,7 @@ It is recommended that you create an empty build directory under the source dire
 
 Any errors at this point are likely caused by missing Qt libraries and/or headers.
 
-You will need to have the qt5 development headers installed.  On Ubuntu and possibly other Debian-based distros, you may need to install either the package qt5-default (for older versions of Ubuntu) or qtbase5-dev (from newer versions) from the repositories to select and use the qt5 build environment.  Enyo Launcher no longer supports Qt version 4.
+You will need to have the qt6 development headers installed.  I am uncertain what distro requires what package for Qt6 compilation -- Ubuntu used qt5-default for Qt5 so I'm going to guess using qt6-default; if this is not correct, please consult the Ubuntu documentation.  Enyo Launcher no longer supports Qt version 4 or 5.
 
 By default, Enyo Launcher will be installed in /usr/local/bin and its data files in /usr/local/share/enyo-doom. To change this, pass the option -DCMAKE_INSTALL_PREFIX=/usr (or whichever path you prefer) to your cmake command.
 
